@@ -1,2 +1,7 @@
 # auction-angular
- online auction bid system
+
+# Frond-end
+Angular
+
+# Back-end
+Express.js rest api
