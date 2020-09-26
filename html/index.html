@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Bid System</title>
+</head>
+
+<body>
+
+    <div id="container" class="container-fluid">
+        <div id="header">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Online bid system</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Create</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Profile</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <h1>Welcome to bid system</h1>
+        </div>
+
+        <div id="all-bids">
+            <h2>Latest bids</h2>
+            <div class="card" style="width:400px">
+                <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+                <div class="card-body">
+                    <h4 class="card-title">iPhone</h4>
+                    <p class="card-text">11 Pro Max</p>
+                    <a href="#" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+
+        </div>
+        <hr>
+        <div id="register">
+            <h2>Register</h2>
+            <form action="" method="post">
+                <input type="text" class="form-control my-form" name="email" placeholder="Email" />
+                <input type="text" class="form-control my-form" name="password" placeholder="Password" />
+                <input type="text" class="form-control my-form" name="repeatPassword" placeholder="Repeat password" />
+                <button type="button" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+        <hr>
+        <div id="login">
+            <h2>Login</h2>
+            <form action="" method="post">
+                <input type="text" class="form-control my-form" name="email" placeholder="Email" />
+                <input type="text" class="form-control my-form" name="password" placeholder="Password" />
+                <button type="button" class="btn btn-primary" id="login-button">Login</button>
+            </form>
+        </div>
+        <hr>
+        <div id="create-product">
+            <h2>Add product for sell</h2>
+
+            <form action="">
+                <input type="text" name="title" class="form-control my-form" placeholder="Title" />
+                <textarea name="description" class="form-control my-form" placeholder="Description"></textarea>
+                <div style="margin: 20px;"></div>
+                <input type="text" name="startPrice" class="form-control my-form" placeholder="Start price" />
+                <input type="text" name="endDate" class="form-control my-form" placeholder="End date" />
+                <div style="margin: 20px;"></div>
+                <div class="custom-file my-form">
+                    <input type="file" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile" style="text-align: left;color: gray">Upload
+                        image</label>
+                </div>
+                <button type="button" class="btn btn-primary" id="create-button">Add product</button>
+            </form>
+        </div>
+        <hr>
+        <div id="product-details">
+            <h2>Product {{name}}</h2>
+            <img src="img_avatar1.jpeg" alt="" style="border: 1px solid;left: 0;float: left;" class="details-image" />
+            <p class="justify"><span style="font-weight: bold;">Title</span>: Lorem, ipsum dolor.</p>
+            <p class="justify"><span style="font-weight: bold;">Description</span>: Lorem ipsum dolor sit amet
+                consectetur, adipisicing elit.
+                Iusto
+                expedita
+                minus nulla
+                similique quam perferendis quia iure nihil ab, eveniet molestiae exercitationem natus ipsa amet
+                blanditiis ducimus necessitatibus sint, voluptatibus minima! At tenetur perferendis, facilis accusantium
+                modi, autem commodi cum necessitatibus et ipsa expedita vero voluptas quibusdam aliquid doloremque illo
+                neque quasi fugit, ducimus dignissimos!</p>
+            <p class="justify"><span style="font-weight: bold;">End date</span>: 24.12.2020</p>
+            <p class="justify"><span style="font-weight: bold;">Current price: </span>145.5</p>
+            <input type="text" class="form-control my-form" style="width: 30%;margin: 10px 0px;" />
+            <button class="btn btn-primary" style="float: left">Bid</button>
+        </div>
+
+    </div>
+    <footer>
+        <p>Online bid sysem &copy; 2020</p>
+    </footer>
+</body>
+
+</html>
