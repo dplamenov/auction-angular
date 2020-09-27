@@ -9,7 +9,7 @@ function login(req, res) {
         if (!user) {
             return Promise.reject('no user');
         }
-
+        console.log(user);
         const authToken = auth.getAuthToken();
 
         user._doc.authToken = authToken;
