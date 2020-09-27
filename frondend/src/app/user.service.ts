@@ -8,7 +8,7 @@ interface User {
 }
 
 interface LoginUser extends User{
-  authToken: string;
+  authToken: string
 }
 
 @Injectable({
@@ -22,11 +22,11 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
-  createUser(email: string, password: string): Observable<LoginUser> {
-    return this.http.post<LoginUser>('http://localhost:3000/api/user/register', {email, password}, this.httpOptions);
+  createUser(email: string, password: string): Observable<User> {
+    return this.http.post<User>('http://localhost:3000/api/user/register', {email, password}, this.httpOptions);
   }
 
-  login(email, password): Observable<User> {
-    return this.http.post<User>('http://localhost:3000/api/user/login', {email, password}, this.httpOptions);
+  login(email, password): Observable<LoginUser> {
+    return this.http.post<LoginUser>('http://localhost:3000/api/user/login', {email, password}, this.httpOptions);
   }
 }
