@@ -24,12 +24,14 @@ export class LoginComponent implements OnInit {
     const password = this.password.value;
 
     this.userService.login(email, password).subscribe(user => {
-      if (!user){
+      if (!user) {
         return;
       }
       const {authToken} = user;
       sessionStorage.setItem('authToken', authToken);
-
+      this.router.navigate(['/']).then(_ => {
+        window.location.reload();
+      });
     });
   }
 

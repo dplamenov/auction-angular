@@ -12,6 +12,7 @@ export class AppComponent implements OnInit{
   isLoggedIn = false;
 
   constructor(private userService: UserService) {
+    console.log('12344');
   }
 
   ngOnInit(): void{
