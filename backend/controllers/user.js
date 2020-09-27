@@ -21,6 +21,7 @@ function login(req, res) {
 }
 
 function register(req, res) {
+    console.log('register');
     const { email, password } = req.body;
 
     User.create({ email, password })
