@@ -7,14 +7,15 @@ interface User {
   password: string;
 }
 
-interface LoginUser extends User{
-  authToken: string
+interface LoginUser extends User {
+  authToken: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  storage = sessionStorage;
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
@@ -28,5 +29,16 @@ export class UserService {
 
   login(email, password): Observable<LoginUser> {
     return this.http.post<LoginUser>('http://localhost:3000/api/user/login', {email, password}, this.httpOptions);
+  }
+
+  isLogin(): boolean {
+    return !!this.storage.getItem('authToken');
+  }
+
+  logout(): Promise<boolean> {
+    return new Promise(resolve => {
+      this.storage.removeItem('authToken');
+      resolve(true);
+    });
   }
 }
