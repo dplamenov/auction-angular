@@ -25,7 +25,11 @@ function register(req, res) {
     User.create({ email, password })
         .then(res.send.bind(res))
         .catch(err => {
-            console.log(err);
+            res.status(400);
+            const errorData = Object.values(err.errors).map(e => e.message);
+            res.send({
+                errors: errorData
+            });
         });
 }
 
