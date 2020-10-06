@@ -1,15 +1,20 @@
 const formidable = require('formidable');
 const fs = require('fs');
+const path = require('path');
 
-function createProduct(req, res){
+function createProduct(req, res) {
     // const {title, description, image} = req.body;
-    const form = formidable({ multiples: true });
+    const form = formidable({multiples: true});
 
     form.parse(req, (err, fields, files) => {
-        if(err){
+        if (err) {
             console.log(err);
         }
 
+        const {image} = files;
+        fs.rename(image.path, path.resolve('public/images', image.name), err => {
+            console.log(err)
+        });
         res.json({fields, files});
     });
 
