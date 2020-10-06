@@ -14,7 +14,7 @@ function isLogin(req) {
     }
 
     try {
-        const token = jwt.verify(jwtToken, secret);
+        const token = jwt.verify(req.cookies.auth, secret);
         return !!token.login;
     } catch (e) {
         return false;
