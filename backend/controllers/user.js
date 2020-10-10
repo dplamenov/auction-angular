@@ -17,7 +17,9 @@ function register(req, res, next) {
     const { email, password } = req.body;
 
     User.create({ email, password })
-        .then(res.send.bind(res))
+        .then(user => {
+            res.send({_id: user._id, email: user.email});
+        })
         .catch(next);
 }
 

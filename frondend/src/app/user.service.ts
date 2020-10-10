@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {tap} from 'rxjs/operators';
 
 interface User {
+  _id: string;
   email: string;
-  password: string;
 }
 
 interface LoginUser extends User {
@@ -16,6 +17,17 @@ interface LoginUser extends User {
 })
 export class UserService {
   storage = sessionStorage;
+
+  private userData: User;
+
+  private set user(value) {
+    this.userData = value;
+  }
+
+  private get user(): User {
+    return this.userData;
+  }
+
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
@@ -28,11 +40,15 @@ export class UserService {
   }
 
   login(email, password): Observable<LoginUser> {
-    return this.http.post<LoginUser>('http://localhost:3000/api/user/login', {email, password}, this.httpOptions);
+    return this.http.post<LoginUser>('http://localhost:3000/api/user/login', {email, password}, this.httpOptions)
+      .pipe(tap(user => {
+        this.user = user;
+        console.log(this);
+      }));
   }
 
   isLogin(): boolean {
-    return !!this.storage.getItem('authToken');
+    return !!(this.user || {})._id;
   }
 
   logout(): Promise<boolean> {
