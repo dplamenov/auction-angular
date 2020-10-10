@@ -8,7 +8,6 @@ function getAuthToken() {
 }
 
 function isLogin(req) {
-
     if (!req.cookies.auth) {
         return false;
     }

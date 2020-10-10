@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path');
 
 function createProduct(req, res) {
-    // const {title, description, image} = req.body;
     const form = formidable({multiples: true});
 
     form.parse(req, (err, fields, files) => {

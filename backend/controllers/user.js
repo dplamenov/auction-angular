@@ -1,25 +1,22 @@
 const User = require('../models/user');
 const auth = require('../auth');
 
-
 function login(req, res) {
     const { email, password } = req.body;
 
-    User.findOne({ email, password }).then(user => {
+    User.findOne({ email, password }).select('-password').then(user => {
         if (!user) {
             return Promise.reject('no user');
         }
-        console.log(user);
-        user._doc.authToken = auth.getAuthToken();
+        res.cookie('auth-cookie', auth.getAuthToken());
+
         res.send(user);
     }).catch(err => {
-        console.log(err);
         res.end();
     });
 }
 
 function register(req, res) {
-    console.log('register');
     const { email, password } = req.body;
 
     User.create({ email, password })
