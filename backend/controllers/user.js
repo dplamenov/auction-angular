@@ -4,12 +4,12 @@ const auth = require('../auth');
 function login(req, res, next) {
     const { email, password } = req.body;
 
-    User.findOne({ email, password }).select('-password').then(user => {
+    User.findOne({ email, password }).then(user => {
         if (!user) {
             return Promise.reject('no user');
         }
         res.cookie('auth-cookie', auth.getAuthToken());
-        res.send(user);
+        res.send({_id: user._id, email: user.email});
     }).catch(next);
 }
 
