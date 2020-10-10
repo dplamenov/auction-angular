@@ -47,6 +47,7 @@ export class UserService {
   }
 
   isLogin(): boolean {
+    console.log(this.user);
     return !!(this.user || {})._id;
   }
 

@@ -29,9 +29,7 @@ export class LoginComponent implements OnInit {
       }
       const {authToken} = user;
       sessionStorage.setItem('authToken', authToken);
-      this.router.navigate(['/']).then(_ => {
-        window.location.reload();
-      });
+      this.router.navigate(['']).then();
     });
   }
 
