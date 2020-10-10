@@ -14,6 +14,20 @@ app.use(express.json());
 
 app.use('/api', router);
 
+app.use(function (err, req, res, next) {
+    function getErrorData(err) {
+        if (typeof err === 'string') {
+            return [err];
+        }
+        return Object.values(err.errors).map(e => e.message);
+    }
+
+    const errorData = getErrorData(err);
+    res.status(400);
+    res.send({
+        errors: errorData
+    });
+})
 database().then(() => {
     app.listen(config.port, () => console.log(`server listen on port ${config.port}`));
 }).catch(() => {

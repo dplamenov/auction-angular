@@ -1,7 +1,7 @@
 const User = require('../models/user');
 const auth = require('../auth');
 
-function login(req, res) {
+function login(req, res, next) {
     const { email, password } = req.body;
 
     User.findOne({ email, password }).select('-password').then(user => {
@@ -9,26 +9,16 @@ function login(req, res) {
             return Promise.reject('no user');
         }
         res.cookie('auth-cookie', auth.getAuthToken());
-
         res.send(user);
-    }).catch(err => {
-        res.end();
-    });
+    }).catch(next);
 }
 
-function register(req, res) {
+function register(req, res, next) {
     const { email, password } = req.body;
 
     User.create({ email, password })
         .then(res.send.bind(res))
-        .catch(err => {
-            res.status(400);
-            const errorData = Object.values(err.errors).map(e => e.message);
-            res.send({
-                errors: errorData
-            });
-        });
+        .catch(next);
 }
-
 
 module.exports = { login, register };

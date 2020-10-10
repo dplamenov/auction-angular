@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const secret = 'secret';
+const secret = 'b7d4503acc8d249049e66d4f8936ac5e';
 const options = { expiresIn: '2d' };
 
 function getAuthToken() {
