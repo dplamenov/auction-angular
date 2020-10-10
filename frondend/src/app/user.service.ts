@@ -16,8 +16,7 @@ interface LoginUser extends User {
   providedIn: 'root'
 })
 export class UserService {
-  storage = sessionStorage;
-
+  private apiPath = 'http://localhost:3000/api/';
   private userData: User;
 
   private set user(value) {
@@ -36,11 +35,11 @@ export class UserService {
   }
 
   createUser(email: string, password: string): Observable<User> {
-    return this.http.post<User>('http://localhost:3000/api/user/register', {email, password}, this.httpOptions);
+    return this.http.post<User>(`${this.apiPath}user/register`, {email, password}, this.httpOptions);
   }
 
   login(email, password): Observable<LoginUser> {
-    return this.http.post<LoginUser>('http://localhost:3000/api/user/login', {email, password}, this.httpOptions)
+    return this.http.post<LoginUser>(`${this.apiPath}user/login`, {email, password}, this.httpOptions)
       .pipe(tap(user => {
         this.user = user;
         console.log(this);
@@ -51,10 +50,9 @@ export class UserService {
     return !!(this.user || {})._id;
   }
 
-  logout(): Promise<boolean> {
-    return new Promise(resolve => {
-      this.storage.removeItem('authToken');
-      resolve(true);
-    });
+  logout() {
+    return this.http.get(`${this.apiPath}user/logout`, {}).pipe(tap(() => {
+      this.user = null;
+    }));
   }
 }
