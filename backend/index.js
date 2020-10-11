@@ -18,8 +18,10 @@ app.use(function (err, req, res, next) {
     function getErrorData(err) {
         if (typeof err === 'string') {
             return [err];
+        } else if (Array.isArray(err)){
+            return err;
         }
-        return Object.values(err.errors).map(e => e.message);
+        return Object.values(err.errors).map(e => e.message); //mongoose error
     }
 
     const errorData = getErrorData(err);
