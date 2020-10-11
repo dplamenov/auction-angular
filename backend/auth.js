@@ -4,11 +4,11 @@ const User = require('./models/user');
 const secret = 'b7d4503acc8d249049e66d4f8936ac5e';
 const options = {expiresIn: '2d'};
 
-function getAuthToken(userId) {
+function generateAuthToken(userId) {
     return jwt.sign({login: true, userId}, secret, options);
 }
 
-function getToken(req) {
+function getTokenFromReq(req) {
     if (!req.cookies['auth-cookie']) {
         return false;
     }
@@ -21,11 +21,11 @@ function getToken(req) {
 }
 
 function getUserId(req) {
-    return (getToken(req) || {}).userId;
+    return (getTokenFromReq(req) || {}).userId;
 }
 
 function auth(req, res, next) {
-    const {login: isLogin, userId} = getToken(req);
+    const {login: isLogin, userId} = getTokenFromReq(req);
 
     if (isLogin) {
         User.findById(userId)
@@ -41,4 +41,4 @@ function auth(req, res, next) {
 }
 
 
-module.exports = {getAuthToken, auth, getUserId};
+module.exports = {generateAuthToken, auth, getUserId};

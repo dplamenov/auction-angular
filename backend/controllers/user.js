@@ -10,7 +10,7 @@ function login(req, res, next) {
             if (!match) {
                 return Promise.reject('invalid username or password');
             }
-            res.cookie('auth-cookie', auth.getAuthToken(user._id));
+            res.cookie('auth-cookie', auth.generateAuthToken(user._id));
             res.send({_id: user._id, email: user.email});
         })
         .catch(next);
