@@ -25,6 +25,10 @@ const UserSchema = mongoose.Schema({
     }
 });
 
+UserSchema.methods.matchPassword = function (password){
+    return bcrypt.compare(password, this.password);
+};
+
 UserSchema.pre('save', function (next) {
     if (this.isModified('password')) {
         bcrypt.genSalt(saltRounds, (err, salt) => {
@@ -38,7 +42,6 @@ UserSchema.pre('save', function (next) {
                     return;
                 }
                 this.password = hash;
-                console.log(this.password)
                 next();
             });
         });
