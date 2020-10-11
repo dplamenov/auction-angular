@@ -8,8 +8,6 @@ import {Router} from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'frondend';
-
   isLoggedIn = false;
 
   constructor(private userService: UserService, private router: Router) {

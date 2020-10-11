@@ -28,7 +28,8 @@ export class UserService {
   }
 
   httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
+    headers: new HttpHeaders({'Content-Type': 'application/json'}),
+    withCredentials: true
   };
 
   constructor(private http: HttpClient) {
@@ -42,7 +43,6 @@ export class UserService {
     return this.http.post<LoginUser>(`${this.apiPath}user/login`, {email, password}, this.httpOptions)
       .pipe(tap(user => {
         this.user = user;
-        console.log(this);
       }));
   }
 
