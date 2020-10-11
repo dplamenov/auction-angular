@@ -2,6 +2,7 @@ const formidable = require('formidable');
 const fs = require('fs');
 const path = require('path');
 const Product = require('../models/product');
+const {getUserId} = require('../auth');
 
 function createProduct(req, res, next) {
     const form = formidable({multiples: true});
@@ -18,13 +19,16 @@ function createProduct(req, res, next) {
                 return next(err.message);
             }
 
-            const result = {
+            const product = {
+                title: fields.title,
+                description: fields.description,
+                creator: getUserId(req),
                 imageName: image.name
             };
 
-            // Product.create()
-
-            res.json({fields, files, result});
+            Product.create(product)
+                .then(res.json.bind(res))
+                .catch(next);
         });
     });
 

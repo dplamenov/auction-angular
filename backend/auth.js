@@ -20,6 +20,10 @@ function getToken(req) {
     }
 }
 
+function getUserId(req) {
+    return (getToken(req) || {}).userId;
+}
+
 function auth(req, res, next) {
     const {login: isLogin, userId} = getToken(req);
 
@@ -37,4 +41,4 @@ function auth(req, res, next) {
 }
 
 
-module.exports = {getAuthToken, auth};
+module.exports = {getAuthToken, auth, getUserId};
