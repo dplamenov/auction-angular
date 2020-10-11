@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require('./models/user');
+const {authCookie} = require('./config');
 
 const secret = 'b7d4503acc8d249049e66d4f8936ac5e';
 const options = {expiresIn: '2d'};
@@ -9,12 +10,12 @@ function generateAuthToken(userId) {
 }
 
 function getTokenFromReq(req) {
-    if (!req.cookies['auth-cookie']) {
+    if (!req.cookies[authCookie]) {
         return false;
     }
 
     try {
-        return jwt.verify(req.cookies['auth-cookie'], secret);
+        return jwt.verify(req.cookies[authCookie], secret);
     } catch (e) {
         return false;
     }
