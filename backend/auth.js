@@ -20,25 +20,20 @@ function getToken(req) {
     }
 }
 
-function auth(redirect = true) {
-    return function (req, res, next) {
-        const {login: isLogin, userId} = getToken(req);
+function auth(req, res, next) {
+    const {login: isLogin, userId} = getToken(req);
 
-        if (isLogin) {
-            User.findById(userId)
-                .then(user => {
-                    req.user = user;
-                    return next();
-                })
-                .catch(next);
-        }
+    if (isLogin) {
+        User.findById(userId)
+            .then(user => {
+                req.user = user;
+                return next();
+            })
+            .catch(next);
 
-        if (redirect) {
-            return res.redirect('/');
-        }
-
-        next();
-    };
+        return;
+    }
+    next('no user');
 }
 
 

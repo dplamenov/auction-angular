@@ -3,6 +3,7 @@ const config = require('./config');
 const database = require('./database');
 const router = require('./router');
 const cors = require('cors');
+const cookie = require('cookie-parser');
 
 const app = express();
 
@@ -11,7 +12,7 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.json());
-
+app.use(cookie());
 app.use('/api', router);
 
 app.use(function (err, req, res, next) {

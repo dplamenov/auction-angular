@@ -22,7 +22,7 @@ function createProduct(req, res, next) {
                 imageName: image.name
             };
 
-            Product.create()
+            // Product.create()
 
             res.json({fields, files, result});
         });
