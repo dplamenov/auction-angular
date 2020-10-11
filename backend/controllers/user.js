@@ -4,13 +4,16 @@ const auth = require('../auth');
 function login(req, res, next) {
     const {email, password} = req.body;
 
-    User.findOne({email, password}).then(user => {
-        if (!user) {
-            return Promise.reject('no user');
-        }
-        res.cookie('auth-cookie', auth.getAuthToken(user._id));
-        res.send({_id: user._id, email: user.email});
-    }).catch(next);
+    User.findOne({email})
+        .then(user => !!user ? Promise.all([user, user.matchPassword(password)]) : [null, false])
+        .then(([user, match]) => {
+            if (!match) {
+                return Promise.reject('invalid username or password');
+            }
+            res.cookie('auth-cookie', auth.getAuthToken(user._id));
+            res.send({_id: user._id, email: user.email});
+        })
+        .catch(next);
 }
 
 function register(req, res, next) {
