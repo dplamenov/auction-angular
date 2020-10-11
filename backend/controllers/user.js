@@ -8,7 +8,7 @@ function login(req, res, next) {
         if (!user) {
             return Promise.reject('no user');
         }
-        res.cookie('auth-cookie', auth.getAuthToken());
+        res.cookie('auth-cookie', auth.getAuthToken(user._id));
         res.send({_id: user._id, email: user.email});
     }).catch(next);
 }

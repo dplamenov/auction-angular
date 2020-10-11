@@ -1,6 +1,7 @@
 const formidable = require('formidable');
 const fs = require('fs');
 const path = require('path');
+const Product = require('../models/product');
 
 function createProduct(req, res, next) {
     const form = formidable({multiples: true});
@@ -11,12 +12,19 @@ function createProduct(req, res, next) {
         }
 
         const {image} = files;
-        fs.rename(image.path, path.resolve('public/images', image.name), err => {
-            if(err){
+        const newPath = path.resolve('public/images', image.name);
+        fs.rename(image.path, newPath, err => {
+            if (err) {
                 return next(err.message);
             }
 
-            res.json({fields, files});
+            const result = {
+                imageName: image.name
+            };
+
+            Product.create()
+
+            res.json({fields, files, result});
         });
     });
 
