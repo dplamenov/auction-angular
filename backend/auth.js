@@ -26,25 +26,6 @@ function getUserId(req) {
     return (getTokenFromReq(req) || {}).userId;
 }
 
-function auth(req, res, next) {
-    const {login: isLogin, userId} = getTokenFromReq(req);
-
-    if (isLogin) {
-        Promise.all([User.findById(userId), isTokenValid(req.cookies[authCookie])])
-            .then(([user, tokenBlacklisted]) => {
-                if (tokenBlacklisted) {
-                    return next('no user');
-                }
-                req.user = user;
-                return next();
-            })
-            .catch(next);
-
-        return;
-    }
-    next('no user');
-}
-
 
 function isTokenValid(token) {
     return new Promise(((resolve, reject) => {
@@ -56,4 +37,4 @@ function isTokenValid(token) {
     }));
 }
 
-module.exports = {generateAuthToken, auth, getUserId};
+module.exports = {generateAuthToken, getUserId};

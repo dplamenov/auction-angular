@@ -31,8 +31,11 @@ function createProduct(req, res, next) {
                 .catch(next);
         });
     });
+}
+
+function deleteProduct(req, res, next){
 
 }
 
 
-module.exports = {createProduct};
+module.exports = {createProduct, deleteProduct};
