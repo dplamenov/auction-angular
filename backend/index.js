@@ -31,7 +31,8 @@ app.use(function (err, req, res, next) {
   res.send({
     errors: errorData
   });
-})
+});
+
 database().then(() => {
   app.listen(config.port, () => console.log(`server listen on port ${config.port}`));
 }).catch(() => {

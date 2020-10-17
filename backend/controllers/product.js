@@ -34,7 +34,11 @@ function createProduct(req, res, next) {
 }
 
 function deleteProduct(req, res, next) {
+  const id = req.productId;
 
+  Product.findByIdAndDelete(id)
+    .then(res.json.bind(res))
+    .catch(next);
 }
 
 
