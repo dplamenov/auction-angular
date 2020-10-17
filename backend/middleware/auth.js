@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const {getTokenFromReq, isTokenValid} = require('../auth');
+const {authCookie} = require('../config');
 
 function auth(req, res, next) {
     const {login: isLogin, userId} = getTokenFromReq(req);

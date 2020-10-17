@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const User = require('./models/user');
 const TokenBlacklist = require('./models/tokenBlacklist');
 const {authCookie} = require('./config');
 
@@ -37,4 +36,4 @@ function isTokenValid(token) {
     }));
 }
 
-module.exports = {generateAuthToken, getUserId};
+module.exports = {generateAuthToken, getTokenFromReq, getUserId, isTokenValid};
