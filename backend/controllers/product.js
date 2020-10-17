@@ -63,7 +63,7 @@ function editProduct(req, res, next) {
 }
 
 function latest(req, res, next) {
-  Product.find().limit(latestProductCount)
+  Product.find().sort({createTime: -1}).limit(latestProductCount)
     .then(res.json.bind(res))
     .catch(next);
 }
