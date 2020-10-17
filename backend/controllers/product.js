@@ -68,5 +68,18 @@ function latest(req, res, next) {
     .catch(next);
 }
 
+function allProducts(req, res, next) {
+  const {skip, take} = req.query;
 
-module.exports = {createProduct, deleteProduct, editProduct, latest};
+  Product.find({}).sort({createTime: -1}).skip(Number(skip)).limit(Number(take))
+    .then(res.json.bind(res))
+    .catch(next);
+}
+
+module.exports = {
+  createProduct,
+  deleteProduct,
+  editProduct,
+  latest,
+  allProducts
+};
