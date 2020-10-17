@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const Product = require('../models/product');
 const {getUserId} = require('../auth');
+const {latestProductCount} = require('../config');
 
 function createProduct(req, res, next) {
   const form = formidable({multiples: true});
@@ -59,10 +60,13 @@ function editProduct(req, res, next) {
       })
       .catch(next);
   });
+}
 
-
-  console.log('edit');
+function latest(req, res, next) {
+  Product.find().limit(latestProductCount)
+    .then(res.json.bind(res))
+    .catch(next);
 }
 
 
-module.exports = {createProduct, deleteProduct, editProduct};
+module.exports = {createProduct, deleteProduct, editProduct, latest};
