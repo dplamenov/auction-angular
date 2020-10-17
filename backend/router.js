@@ -11,7 +11,9 @@ router.get('/', (req, res) => {
 router.post('/user/login', controllers.user.login);
 router.post('/user/register', controllers.user.register);
 router.get('/user/logout', auth, controllers.user.logout);
+
 router.post('/product', auth, controllers.product.createProduct);
 router.delete('/product/:id', auth, isOwner(), controllers.product.deleteProduct);
+router.patch('/product/:id', auth, isOwner(), controllers.product.editProduct);
 
 module.exports = router;
