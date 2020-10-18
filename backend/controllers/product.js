@@ -24,6 +24,7 @@ function createProduct(req, res, next) {
         title: fields.title,
         description: fields.description,
         endTime: fields.endTime,
+        startPrice: fields.startPrice,
         creator: getUserId(req),
         imageName: image.name
       };
