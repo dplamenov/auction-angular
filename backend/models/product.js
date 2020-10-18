@@ -25,6 +25,10 @@ const ProductSchema = mongoose.Schema({
   endTime: {
     type: String,
     required: true
+  },
+  startPrice: {
+    type: Number,
+    required: true
   }
 });
 

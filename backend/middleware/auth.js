@@ -3,22 +3,22 @@ const {getTokenFromReq, isTokenValid} = require('../auth');
 const {authCookie} = require('../config');
 
 function auth(req, res, next) {
-    const {login: isLogin, userId} = getTokenFromReq(req);
+  const {login: isLogin, userId} = getTokenFromReq(req);
 
-    if (isLogin) {
-        Promise.all([User.findById(userId), isTokenValid(req.cookies[authCookie])])
-            .then(([user, tokenBlacklisted]) => {
-                if (tokenBlacklisted) {
-                    return next('no user');
-                }
-                req.user = user;
-                return next();
-            })
-            .catch(next);
+  if (isLogin) {
+    Promise.all([User.findById(userId), isTokenValid(req.cookies[authCookie])])
+      .then(([user, tokenBlacklisted]) => {
+        if (tokenBlacklisted) {
+          return next('no user');
+        }
+        req.user = user;
+        return next();
+      })
+      .catch(next);
 
-        return;
-    }
-    next('no user');
+    return;
+  }
+  next('no user');
 }
 
 module.exports = auth;
