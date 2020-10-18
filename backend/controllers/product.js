@@ -23,6 +23,7 @@ function createProduct(req, res, next) {
       const product = {
         title: fields.title,
         description: fields.description,
+        endTime: fields.endTime,
         creator: getUserId(req),
         imageName: image.name
       };
