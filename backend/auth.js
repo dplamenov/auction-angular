@@ -25,6 +25,9 @@ function getUserId(req) {
     return (getTokenFromReq(req) || {}).userId;
 }
 
+function isLogin(req){
+    return (getTokenFromReq(req) || {}).login;
+}
 
 function isTokenValid(token) {
     return new Promise(((resolve, reject) => {
@@ -36,4 +39,4 @@ function isTokenValid(token) {
     }));
 }
 
-module.exports = {generateAuthToken, getTokenFromReq, getUserId, isTokenValid};
+module.exports = {generateAuthToken, getTokenFromReq, getUserId, isTokenValid, isLogin};

@@ -77,10 +77,23 @@ function allProducts(req, res, next) {
     .catch(next);
 }
 
+function details(req, res, next) {
+  const {id} = req.params;
+
+  Product.findById(id).then(product => {
+    if(!product){
+      next('no product');
+    }
+  });
+
+  res.end(id);
+}
+
 module.exports = {
   createProduct,
   deleteProduct,
   editProduct,
   latest,
-  allProducts
+  allProducts,
+  details
 };
