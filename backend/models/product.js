@@ -14,10 +14,6 @@ const ProductSchema = mongoose.Schema({
     ref: 'User',
     required: true
   },
-  imageName: {
-    type: String,
-    required: true
-  },
   createTime: {
     type: String,
     default: Date.now

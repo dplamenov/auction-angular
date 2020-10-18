@@ -4,6 +4,7 @@ const path = require('path');
 const Product = require('../models/product');
 const {getUserId} = require('../auth');
 const {latestProductCount} = require('../config');
+const getFileExt = require('../utils/getFileExtensionFromMimeType');
 
 function createProduct(req, res, next) {
   const form = formidable({multiples: true});
@@ -14,25 +15,30 @@ function createProduct(req, res, next) {
     }
 
     const {image} = files;
-    const newPath = path.resolve('public/images', image.name);
-    fs.rename(image.path, newPath, err => {
-      if (err) {
-        return next(err.message);
-      }
 
-      const product = {
-        title: fields.title,
-        description: fields.description,
-        endTime: fields.endTime,
-        startPrice: fields.startPrice,
-        creator: getUserId(req),
-        imageName: image.name
-      };
-      Product.create(product)
-        .then(res.json.bind(res))
-        .catch(next);
-    });
+    const product = {
+      title: fields.title,
+      description: fields.description,
+      endTime: fields.endTime,
+      startPrice: fields.startPrice,
+      creator: getUserId(req)
+    };
+
+    Product.create(product)
+      .then(product => {
+        const extension = getFileExt(image.type);
+        const newPath = path.resolve('public/images', `${product._id.toString()}.${extension}`);
+        fs.rename(image.path, newPath, (err) => {
+          if(err){
+            next(err.message);
+          }
+        });
+
+        res.json(product);
+      })
+      .catch(next);
   });
+
 }
 
 function deleteProduct(req, res, next) {
