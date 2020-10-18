@@ -1,10 +1,10 @@
-const formidable = require('formidable');
 const fs = require('fs');
 const path = require('path');
+const formidable = require('formidable');
 const Product = require('../models/product');
+const getFileExt = require('../utils/getFileExtensionFromMimeType');
 const {getUserId} = require('../auth');
 const {latestProductCount} = require('../config');
-const getFileExt = require('../utils/getFileExtensionFromMimeType');
 
 function createProduct(req, res, next) {
   const form = formidable({multiples: true});
@@ -33,7 +33,6 @@ function createProduct(req, res, next) {
             next(err.message);
           }
         });
-
         res.json(product);
       })
       .catch(next);

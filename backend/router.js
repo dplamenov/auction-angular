@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const controllers = require('./controllers');
 const auth = require('./middleware/auth');
 const isOwner = require('./middleware/product-is-owner');
-const controllers = require('./controllers');
+const getProductFromRequest = require('./middleware/get-product-from-request');
 
 const addUserToRequest = require('./middleware/add-user-to-request');
 
@@ -20,7 +21,9 @@ router.get('/product', controllers.product.allProducts);
 router.get('/product/latest', controllers.product.latest);
 router.get('/product/:id', controllers.product.details)
 router.post('/product', auth, controllers.product.createProduct);
-router.delete('/product/:id', auth, isOwner, controllers.product.deleteProduct);
-router.patch('/product/:id', auth, isOwner, controllers.product.editProduct);
+router.delete('/product/:id', auth, getProductFromRequest, isOwner, controllers.product.deleteProduct);
+router.patch('/product/:id', auth, getProductFromRequest, isOwner, controllers.product.editProduct);
+
+// router.post('/product/:id/bid', )
 
 module.exports = router;
