@@ -36,4 +36,8 @@ function logout(req, res, next) {
   }).catch(next);
 }
 
-module.exports = {login, register, logout};
+module.exports = {
+  login,
+  register,
+  logout
+};
