@@ -100,11 +100,17 @@ function details(req, res, next) {
   res.json(product);
 }
 
+function addBid(req, res, next){
+
+}
+
+
 module.exports = {
   createProduct,
   deleteProduct,
   editProduct,
   latest,
   allProducts,
-  details
+  details,
+  addBid
 };

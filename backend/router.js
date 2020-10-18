@@ -24,10 +24,10 @@ router.post('/product', auth, controllers.product.createProduct);
 router.delete('/product/:id', auth, getProductFromRequest, isOwner, controllers.product.deleteProduct);
 router.patch('/product/:id', auth, getProductFromRequest, isOwner, controllers.product.editProduct);
 
-// router.post('/product/:id/bid',
-//   auth,
-//   getProductFromRequest,
-//   isNotOwner,
-//   controllers.product.addBid);
+router.post('/product/:id/bid',
+  auth,
+  getProductFromRequest,
+  isNotOwner,
+  controllers.product.addBid);
 
 module.exports = router;
