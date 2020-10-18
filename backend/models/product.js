@@ -21,6 +21,10 @@ const ProductSchema = mongoose.Schema({
   createTime: {
     type: String,
     default: Date.now
+  },
+  endTime: {
+    type: String,
+    required: true
   }
 });
 
