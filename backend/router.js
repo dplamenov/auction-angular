@@ -7,16 +7,9 @@ const isNotOwner = require('./middleware/product-is-owner');
 const getProductFromRequest = require('./middleware/get-product-from-request');
 const addUserToRequest = require('./middleware/add-user-to-request');
 
-// const Bid = require('./models/bid');
-
 router.use(addUserToRequest);
 
 router.get('/', (req, res) => {
-  // Bid.create({
-  //   priceValue: '1250',
-  //   creator: '5f8309254cd133105880f9a2',
-  //   product: '5f8c4d9ccf5bc3154c3668d4'
-  // });
   res.send('welcome to api server');
 });
 
