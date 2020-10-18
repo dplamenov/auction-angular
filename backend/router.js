@@ -15,7 +15,7 @@ router.get('/user/logout', auth, controllers.user.logout);
 router.get('/product', controllers.product.allProducts);
 router.get('/product/latest', controllers.product.latest);
 router.post('/product', auth, controllers.product.createProduct);
-router.delete('/product/:id', auth, isOwner(), controllers.product.deleteProduct);
-router.patch('/product/:id', auth, isOwner(), controllers.product.editProduct);
+router.delete('/product/:id', auth, isOwner, controllers.product.deleteProduct);
+router.patch('/product/:id', auth, isOwner, controllers.product.editProduct);
 
 module.exports = router;

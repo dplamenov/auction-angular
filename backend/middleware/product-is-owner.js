@@ -3,9 +3,8 @@ const Product = require('../models/product');
 
 const ObjectId = require('mongoose').Types.ObjectId;
 
-function isOwner() {
-  return function (req, res, next) {
-    const {id} = req.params;
+function isOwner(req, res, next) {
+   const {id} = req.params;
 
     if (!ObjectId.isValid(id)) {
       return next('no that product');
@@ -23,7 +22,6 @@ function isOwner() {
         return next();
       })
       .catch(next);
-  }
 }
 
 
