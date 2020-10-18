@@ -28,7 +28,6 @@ function createProduct(req, res, next) {
         creator: getUserId(req),
         imageName: image.name
       };
-
       Product.create(product)
         .then(res.json.bind(res))
         .catch(next);
