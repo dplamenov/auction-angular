@@ -30,7 +30,7 @@ function createProduct(req, res, next) {
         const extension = getFileExt(image.type);
         const newPath = path.resolve('public/images', `${product._id.toString()}.${extension}`);
         fs.rename(image.path, newPath, (err) => {
-          if(err){
+          if (err) {
             next(err.message);
           }
         });
@@ -87,21 +87,40 @@ function details(req, res, next) {
   const product = req.product.toObject();
 
   const isOwner = product.creator.toString() === getUserId(req);
-  console.log(isOwner);
 
-  if(isOwner){
-    Bid.find({product: product._id.toString()}).populate('creator', ['-password', '-__v']).then(bids => {
-      product.bids = bids;
-      res.json(product);
-    });
+  if (isOwner) {
+    Bid.find({product: product._id.toString()}).populate('creator', ['-password', '-__v'])
+      .then(bids => {
+        product.bids = bids;
+        res.json(product);
+      })
+      .catch(next);
     return;
   }
 
   res.json(product);
 }
 
-function addBid(req, res, next){
+function addBid(req, res, next) {
+  const productId = req.productId;
 
+  const form = formidable({multiples: true});
+
+  form.parse(req, (err, fields, files) => {
+    if (err) {
+      next(err.message);
+    }
+
+    Bid.create({
+      priceValue: fields.priceValue,
+      creator: getUserId(req),
+      product: productId
+    })
+      .then(bid => {
+        res.json(bid);
+      })
+      .catch(next);
+  });
 }
 
 
