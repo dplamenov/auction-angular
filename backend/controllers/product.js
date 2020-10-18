@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const formidable = require('formidable');
 const Product = require('../models/product');
+const Bid = require('../models/bid');
 const getFileExt = require('../utils/getFileExtensionFromMimeType');
 const {getUserId} = require('../auth');
 const {latestProductCount} = require('../config');
@@ -83,11 +84,20 @@ function allProducts(req, res, next) {
 }
 
 function details(req, res, next) {
-  const {id} = req.params;
+  const product = req.product.toObject();
 
-  console.log(req.user);
+  const isOwner = product.creator.toString() === getUserId(req);
+  console.log(isOwner);
 
-  res.end(id);
+  if(isOwner){
+    Bid.find({product: product._id.toString()}).populate('creator', ['-password', '-__v']).then(bids => {
+      product.bids = bids;
+      res.json(product);
+    });
+    return;
+  }
+
+  res.json(product);
 }
 
 module.exports = {
