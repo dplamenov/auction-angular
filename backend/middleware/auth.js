@@ -1,26 +1,6 @@
-const User = require('../models/user');
-const {getTokenFromReq, isTokenValid} = require('../auth');
-const {authCookie} = require('../config');
-
 function auth(req, res, next) {
-
-  const {login: isLogin, userId} = getTokenFromReq(req);
-
-  if (isLogin) {
-    Promise.all([User.findById(userId), isTokenValid(req.cookies[authCookie])])
-      .then(([user, tokenBlacklisted]) => {
-        if (tokenBlacklisted && stopRequest) {
-          return next('no user');
-        }
-        req.user = user;
-        return next();
-      })
-      .catch(next);
-
-    return;
-  }
-  next('no user');
-
+  if(!req.user){ return next('no user');}
+  next();
 }
 
 module.exports = auth;

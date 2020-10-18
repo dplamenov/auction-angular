@@ -4,6 +4,10 @@ const auth = require('./middleware/auth');
 const isOwner = require('./middleware/product-is-owner');
 const controllers = require('./controllers');
 
+const addUserToRequest = require('./middleware/add-user-to-request');
+
+router.use(addUserToRequest);
+
 router.get('/', (req, res) => {
   res.send('welcome to api server');
 });
