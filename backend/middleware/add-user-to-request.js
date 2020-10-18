@@ -8,13 +8,15 @@ function addUserToRequest(req, res, next) {
   if (isLogin) {
     Promise.all([User.findById(userId), isTokenValid(req.cookies[authCookie])])
       .then(([user, tokenBlacklisted]) => {
-        if (tokenBlacklisted && !user) {
+        console.log(tokenBlacklisted, user, tokenBlacklisted || !user);
+        if (tokenBlacklisted || !user) {
           return next();
         }
         req.user = user;
         return next();
       })
       .catch(next);
+    return ;
   }
   next();
 }

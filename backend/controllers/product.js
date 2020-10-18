@@ -80,11 +80,7 @@ function allProducts(req, res, next) {
 function details(req, res, next) {
   const {id} = req.params;
 
-  Product.findById(id).then(product => {
-    if(!product){
-      next('no product');
-    }
-  });
+  console.log(req.user);
 
   res.end(id);
 }
