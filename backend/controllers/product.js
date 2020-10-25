@@ -3,7 +3,7 @@ const path = require('path');
 const formidable = require('formidable');
 const Product = require('../models/product');
 const Bid = require('../models/bid');
-const getFileExt = require('../utils/getFileExtensionFromMimeType');
+// const getFileExt = require('../utils/getFileExtensionFromMimeType');
 const {getUserId} = require('../auth');
 const {latestProductCount} = require('../config');
 
@@ -27,8 +27,7 @@ function createProduct(req, res, next) {
 
     Product.create(product)
       .then(product => {
-        const extension = getFileExt(image.type);
-        const newPath = path.resolve('public/images', `${product._id.toString()}.${extension}`);
+        const newPath = path.resolve('public/images', `${product._id.toString()}.png`);
         fs.rename(image.path, newPath, (err) => {
           if (err) {
             next(err.message);
