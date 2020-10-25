@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 import {UserService} from '../user.service';
 import {Router} from '@angular/router';
 
@@ -10,8 +10,11 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  email = new FormControl('');
-  password = new FormControl('');
+  email = new FormControl('', [Validators.email]);
+  password = new FormControl('', [Validators.minLength(8)]);
+
+  errorMessage = '';
+  showServerErrorMessage = false;
 
   constructor(private userService: UserService, private router: Router) {
   }
@@ -23,11 +26,15 @@ export class LoginComponent implements OnInit {
     const email = this.email.value;
     const password = this.password.value;
 
-    this.userService.login(email, password).subscribe(user => {
-      if (!user) {
-        return;
-      }
+    this.userService.login(email, password).subscribe(_ => {
       this.router.navigate(['']).then();
+    }, (err) => {
+      this.showServerErrorMessage = true;
+      this.errorMessage = Object.values(err.error)[0][0];
+
+      setTimeout(() => {
+        this.showServerErrorMessage = false;
+      }, 3000);
     });
   }
 
