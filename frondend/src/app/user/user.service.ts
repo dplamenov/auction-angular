@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, Output, EventEmitter} from '@angular/core';
 import {User} from './user';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {tap, shareReplay} from 'rxjs/operators';
@@ -15,7 +15,7 @@ export class UserService {
     withCredentials: true
   };
 
-  authCompleted$ = this.http.get('auth').pipe(shareReplay(1));
+  authCompleted$ = this.http.get(`${this.apiPath}user/auth`, this.httpOptions).pipe(shareReplay(1));
 
   constructor(private http: HttpClient) {
     this.authCompleted$.subscribe((user: User) => {
@@ -25,21 +25,23 @@ export class UserService {
     });
   }
 
-  get isLogged() { return !!this.user; }
-
-  register(email: string, password: string) {
-    return this.http.post(`${this.apiPath}/user/register`, {email, password}, this.httpOptions);
+  get isLogged() {
+    return !!this.user;
   }
 
-  login(email: string, password: string){
-    return this.http.post<User>(`${this.apiPath}/user/login`, {email, password}, this.httpOptions)
+  register(email: string, password: string) {
+    return this.http.post(`${this.apiPath}user/register`, {email, password}, this.httpOptions);
+  }
+
+  login(email: string, password: string) {
+    return this.http.post<User>(`${this.apiPath}user/login`, {email, password}, this.httpOptions)
       .pipe(tap((user) => {
         this.user = user;
       }));
   }
 
   logout() {
-    return this.http.get(`${this.apiPath}/user/logout`).pipe(tap(() => {
+    return this.http.get(`${this.apiPath}user/logout`, this.httpOptions).pipe(tap(() => {
       this.user = null;
     }));
   }

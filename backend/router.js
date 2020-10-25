@@ -6,12 +6,23 @@ const isOwner = require('./middleware/product-is-owner');
 const isNotOwner = require('./middleware/product-is-owner');
 const getProductFromRequest = require('./middleware/get-product-from-request');
 const addUserToRequest = require('./middleware/add-user-to-request');
+const {authCookie} = require('./config');
 
 router.use(addUserToRequest);
 
 router.get('/', (req, res) => {
   res.send('welcome to api server');
 });
+
+router.get('/user/auth', (req, res) => {
+  if (!req.user) {
+    res.status(401);
+    res.end();
+    return;
+  }
+  res.json(req.user);
+});
+
 
 router.post('/user/login', controllers.user.login);
 router.post('/user/register', controllers.user.register);
