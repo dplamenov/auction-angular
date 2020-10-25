@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
 import {UserService} from '../user.service';
 
@@ -10,9 +10,12 @@ import {UserService} from '../user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  email = new FormControl('');
+  email = new FormControl('', [Validators.email]);
   password = new FormControl('');
   repeatPassword = new FormControl('');
+
+  isRegisterBtnDisabled = true;
+  errorMessage = '';
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -25,8 +28,9 @@ export class RegisterComponent implements OnInit {
     const repeatPassword = this.repeatPassword.value;
 
     this.userService.register(email, password).subscribe(user => {
-      console.log(user);
       this.router.navigate(['']).then();
+    }, (err) => {
+      this.errorMessage = Object.values(err.error)[0][0];
     });
   }
 }
