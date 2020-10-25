@@ -1,19 +1,28 @@
 import {Injectable} from '@angular/core';
 import {User} from './user';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {tap} from 'rxjs/operators';
+import {tap, shareReplay} from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UserService {
   private apiPath = 'http://localhost:3000/api/';
-  private user: User;
+  user: User;
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'}),
     withCredentials: true
   };
 
+  authCompleted$ = this.http.get('auth').pipe(shareReplay(1));
+
   constructor(private http: HttpClient) {
+    this.authCompleted$.subscribe((user: User) => {
+      this.user = user;
+    }, () => {
+      this.user = null;
+    });
   }
 
   get isLogged() { return !!this.user; }

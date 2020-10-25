@@ -11,10 +11,11 @@ export class AppComponent implements OnInit {
   isLoggedIn = false;
 
   constructor(private userService: UserService, private router: Router) {
-    console.log('12344');
   }
 
   ngOnInit(): void {
+    console.log(this.userService.user);
+    console.log(this.userService.isLogged);
     this.isLoggedIn = this.userService.isLogged;
   }
 
