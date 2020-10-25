@@ -4,7 +4,7 @@ import {LoginComponent} from './user/login/login.component';
 import {RegisterComponent} from './user/register/register.component';
 import {CreateComponent} from './product/create/create.component';
 import {LatestComponent} from './product/latest/latest.component';
-import {ProductModule} from './product/product.module';
+import {AuthGuard} from './auth.guard';
 
 const routes: Routes = [
   {path: '', component: LatestComponent},
@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {
     path: 'product', children: [
-      {path: 'create', component: CreateComponent}
+      {path: 'create', component: CreateComponent, canActivate: [AuthGuard]}
     ]
   }
 ];
