@@ -4,15 +4,13 @@ import {HttpClientModule} from '@angular/common/http';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {CreateProductComponent} from './create-product/create-product.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {UserModule} from './user/user.module';
-import {ProductModule} from "./product/product.module";
+import {ProductModule} from './product/product.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CreateProductComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

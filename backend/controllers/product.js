@@ -123,7 +123,6 @@ function addBid(req, res, next) {
   });
 }
 
-
 module.exports = {
   createProduct,
   deleteProduct,
