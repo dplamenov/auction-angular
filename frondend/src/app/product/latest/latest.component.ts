@@ -9,6 +9,7 @@ import {ProductService} from '../product.service';
 })
 export class LatestComponent implements OnInit {
 
+  imagePath = 'http://localhost:3000/images/';
   products: Product[];
 
   constructor(private productService: ProductService) {
@@ -16,7 +17,10 @@ export class LatestComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getLatestProducts().subscribe(products => {
-      this.products = products;
+      this.products = products.map(product => {
+        product.image = `${this.imagePath}${product._id}.png`;
+        return product;
+      });
     });
   }
 

@@ -6,7 +6,7 @@ const cors = require('cors');
 const cookie = require('cookie-parser');
 
 const app = express();
-
+app.use(express.static('public'));
 app.use(cors({
   origin: 'http://localhost:4200',
   credentials: true
@@ -14,7 +14,6 @@ app.use(cors({
 app.use(express.json());
 app.use(cookie());
 app.use('/api', router);
-
 app.use(function (err, req, res, next) {
   function getErrorData(err) {
     if (typeof err === 'string') {
