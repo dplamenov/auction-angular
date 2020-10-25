@@ -26,22 +26,22 @@ body
     margin-bottom: 20px;
 }
 
-#all-bids img{
+#latest-bids img{
     max-height: 400px;
 }
 
-#all-bids{
+#latest-bids{
     position: relative;
     margin: 0 auto;
     text-align: center;
     margin-bottom: 10px;
 }
 
-#all-bids .card-body {
+#latest-bids .card-body {
     text-align: left;
 }
 
-#all-bids h2{
+#latest-bids h2{
     text-align: center;
     text-transform: uppercase;
     margin-top: 10px;
