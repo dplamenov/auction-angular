@@ -19,13 +19,13 @@
           <a class="nav-link" routerLink="/register">Register</a>
         </li>
         <li class="nav-item" routerLinkActive="active" *ngIf="isLoggedIn">
-          <a class="nav-link" routerLink="/create">Create</a>
+          <a class="nav-link" routerLink="/product/create">Create</a>
         </li>
         <li class="nav-item" routerLinkActive="active" *ngIf="isLoggedIn">
-          <a class="nav-link" routerLink="/profile">Profile</a>
+          <a class="nav-link" routerLink="/user/profile">Profile</a>
         </li>
         <li class="nav-item" *ngIf="isLoggedIn" (click)="logout()">
-          <a class="nav-link" >Logout</a>
+          <a class="nav-link" routerLink="/logout">Logout</a>
         </li>
       </ul>
     </div>
