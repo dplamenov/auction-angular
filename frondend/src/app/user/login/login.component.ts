@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {UserService} from '../../user.service';
+import {UserService} from '../user.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -27,8 +27,6 @@ export class LoginComponent implements OnInit {
       if (!user) {
         return;
       }
-      const {authToken} = user;
-      sessionStorage.setItem('authToken', authToken);
       this.router.navigate(['']).then();
     });
   }

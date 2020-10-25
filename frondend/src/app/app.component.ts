@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from './user.service';
+import {UserService} from './user/user.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isLoggedIn = this.userService.isLogin();
+    this.isLoggedIn = this.userService.isLogged;
   }
 
   logout(): void {

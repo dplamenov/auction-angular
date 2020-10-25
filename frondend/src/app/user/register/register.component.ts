@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {Router} from '@angular/router';
-import {UserService} from '../../user.service';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-register',
@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
     const password = this.password.value;
     const repeatPassword = this.repeatPassword.value;
 
-    this.userService.createUser(email, password).subscribe(user => {
+    this.userService.register(email, password).subscribe(user => {
       console.log(user);
       this.router.navigate(['/']).then();
     });
