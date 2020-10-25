@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {UserService} from '../user.service';
 
@@ -11,21 +11,28 @@ import {UserService} from '../user.service';
 export class RegisterComponent implements OnInit {
 
   email = new FormControl('', [Validators.email]);
-  password = new FormControl('');
-  repeatPassword = new FormControl('');
+  password = new FormControl('', [Validators.minLength(8)]);
+  repeatPassword = new FormControl('', []);
 
   isRegisterBtnDisabled = true;
   errorMessage = '';
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) {
+  }
 
   ngOnInit(): void {
   }
 
-  register(): void{
+  register(): void {
     const email = this.email.value;
+
     const password = this.password.value;
     const repeatPassword = this.repeatPassword.value;
+
+    if (password !== repeatPassword) {
+      this.errorMessage = 'password should match';
+      return;
+    }
 
     this.userService.register(email, password).subscribe(user => {
       this.router.navigate(['']).then();

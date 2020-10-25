@@ -1,10 +1,14 @@
 <div id="register">
   <h2>Register</h2>
   {{errorMessage}}
+  <p *ngIf="email.invalid">Email is invalid</p>
+  <p *ngIf="password.invalid">Password must be at least 8 chars</p>
+  <p *ngIf="repeatPassword.value !== password.value && password.valid">Repeat password is not equal to repeat password</p>
   <input type="text" class="form-control my-form" name="email" placeholder="Email" [formControl]="email"/>
-  <span *ngIf="email.invalid">Email is invalid</span>
   <input type="password" class="form-control my-form" name="password" placeholder="Password" [formControl]="password"/>
   <input type="password" class="form-control my-form" name="repeatPassword" placeholder="Repeat password"
          [formControl]="repeatPassword"/>
-  <button type="button" class="btn btn-primary" (click)="register()" [disabled]="email.invalid">Register</button>
+  <button type="button" class="btn btn-primary" (click)="register()"
+          [disabled]="email.invalid || password.invalid || repeatPassword.value !== password.value">Register
+  </button>
 </div>
