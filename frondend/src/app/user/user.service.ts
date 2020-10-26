@@ -5,15 +5,9 @@ import {tap, shareReplay} from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
-  private apiPath = 'http://localhost:3000/api/';
   user: User;
 
-  httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'}),
-    withCredentials: true
-  };
-
-  authCompleted$ = this.http.get(`${this.apiPath}user/auth`, this.httpOptions).pipe(shareReplay(1));
+  authCompleted$ = this.http.get(`user/auth`).pipe(shareReplay(1));
 
   constructor(private http: HttpClient) {
     this.authCompleted$.subscribe((user: User) => {
@@ -28,18 +22,18 @@ export class UserService {
   }
 
   register(email: string, password: string) {
-    return this.http.post(`${this.apiPath}user/register`, {email, password}, this.httpOptions);
+    return this.http.post(`user/register`, {email, password});
   }
 
   login(email: string, password: string) {
-    return this.http.post<User>(`${this.apiPath}user/login`, {email, password}, this.httpOptions)
+    return this.http.post<User>(`user/login`, {email, password})
       .pipe(tap((user) => {
         this.user = user;
       }));
   }
 
   logout() {
-    return this.http.get(`${this.apiPath}user/logout`, this.httpOptions).pipe(tap(() => {
+    return this.http.get(`user/logout`).pipe(tap(() => {
       this.user = null;
     }));
   }
