@@ -4,17 +4,10 @@ import {Product} from './product';
 
 @Injectable()
 export class ProductService {
-  private apiPath = 'http://localhost:3000/api/product/';
-
-  httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'}),
-    withCredentials: true
-  };
-
   constructor(private httpClient: HttpClient) {
   }
 
   getLatestProducts() {
-    return this.httpClient.get<Product[]>(`${this.apiPath}latest`, this.httpOptions );
+    return this.httpClient.get<Product[]>(`product/latest`);
   }
 }
