@@ -3,9 +3,7 @@ import {User} from './user';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {tap, shareReplay} from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class UserService {
   private apiPath = 'http://localhost:3000/api/';
   user: User;
