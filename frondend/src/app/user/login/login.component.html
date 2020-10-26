@@ -6,6 +6,6 @@
     <p *ngIf="password.invalid">Password must be at least 8 chars</p>
   </div>
   <input type="text" class="form-control my-form" name="email" placeholder="Email" [formControl]="email"/>
-  <input type="text" class="form-control my-form" name="password" placeholder="Password" [formControl]="password"/>
+  <input type="password" class="form-control my-form" name="password" placeholder="Password" [formControl]="password"/>
   <button type="button" class="btn btn-primary" id="login-button" (click)="login()">Login</button>
 </div>
