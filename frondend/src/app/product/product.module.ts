@@ -6,10 +6,11 @@ import {HttpClientModule} from '@angular/common/http';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {DefaultInterceptor} from '../default.interceptor';
 import {ProductService} from './product.service';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [LatestComponent, CreateComponent],
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, ReactiveFormsModule],
   exports: [LatestComponent, CreateComponent],
   providers: [
     {

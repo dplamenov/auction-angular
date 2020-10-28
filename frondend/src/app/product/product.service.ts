@@ -10,4 +10,8 @@ export class ProductService {
   getLatestProducts() {
     return this.httpClient.get<Product[]>(`product/latest`);
   }
+
+  create(product: Product){
+    return this.httpClient.post<Product>('product', product);
+  }
 }
