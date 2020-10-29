@@ -155,3 +155,11 @@ footer, nav{
 .bold{
   font-weight: bold;
 }
+
+input.ng-invalid.ng-touched{
+  border-color: red;
+}
+
+textarea.ng-invalid.ng-touched{
+  border-color: red;
+}

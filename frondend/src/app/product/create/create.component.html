@@ -1,9 +1,12 @@
 <div id="create-product">
   <h2>Add product for sell</h2>
-  <p *ngIf="title.invalid">Title must be at least 3 chars</p>
-  <p *ngIf="description.invalid">Description must be at least 10 chars</p>
-  <p *ngIf="startPrice.invalid && startPrice.touched">Start price must be a number</p>
-  <p *ngIf="file.invalid && file.touched">Product image is required</p>
+  <p *ngIf="showServerErrorMessage">{{errorMessage}}</p>
+  <div *ngIf="!showServerErrorMessage">
+    <p *ngIf="title.invalid">Title must be at least 3 chars</p>
+    <p *ngIf="description.invalid">Description must be at least 10 chars</p>
+    <p *ngIf="startPrice.invalid && startPrice.touched">Start price must be a number</p>
+    <p *ngIf="file.invalid">Product image is required</p>
+  </div>
   <input type="text" name="title" class="form-control my-form" placeholder="Title" [formControl]="title"/>
   <textarea name="description" class="form-control my-form" placeholder="Description"
             [formControl]="description"></textarea>
@@ -18,6 +21,6 @@
       image</label>
   </div>
   <button type="button" class="btn btn-primary" id="create-button" (click)="create()"
-          [disabled]="title.invalid || description.invalid || startPrice?.errors?.number">Add product
+          [disabled]="title.invalid || description.invalid || startPrice?.errors?.number || file.invalid">Add product
   </button>
 </div>

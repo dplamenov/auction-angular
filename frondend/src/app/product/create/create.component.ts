@@ -11,14 +11,18 @@ import {Router} from '@angular/router';
 export class CreateComponent implements OnInit {
 
   @ViewChild('fileUpload', {static: false}) fileUpload: ElementRef;
+
   title = new FormControl('', [Validators.minLength(3)]);
   description = new FormControl('', [Validators.minLength(10)]);
   startPrice = new FormControl('', [Validators.pattern('^[0-9]*$'), Validators.required]);
   endDate = new FormControl('', [Validators.required]);
   file = new FormControl('', Validators.required);
-
   selectedFile: File;
+
   fd = new FormData();
+
+  errorMessage = '';
+  showServerErrorMessage = false;
 
   constructor(private productService: ProductService, private router: Router) {
   }
@@ -28,7 +32,11 @@ export class CreateComponent implements OnInit {
 
   create() {
     this.selectedFile = (this.fileUpload.nativeElement.files[0] as File);
-    console.log(this.selectedFile);
+
+    if (!this.selectedFile) {
+      this.file.errors.myError = 'test';
+      return;
+    }
 
     this.fd.append('image', this.selectedFile);
 
@@ -39,6 +47,13 @@ export class CreateComponent implements OnInit {
 
     this.productService.create(this.fd).subscribe(data => {
       this.router.navigate(['']).then();
+    }, (err) => {
+      this.errorMessage = Object.values(err.error)[0][0];
+      this.showServerErrorMessage = true;
+
+      setTimeout(() => {
+        this.showServerErrorMessage = false;
+      }, 3000);
     });
 
   }
