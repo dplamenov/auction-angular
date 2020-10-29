@@ -9,10 +9,11 @@ import {ProductService} from './product.service';
 import {ReactiveFormsModule} from '@angular/forms';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [LatestComponent, CreateComponent, ProductCardComponent, ProductDetailsComponent],
-  imports: [CommonModule, HttpClientModule, ReactiveFormsModule],
+  imports: [CommonModule, HttpClientModule, ReactiveFormsModule, RouterModule],
   exports: [LatestComponent, CreateComponent],
   providers: [
     {
