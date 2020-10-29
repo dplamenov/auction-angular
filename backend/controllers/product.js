@@ -12,7 +12,6 @@ function createProduct(req, res, next) {
   const form = formidable({multiples: true});
 
   form.parse(req, (err, fields, files) => {
-    console.log(fields);
     if (err) {
       return next(err.message);
     }
