@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ProductService} from '../product.service';
 import {FormControl} from '@angular/forms';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-product',
@@ -19,15 +20,14 @@ export class CreateComponent implements OnInit {
   selectedFile: File;
   fd = new FormData();
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private router: Router) {
   }
 
   ngOnInit(): void {
   }
 
   create() {
-    console.log(this.fileUpload.nativeElement);
-    this.selectedFile = (this.file.value as File);
+    this.selectedFile = (this.fileUpload.nativeElement.files[0] as File);
 
     this.fd.append('image', this.selectedFile);
 
@@ -37,7 +37,7 @@ export class CreateComponent implements OnInit {
     this.fd.append('endTime', this.endDate.value);
 
     this.productService.create(this.fd).subscribe(data => {
-      console.log(data);
+      this.router.navigate(['']).then();
     });
 
   }
