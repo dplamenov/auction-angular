@@ -8,9 +8,11 @@ const {getUserId} = require('../auth');
 const {latestProductCount} = require('../config');
 
 function createProduct(req, res, next) {
+  console.log('product');
   const form = formidable({multiples: true});
 
   form.parse(req, (err, fields, files) => {
+    console.log(fields);
     if (err) {
       return next(err.message);
     }

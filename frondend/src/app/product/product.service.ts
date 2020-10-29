@@ -11,7 +11,7 @@ export class ProductService {
     return this.httpClient.get<Product[]>(`product/latest`);
   }
 
-  create(product: Product){
+  create(product){
     return this.httpClient.post<Product>('product', product);
   }
 }

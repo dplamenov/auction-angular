@@ -1,15 +1,15 @@
 <div id="create-product">
   <h2>Add product for sell</h2>
-    <input type="text" name="title" class="form-control my-form" placeholder="Title" />
-    <textarea name="description" class="form-control my-form" placeholder="Description"></textarea>
+    <input type="text" name="title" class="form-control my-form" placeholder="Title" [formControl]="title"/>
+    <textarea name="description" class="form-control my-form" placeholder="Description" [formControl]="description"></textarea>
     <div style="margin: 20px;"></div>
-    <input type="text" name="startPrice" class="form-control my-form" placeholder="Start price" />
-    <input type="text" name="endDate" class="form-control my-form" placeholder="End date" />
+    <input type="text" name="startPrice" class="form-control my-form" placeholder="Start price" [formControl]="startPrice" />
+    <input type="text" name="endDate" class="form-control my-form" placeholder="End date" [formControl]="endDate"/>
     <div style="margin: 20px;"></div>
     <div class="custom-file my-form">
-      <input type="file" class="custom-file-input" id="customFile">
-      <label class="custom-file-label" for="customFile" style="text-align: left;color: gray">Upload
+      <input type="file" class="custom-file-input" id="customFile" [formControl]="file" #fileUpload>
+      <label class="custom-file-label" for="customFile" style="text-align: left;color: gray" >Upload
         image</label>
     </div>
-    <button type="button" class="btn btn-primary" id="create-button">Add product</button>
+    <button type="button" class="btn btn-primary" id="create-button" (click)="create()">Add product</button>
 </div>
