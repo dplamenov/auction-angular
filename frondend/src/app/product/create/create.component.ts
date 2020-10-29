@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ProductService} from '../product.service';
-import {FormControl} from '@angular/forms';
-import {Router} from "@angular/router";
+import {FormControl, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-product',
@@ -11,11 +11,11 @@ import {Router} from "@angular/router";
 export class CreateComponent implements OnInit {
 
   @ViewChild('fileUpload', {static: false}) fileUpload: ElementRef;
-  title = new FormControl();
-  description = new FormControl();
-  startPrice = new FormControl();
-  endDate = new FormControl();
-  file = new FormControl();
+  title = new FormControl('', [Validators.minLength(3)]);
+  description = new FormControl('', [Validators.minLength(10)]);
+  startPrice = new FormControl('', [Validators.pattern('^[0-9]*$'), Validators.required]);
+  endDate = new FormControl('', [Validators.required]);
+  file = new FormControl('', Validators.required);
 
   selectedFile: File;
   fd = new FormData();
@@ -28,6 +28,7 @@ export class CreateComponent implements OnInit {
 
   create() {
     this.selectedFile = (this.fileUpload.nativeElement.files[0] as File);
+    console.log(this.selectedFile);
 
     this.fd.append('image', this.selectedFile);
 
