@@ -15,6 +15,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/user/auth', (req, res) => {
+  console.log(req.user);
   if (!req.user) {
     res.status(401);
     res.end();

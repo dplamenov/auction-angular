@@ -8,11 +8,15 @@ const cookie = require('cookie-parser');
 const app = express();
 app.use(express.static('public'));
 app.use(cors({
-  origin: 'http://localhost:4200',
-  credentials: true
+  origin: ['http://localhost:4200', 'http://127.0.0.1:4200'],
+  credentials: true,
 }));
 app.use(express.json());
 app.use(cookie());
+app.use((req, res, next) => {
+  // console.log(req.cookies);
+  next();
+})
 app.use('/api', router);
 app.use(function (err, req, res, next) {
   function getErrorData(err) {

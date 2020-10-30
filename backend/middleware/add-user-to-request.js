@@ -4,7 +4,6 @@ const {authCookie} = require('../config');
 
 function addUserToRequest(req, res, next) {
   const {login: isLogin, userId} = getTokenFromReq(req);
-
   if (isLogin) {
     Promise.all([User.findById(userId), isTokenValid(req.cookies[authCookie])])
       .then(([user, tokenBlacklisted]) => {

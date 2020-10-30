@@ -11,6 +11,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {
     this.authCompleted$.subscribe((user: User) => {
+      console.log(user);
       this.user = user;
     }, () => {
       this.user = null;
