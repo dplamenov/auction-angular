@@ -6,7 +6,6 @@ const isOwner = require('./middleware/product-is-owner');
 const isNotOwner = require('./middleware/product-is-owner');
 const getProductFromRequest = require('./middleware/get-product-from-request');
 const addUserToRequest = require('./middleware/add-user-to-request');
-const {authCookie} = require('./config');
 
 router.use(addUserToRequest);
 
@@ -15,7 +14,6 @@ router.get('/', (req, res) => {
 });
 
 router.get('/user/auth', (req, res) => {
-  console.log(req.user);
   if (!req.user) {
     res.status(401);
     res.end();

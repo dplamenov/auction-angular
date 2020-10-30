@@ -31,7 +31,7 @@ function createProduct(req, res, next) {
         const newPath = path.resolve('public/images', `${product._id.toString()}.png`);
         fs.rename(image.path, newPath, (err) => {
           if (err) {
-            next(err.message);
+            return next(err.message);
           }
         });
         res.json(product);
