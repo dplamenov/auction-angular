@@ -6,6 +6,7 @@ import {
   HttpInterceptor, HttpHeaders
 } from '@angular/common/http';
 import {Observable} from 'rxjs';
+import { environment } from './../environments/environment';
 
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
@@ -21,7 +22,7 @@ export class DefaultInterceptor implements HttpInterceptor {
     request = request.clone({
       withCredentials: true,
       headers: this.formDataEndpoints.includes(request.url) ? formDataHeader : jsonHeader,
-      url: `http://127.0.0.1:3000/api/${request.url}`
+      url: `${environment.apiServer}${request.url}`
     });
     console.log(request);
     return next.handle(request);
