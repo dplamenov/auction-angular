@@ -14,4 +14,8 @@ export class ProductService {
   create(product){
     return this.httpClient.post<Product>('product', product);
   }
+
+  getById(productId){
+    return this.httpClient.get<Product>(`product/${productId}`);
+  }
 }

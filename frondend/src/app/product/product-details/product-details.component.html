@@ -1,18 +1,12 @@
-<div id="product-details">
-  <h2>Product name {{productId}}</h2>
-  <img src="img_avatar1.jpeg" alt="" style="border: 1px solid;left: 0;float: left;" class="details-image" />
-  <p class="justify"><span style="font-weight: bold;">Title</span>: Lorem, ipsum dolor.</p>
-  <p class="justify"><span style="font-weight: bold;">Description</span>: Lorem ipsum dolor sit amet
-    consectetur, adipisicing elit.
-    Iusto
-    expedita
-    minus nulla
-    similique quam perferendis quia iure nihil ab, eveniet molestiae exercitationem natus ipsa amet
-    blanditiis ducimus necessitatibus sint, voluptatibus minima! At tenetur perferendis, facilis accusantium
-    modi, autem commodi cum necessitatibus et ipsa expedita vero voluptas quibusdam aliquid doloremque illo
-    neque quasi fugit, ducimus dignissimos!</p>
-  <p class="justify"><span style="font-weight: bold;">End date</span>: 24.12.2020</p>
-  <p class="justify"><span style="font-weight: bold;">Current price: </span>145.5</p>
-  <input type="text" class="form-control my-form" style="width: 30%;margin: 10px 0;" />
-  <button class="btn btn-primary" style="float: left">Bid</button>
-</div>
+<ng-container *ngIf="product">
+  <div id="product-details">
+    <h2>Product {{product.title}}</h2>
+    <img src="{{product.image}}" alt="" style="border: 1px solid;left: 0;float: left;" class="details-image" />
+    <p class="justify"><span style="font-weight: bold;">Title</span>: {{product.title}}</p>
+    <p class="justify"><span style="font-weight: bold;">Description</span>: {{product.description}}</p>
+    <p class="justify"><span style="font-weight: bold;">End date</span>: 24.12.2020</p>
+    <p class="justify"><span style="font-weight: bold;">Current price: </span>145.5</p>
+    <input type="text" class="form-control my-form" style="width: 30%;margin: 10px 0;" />
+    <button class="btn btn-primary" style="float: left">Bid</button>
+  </div>
+</ng-container>
