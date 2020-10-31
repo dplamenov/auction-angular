@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ProductService} from "../product.service";
 import {Product} from "../product";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-product-details',
@@ -18,6 +19,7 @@ export class ProductDetailsComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.productId = params.productId;
       this.productService.getById(this.productId).subscribe(product => {
+        product.image = `${environment.imagePath}${product._id}.png`;
         this.product = product;
       });
     });
