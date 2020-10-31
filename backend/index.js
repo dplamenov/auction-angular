@@ -13,10 +13,6 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(cookie());
-app.use((req, res, next) => {
-  // console.log(req.cookies);
-  next();
-})
 app.use('/api', router);
 app.use(function (err, req, res, next) {
   function getErrorData(err) {

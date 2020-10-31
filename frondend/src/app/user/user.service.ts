@@ -1,4 +1,4 @@
-import {Injectable, Output, EventEmitter} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {User} from './user';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {tap, shareReplay} from 'rxjs/operators';
@@ -11,7 +11,6 @@ export class UserService {
 
   constructor(private http: HttpClient) {
     this.authCompleted$.subscribe((user: User) => {
-      console.log(user);
       this.user = user;
     }, () => {
       this.user = null;

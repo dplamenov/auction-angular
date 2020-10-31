@@ -3,12 +3,10 @@ const path = require('path');
 const formidable = require('formidable');
 const Product = require('../models/product');
 const Bid = require('../models/bid');
-// const getFileExt = require('../utils/getFileExtensionFromMimeType');
 const {getUserId} = require('../auth');
 const {latestProductCount} = require('../config');
 
 function createProduct(req, res, next) {
-  console.log('product');
   const form = formidable({multiples: true});
 
   form.parse(req, (err, fields, files) => {
