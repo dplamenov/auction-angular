@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Product} from '../product';
 import {ProductService} from '../product.service';
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-latest',
@@ -9,13 +10,16 @@ import {ProductService} from '../product.service';
 })
 export class LatestComponent implements OnInit {
 
-  imagePath = 'http://localhost:3000/images/';
   products: Product[];
+  private imagePath: string;
 
   constructor(private productService: ProductService) {
+
   }
 
   ngOnInit(): void {
+    this.imagePath = environment.imagePath;
+
     this.productService.getLatestProducts().subscribe(products => {
       this.products = products.map(product => {
         product.image = `${this.imagePath}${product._id}.png`;
