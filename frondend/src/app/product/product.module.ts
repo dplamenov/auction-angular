@@ -7,8 +7,8 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {DefaultInterceptor} from '../default.interceptor';
 import {ProductService} from './product.service';
 import {ReactiveFormsModule} from '@angular/forms';
-import { ProductCardComponent } from './product-card/product-card.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
+import {ProductCardComponent} from './product-card/product-card.component';
+import {ProductDetailsComponent} from './product-details/product-details.component';
 import {RouterModule} from '@angular/router';
 
 @NgModule({

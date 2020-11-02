@@ -12,6 +12,7 @@ import {environment} from "../../../environments/environment";
 export class ProductDetailsComponent implements OnInit {
   productId: number;
   product: Product;
+
   constructor(private route: ActivatedRoute, private productService: ProductService) {
   }
 
@@ -24,5 +25,4 @@ export class ProductDetailsComponent implements OnInit {
       });
     });
   }
-
 }

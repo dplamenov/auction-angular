@@ -4,8 +4,9 @@ import {LoginComponent} from './user/login/login.component';
 import {RegisterComponent} from './user/register/register.component';
 import {CreateComponent} from './product/create/create.component';
 import {LatestComponent} from './product/latest/latest.component';
-import {AuthGuard} from './auth.guard';
 import {ProductDetailsComponent} from './product/product-details/product-details.component';
+import {NotFoundComponent} from "./core/not-found/not-found.component";
+import {AuthGuard} from './auth.guard';
 
 const routes: Routes = [
   {path: '', component: LatestComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
       {path: 'create', component: CreateComponent, canActivate: [AuthGuard]},
       {path: ':productId', component: ProductDetailsComponent}
     ]
-  }
+  },
+  {path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({
