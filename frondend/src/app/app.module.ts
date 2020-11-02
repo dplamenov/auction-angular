@@ -7,6 +7,7 @@ import {AppComponent} from './app.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {UserModule} from './user/user.module';
 import {ProductModule} from './product/product.module';
+import {CoreModule} from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {ProductModule} from './product/product.module';
     ReactiveFormsModule,
     HttpClientModule,
     ProductModule,
-    UserModule
+    UserModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
