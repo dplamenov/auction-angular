@@ -1,4 +1,4 @@
-# auction-angular
+# Online Auction System
 Angular project Online Auction(Bid) System
 
 Modules:
