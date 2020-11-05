@@ -14,8 +14,8 @@ Can see the latest products that are added. Can view details page of each produc
 Registered / Logged-in Users can:
 
 Create new product 
-Edit and delete the products created by him
- 
+Edit and delete the products created by him See profile page Set bid
+
 # Frond-end
 Angular
 
