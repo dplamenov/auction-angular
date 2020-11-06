@@ -3,7 +3,7 @@ import {User} from './user';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {tap, shareReplay} from 'rxjs/operators';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class UserService {
   user: User;
 

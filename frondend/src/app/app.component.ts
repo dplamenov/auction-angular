@@ -9,8 +9,6 @@ import {Router} from '@angular/router';
 })
 export class AppComponent implements OnInit {
 
-  userEmail = '';
-
   constructor(private userService: UserService, private router: Router) {
   }
 
@@ -29,8 +27,5 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.authCompleted$.subscribe(user => {
-      this.userEmail = user.email;
-    });
   }
 }

@@ -12,7 +12,7 @@ import {UserService} from './user.service';
     ReactiveFormsModule
   ],
   exports: [LoginComponent, RegisterComponent],
-  providers: [UserService]
+  providers: []
 })
 export class UserModule {
 }
