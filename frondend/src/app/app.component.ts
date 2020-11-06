@@ -8,11 +8,18 @@ import {Router} from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
+  userEmail = '';
+
   constructor(private userService: UserService, private router: Router) {
   }
 
   get isLoggedIn() {
     return this.userService.isLogged;
+  }
+
+  get email(){
+    return this.userService.user.email;
   }
 
   logout() {
@@ -22,5 +29,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userService.authCompleted$.subscribe(user => {
+      this.userEmail = user.email;
+    });
   }
 }

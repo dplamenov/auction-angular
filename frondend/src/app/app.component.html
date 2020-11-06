@@ -28,6 +28,9 @@
           <a class="nav-link">Logout</a>
         </li>
       </ul>
+      <span class="navbar-text" *ngIf="isLoggedIn">
+        Welcome, {{email}}
+      </span>
     </div>
   </nav>
   <h1>Welcome to bid system</h1>

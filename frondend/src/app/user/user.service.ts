@@ -7,7 +7,7 @@ import {tap, shareReplay} from 'rxjs/operators';
 export class UserService {
   user: User;
 
-  authCompleted$ = this.http.get(`user/auth`).pipe(shareReplay(1));
+  authCompleted$ = this.http.get<User>(`user/auth`).pipe(shareReplay(1));
 
   constructor(private http: HttpClient) {
     this.authCompleted$.subscribe((user: User) => {
