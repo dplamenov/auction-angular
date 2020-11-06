@@ -20,7 +20,9 @@ export class ProductDetailsComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.productId = params.productId;
       this.productService.getById(this.productId).subscribe(product => {
+        const endDate = new Date(product.endTime);
         product.image = `${environment.imagePath}${product._id}.png`;
+        product.endString = `${endDate.getDate().toString().padStart(2, '0')}.${endDate.getMonth().toString().padStart(2, '0')}.${endDate.getFullYear()}`;
         this.product = product;
       });
     });
