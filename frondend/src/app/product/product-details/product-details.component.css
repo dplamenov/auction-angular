@@ -1,0 +1,20 @@
+#product-details{
+  position: relative;
+  text-align: center;
+  margin: 0 auto 800px;
+  width: 50%;
+}
+
+.details-image{
+  margin-right: 30px;
+  max-width: 350px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.justify {
+  text-align: justify;
+  margin: 0 auto 20px;
+}

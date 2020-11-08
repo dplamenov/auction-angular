@@ -1,0 +1,21 @@
+#create-product{
+  position: relative;
+  text-align: center;
+  margin: 0 auto 800px;
+  width: 50%;
+}
+
+#create-button {
+  top: 330px;
+}
+
+.my-form {
+  width: 100%;
+  margin: 5px auto;
+}
+
+form button {
+  position: absolute;
+  top: 180px;
+  left: 30%;
+}

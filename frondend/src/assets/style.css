@@ -1,53 +1,14 @@
-*, .container-fluid{
+*, .container-fluid {
   margin: 0;
   padding: 0;
 }
 
-#header {
-  position: relative;
-  height: 300px;
-  background-color: #77bbd4;
-}
-
-#header h1{
-  position: absolute;
-  bottom: 1%;
-  left: 1%;
-  font-size: 44px;
-  text-transform: uppercase;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
-}
-
-.card{
+.card {
   display: inline-block;
   margin-bottom: 70px;
 }
 
-#latest-bids img{
-  max-height: 400px;
-}
-
-#latest-bids{
-  position: relative;
-  margin: 0 auto;
-  text-align: center;
-  margin-bottom: 100px;
-
-}
-
-#latest-bids .card-body {
-  text-align: left;
-}
-
-#latest-bids h2{
-  text-align: center;
-  text-transform: uppercase;
-  margin-top: 10px;
-  margin-bottom: 40px;
-}
-
-footer{
+footer {
   position: fixed;
   width: 100%;
   background-color: #77bbd4;
@@ -62,103 +23,63 @@ footer p {
 }
 
 @media only screen and (max-width: 600px) {
-  .card{
+  .card {
     max-width: 90%;
     margin-bottom: 10px;
   }
 
-  #header h1{
+  #header h1 {
     max-width: 500px;
   }
 
-  .my-form{
+  .my-form {
     width: 100% !important;
   }
 
-  .justify{
+  .justify {
     width: 90% !important;
   }
-  form button{
-    /* position: absolute; */
+
+  form button {
     top: 140px;
     left: 5% !important;
   }
-  #register, #login, #create-product, #product-details{
+
+  #register, #login, #create-product, #product-details {
     width: 90% !important;
   }
-  .details-image{
+
+  .details-image {
     max-width: 100% !important;
     margin: 20px auto;
     display: block;
   }
-  span{
+
+  span {
     display: block;
-    left:30% !important;
+    left: 30% !important;
   }
 }
 
 @media only screen and (max-width: 1200px) {
-  .my-form{
+  .my-form {
     width: 100% !important;
   }
-  form button{
-    /* position: absolute; */
+
+  form button {
     top: 140px;
     left: 5% !important;
   }
 }
 
-#register, #login, #create-product, #product-details{
-  position: relative;
-  margin: 0 auto;
-  text-align: center;
-  margin-bottom: 800px;
-  width: 50%;
-}
-
-.my-form{
-  width: 100%;
-  margin: 5px auto;
-}
-
-form button{
-  position: absolute;
-  top: 180px;
-  left: 30%;
-}
-
-#login-button{
-  top: 140px;
-}
-
-.justify{
-  margin: 0 auto;
-
-  text-align: justify;
-  margin-bottom: 20px;
-}
-
-#create-button {
-  top: 330px;
-}
-
-footer, nav{
+footer, nav {
   z-index: 999;
 }
 
-.details-image{
-  margin-right: 30px;
-  max-width: 350px;
-}
-
-.bold{
-  font-weight: bold;
-}
-
-input.ng-invalid.ng-touched{
+input.ng-invalid.ng-touched {
   border-color: red;
 }
 
-textarea.ng-invalid.ng-touched{
+textarea.ng-invalid.ng-touched {
   border-color: red;
 }

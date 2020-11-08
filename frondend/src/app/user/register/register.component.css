@@ -1,0 +1,17 @@
+#register {
+  position: relative;
+  text-align: center;
+  margin: 0 auto 800px;
+  width: 50%;
+}
+
+.my-form {
+  width: 100%;
+  margin: 5px auto;
+}
+
+form button {
+  position: absolute;
+  top: 180px;
+  left: 30%;
+}
