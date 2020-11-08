@@ -1,4 +1,4 @@
-#create-product{
+#create-product {
   position: relative;
   text-align: center;
   margin: 0 auto 800px;
@@ -18,4 +18,22 @@ form button {
   position: absolute;
   top: 180px;
   left: 30%;
+}
+
+@media only screen and (max-width: 1200px) {
+  .my-form {
+    width: 100% !important;
+  }
+
+  form button {
+    top: 140px;
+    left: 5% !important;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  .my-form {
+    width: 100% !important;
+  }
 }

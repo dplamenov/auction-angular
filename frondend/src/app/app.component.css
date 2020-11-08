@@ -4,7 +4,7 @@
   background-color: #77bbd4;
 }
 
-#header h1{
+#header h1 {
   position: absolute;
   bottom: 1%;
   left: 1%;
@@ -12,4 +12,11 @@
   text-transform: uppercase;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
+}
+
+
+@media only screen and (max-width: 600px) {
+  #header h1 {
+    max-width: 500px;
+  }
 }
