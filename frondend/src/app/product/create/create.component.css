@@ -31,9 +31,17 @@ form button {
   }
 }
 
-
 @media only screen and (max-width: 600px) {
   .my-form {
     width: 100% !important;
+  }
+
+  form button {
+    top: 140px;
+    left: 5% !important;
+  }
+
+  #create-product {
+    width: 90% !important;
   }
 }

@@ -36,4 +36,13 @@ form button {
   .my-form {
     width: 100% !important;
   }
+
+  form button {
+    top: 140px;
+    left: 5% !important;
+  }
+
+  #login{
+    width: 90% !important;
+  }
 }

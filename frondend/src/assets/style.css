@@ -17,32 +17,6 @@ footer p {
   padding-top: 10px;
 }
 
-@media only screen and (max-width: 600px) {
-  .justify {
-    width: 90% !important;
-  }
-
-  form button {
-    top: 140px;
-    left: 5% !important;
-  }
-
-  #register, #login, #create-product, #product-details {
-    width: 90% !important;
-  }
-
-  .details-image {
-    max-width: 100% !important;
-    margin: 20px auto;
-    display: block;
-  }
-
-  span {
-    display: block;
-    left: 30% !important;
-  }
-}
-
 footer, nav {
   z-index: 999;
 }

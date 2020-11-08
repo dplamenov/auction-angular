@@ -1,11 +1,11 @@
-#product-details{
+#product-details {
   position: relative;
   text-align: center;
   margin: 0 auto 800px;
   width: 50%;
 }
 
-.details-image{
+.details-image {
   margin-right: 30px;
   max-width: 350px;
 }
@@ -18,3 +18,26 @@
   text-align: justify;
   margin: 0 auto 20px;
 }
+
+@media only screen and (max-width: 600px) {
+  .justify {
+    width: 90% !important;
+  }
+
+  .details-image {
+    max-width: 100% !important;
+    margin: 20px auto;
+    display: block;
+  }
+
+  #product-details {
+    width: 90% !important;
+  }
+
+  span {
+    display: block;
+    left: 30% !important;
+  }
+}
+
+
