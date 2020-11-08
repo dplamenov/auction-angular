@@ -8,6 +8,7 @@
 .details-image {
   margin-right: 30px;
   max-width: 350px;
+  display: block;
 }
 
 .bold {
@@ -17,6 +18,10 @@
 .justify {
   text-align: justify;
   margin: 0 auto 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
 }
 
 @media only screen and (max-width: 600px) {

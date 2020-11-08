@@ -3,6 +3,10 @@
   margin-bottom: 70px;
 }
 
+img {
+  /*height: 250px;*/
+}
+
 @media only screen and (max-width: 600px) {
   .card {
     max-width: 90%;
