@@ -17,7 +17,7 @@
       </div>
     </div>
     <hr>
-    <div id="bid-admin">
+    <div id="bid-admin" *ngIf="product.owner">
       <h3>Administration product</h3>
       <button class="btn btn-danger">Delete</button>
       <button class="btn btn-warning">Edit</button>

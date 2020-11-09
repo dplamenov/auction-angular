@@ -8,4 +8,5 @@ export interface Product {
   startPrice: string;
   creator: string;
   createTime: string;
+  isOwner: boolean;
 }

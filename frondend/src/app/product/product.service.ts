@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Product} from './product';
-import {map} from 'rxjs/operators';
 
 @Injectable()
 export class ProductService {
@@ -17,10 +16,6 @@ export class ProductService {
   }
 
   getById(productId) {
-    return this.httpClient.get<Product>(`product/${productId}`)
-      .pipe(map((data) => {
-        console.log(data);
-        return data;
-      }));
+    return this.httpClient.get<Product>(`product/${productId}`);
   }
 }
