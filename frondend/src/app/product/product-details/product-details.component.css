@@ -37,16 +37,39 @@ h2 {
   width: 100%;
 }
 
-.details-image:hover{
+.details-image:hover {
   transform: scale(1.2);
 }
 
-#bid-label{
+#bid-label {
   font-size: 22px;
 }
 
-#place-bid-btn-container{
+#place-bid-btn-container {
   margin-top: 10px;
+}
+
+#delete-btn {
+  margin-right: 20px;
+}
+
+#edit-btn {
+  margin-left: 20px;
+}
+
+#no-bids {
+  color: gray;
+}
+
+.bid {
+  width: 100%;
+  text-align: left;
+  border-bottom: 1px solid gray;
+  margin-top: 10px;
+}
+
+.bid:last-child{
+  border: none;
 }
 
 @media only screen and (max-width: 768px) {
@@ -60,7 +83,7 @@ h2 {
     display: block;
   }
 
-  .details-image:hover{
+  .details-image:hover {
     transform: scale(1);
   }
 
