@@ -85,7 +85,7 @@ function details(req, res, next) {
   const product = req.product.toObject();
 
   const isOwner = product.creator.toString() === getUserId(req);
-
+  product.isOwner = isOwner;
   if (isOwner) {
     Bid.find({product: product._id.toString()}).populate('creator', ['-password', '-__v'])
       .then(bids => {
@@ -95,7 +95,6 @@ function details(req, res, next) {
       .catch(next);
     return;
   }
-
   res.json(product);
 }
 
