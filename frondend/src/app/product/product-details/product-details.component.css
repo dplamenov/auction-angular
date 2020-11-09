@@ -1,13 +1,14 @@
 #product-details {
-  position: relative;
+  /*position: absolute;*/
   text-align: center;
-  margin: 0 auto 800px;
+  margin: 0 auto 100px;
   width: 50%;
 }
 
 .details-image {
   margin-right: 30px;
-  max-width: 350px;
+  max-height: 350px;
+  max-width: 30%;
   display: block;
 }
 
@@ -22,6 +23,17 @@
 
 h2 {
   margin-bottom: 20px;
+}
+
+#place-bid {
+  text-align: left;
+}
+
+#place-bid-input-container {
+  position: relative;
+  left: 0;
+  display: inline-block;
+  width: 100%;
 }
 
 @media only screen and (max-width: 600px) {
