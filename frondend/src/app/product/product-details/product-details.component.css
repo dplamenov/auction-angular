@@ -10,7 +10,7 @@
   max-height: 350px;
   max-width: 30%;
   display: block;
-  transition: transform .3s; /* Animation */
+  transition: transform .3s;
 }
 
 .bold {
@@ -39,6 +39,14 @@ h2 {
 
 .details-image:hover{
   transform: scale(1.2);
+}
+
+#bid-label{
+  font-size: 22px;
+}
+
+#place-bid-btn-container{
+  margin-top: 10px;
 }
 
 @media only screen and (max-width: 768px) {

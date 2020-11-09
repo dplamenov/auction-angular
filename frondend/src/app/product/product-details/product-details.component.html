@@ -8,16 +8,24 @@
     <p class="justify"><span class="bold">Current price: </span>145.5</p>
     <hr>
     <div id="place-bid" class="clearfix">
-      <h3>Place your bid</h3>
+      <label for="bid" id="bid-label">Place your bid</label>
       <div id="place-bid-input-container">
-        <input type="text" class="form-control"/>
+        <input type="text" class="form-control" id="bid" placeholder="your bid"/>
       </div>
       <div id="place-bid-btn-container">
         <button class="btn btn-primary pull-right">Bid</button>
       </div>
     </div>
     <hr>
-    <!--    <button class="btn btn-warning" style="float: left">Edit</button>-->
+    <div id="bid-admin">
+      <h3>Administration product</h3>
+      <button class="btn btn-danger">Delete</button>
+      <button class="btn btn-warning">Edit</button>
+    </div>
+    <hr>
+    <div id="all-bids">
+      <h3>All bids on this product</h3>
+    </div>
   </div>
   <br>
 </ng-container>
