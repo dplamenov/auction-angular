@@ -10,6 +10,7 @@
   max-height: 350px;
   max-width: 30%;
   display: block;
+  transition: transform .3s; /* Animation */
 }
 
 .bold {
@@ -36,7 +37,11 @@ h2 {
   width: 100%;
 }
 
-@media only screen and (max-width: 600px) {
+.details-image:hover{
+  transform: scale(1.2);
+}
+
+@media only screen and (max-width: 768px) {
   .justify {
     width: 90% !important;
   }
@@ -45,6 +50,10 @@ h2 {
     max-width: 100% !important;
     margin: 20px auto;
     display: block;
+  }
+
+  .details-image:hover{
+    transform: scale(1);
   }
 
   #product-details {
