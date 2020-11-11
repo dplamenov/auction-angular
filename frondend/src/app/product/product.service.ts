@@ -18,4 +18,8 @@ export class ProductService {
   getById(productId) {
     return this.httpClient.get<Product>(`product/${productId}`);
   }
+
+  delete(productId) {
+    return this.httpClient.delete<Product>(`product/${productId}`);
+  }
 }
