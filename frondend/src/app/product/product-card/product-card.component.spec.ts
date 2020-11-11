@@ -16,6 +16,7 @@ describe('ProductCardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProductCardComponent);
     component = fixture.componentInstance;
+
     component.product = {
       _id: '5fa92651df489d0ddf552342',
       title: 'product title1 4 1525 15 152',
@@ -28,6 +29,7 @@ describe('ProductCardComponent', () => {
       endString: '21.12.2020',
       image: 'kw.jpg'
     };
+
     fixture.detectChanges();
   });
 
