@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LatestComponent } from './latest.component';
+import {HttpClientModule} from '@angular/common/http';
 
 describe('LatestComponent', () => {
   let component: LatestComponent;
@@ -8,7 +9,8 @@ describe('LatestComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LatestComponent ]
+      declarations: [ LatestComponent ],
+      imports: [HttpClientModule]
     })
     .compileComponents();
   }));
