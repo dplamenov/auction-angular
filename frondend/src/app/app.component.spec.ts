@@ -1,16 +1,19 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        HttpClientModule
       ],
       declarations: [
         AppComponent
       ],
+      providers: []
     }).compileComponents();
   }));
 
@@ -20,16 +23,15 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'frondend'`, () => {
+  it(`isLoggedIn should be false when app starting`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('frondend');
+    expect(app.isLoggedIn).toEqual(false);
   });
 
-  it('should render title', () => {
+  it('should have router-outlet', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('frondend app is running!');
-  });
-});
+    expect(compiled.getElementsByTagName('router-outlet')[0]).toBeTruthy();
+  });});
