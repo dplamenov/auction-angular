@@ -7,11 +7,8 @@ import {NotFoundComponent} from './core/not-found/not-found.component';
 
 const routes: Routes = [
   {path: '', component: LatestComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {
-    path: 'product', loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
-  },
+  {path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule)},
+  {path: 'product', loadChildren: () => import('./product/product.module').then(m => m.ProductModule)},
   {path: '**', component: NotFoundComponent}
 ];
 
