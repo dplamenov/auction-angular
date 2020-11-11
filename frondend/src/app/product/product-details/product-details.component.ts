@@ -1,5 +1,5 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ProductService} from '../product.service';
 import {Product} from '../product';
 import {environment} from '../../../environments/environment';
@@ -11,8 +11,6 @@ import {UserService} from '../../user/user.service';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-  @Output('delete') deleteEvent = new EventEmitter();
-
   productId: number;
   product: Product;
 
@@ -20,7 +18,7 @@ export class ProductDetailsComponent implements OnInit {
     return this.userService.isLogged;
   }
 
-  constructor(private route: ActivatedRoute, private productService: ProductService, private userService: UserService) {
+  constructor(private route: ActivatedRoute, private productService: ProductService, private userService: UserService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -36,6 +34,9 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   deleteHandler(product: Product) {
-    this.deleteEvent.emit(product);
+    this.productService.delete(product._id)
+      .subscribe(product => {
+        this.router.navigate(['/']);
+      });
   }
 }
