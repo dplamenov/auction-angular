@@ -2,21 +2,15 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {LoginComponent} from './user/login/login.component';
 import {RegisterComponent} from './user/register/register.component';
-import {CreateComponent} from './product/create/create.component';
 import {LatestComponent} from './product/latest/latest.component';
-import {ProductDetailsComponent} from './product/product-details/product-details.component';
 import {NotFoundComponent} from './core/not-found/not-found.component';
-import {AuthGuard} from './auth.guard';
 
 const routes: Routes = [
   {path: '', component: LatestComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {
-    path: 'product', children: [
-      {path: 'create', component: CreateComponent, canActivate: [AuthGuard]},
-      {path: ':productId', component: ProductDetailsComponent}
-    ]
+    path: 'product', loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
   },
   {path: '**', component: NotFoundComponent}
 ];

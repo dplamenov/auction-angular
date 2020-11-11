@@ -16,6 +16,7 @@ import {MatFormFieldModule} from '@angular/material/form-field'; //2
 import {MatNativeDateModule} from '@angular/material/core'; // 3
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {ProductRoutingModule} from './product-routing.module';
 
 @NgModule({
   declarations: [LatestComponent, CreateComponent, ProductCardComponent, ProductDetailsComponent],
@@ -24,7 +25,8 @@ import {MatButtonModule} from '@angular/material/button';
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule,
-    MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatInputModule, MatButtonModule],
+    MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatInputModule, MatButtonModule,
+    ProductRoutingModule],
   exports: [LatestComponent, CreateComponent],
   providers: [
     {
