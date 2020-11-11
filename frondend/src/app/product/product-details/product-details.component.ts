@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {ProductService} from "../product.service";
-import {Product} from "../product";
-import {environment} from "../../../environments/environment";
+import {ActivatedRoute} from '@angular/router';
+import {ProductService} from '../product.service';
+import {Product} from '../product';
+import {environment} from '../../../environments/environment';
+import {UserService} from '../../user/user.service';
 
 @Component({
   selector: 'app-product-details',
@@ -13,7 +14,11 @@ export class ProductDetailsComponent implements OnInit {
   productId: number;
   product: Product;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService) {
+  get isLoggedIn() {
+    return this.userService.isLogged;
+  }
+
+  constructor(private route: ActivatedRoute, private productService: ProductService, private userService: UserService) {
   }
 
   ngOnInit(): void {

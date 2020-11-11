@@ -8,11 +8,12 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {UserModule} from './user/user.module';
 import {ProductModule} from './product/product.module';
 import {CoreModule} from './core/core.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,9 +23,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProductModule,
     UserModule,
     CoreModule,
-  BrowserAnimationsModule
+    BrowserAnimationsModule
   ],
   providers: [],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

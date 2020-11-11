@@ -1,45 +1,48 @@
 <ng-container *ngIf="product">
   <div id="product-details">
+
     <h2>Product: {{product.title}}</h2>
     <img src="{{product.image}}" alt="{{product.title}}" class="details-image"/>
     <p class="justify"><span class="bold">Title</span>: {{product.title}}</p>
     <p class="justify"><span class="bold">Description</span>: {{product.description}}</p>
     <p class="justify"><span class="bold">End date</span>: {{product.endString}}</p>
     <p class="justify"><span class="bold">Current price: </span>145.5</p>
-    <ng-container *ngIf="!product.isOwner">
-      <hr>
-      <div id="place-bid" class="clearfix">
-        <label for="bid" id="bid-label">Place your bid</label>
-        <div id="place-bid-input-container">
-          <input type="text" class="form-control" id="bid" placeholder="your bid"/>
+    <ng-container *ngIf="isLoggedIn">
+      <ng-container *ngIf="!product.isOwner">
+        <hr>
+        <div id="place-bid" class="clearfix">
+          <label for="bid" id="bid-label">Place your bid</label>
+          <div id="place-bid-input-container">
+            <input type="text" class="form-control" id="bid" placeholder="your bid"/>
+          </div>
+          <div id="place-bid-btn-container">
+            <button class="btn btn-primary pull-right">Bid</button>
+          </div>
         </div>
-        <div id="place-bid-btn-container">
-          <button class="btn btn-primary pull-right">Bid</button>
+      </ng-container>
+      <ng-container *ngIf="product.isOwner">
+        <hr>
+        <div id="bid-admin">
+          <h3>Administration product</h3>
+          <button class="btn btn-danger" id="delete-btn">Delete</button>
+          <button class="btn btn-warning" id="edit-btn">Edit</button>
         </div>
-      </div>
-    </ng-container>
-    <ng-container *ngIf="product.isOwner">
-      <hr>
-      <div id="bid-admin">
-        <h3>Administration product</h3>
-        <button class="btn btn-danger" id="delete-btn">Delete</button>
-        <button class="btn btn-warning" id="edit-btn">Edit</button>
-      </div>
-      <hr>
-      <div id="all-bids">
-        <h3>All bids on this product</h3>
-        <p id="no-bids">no bids</p>
-        <div class="bid">
-          <p>Bid value: 1293</p>
-          <p>Bid from: testusername</p>
-          <p>Date: 09.11.2019 14:52</p>
+        <hr>
+        <div id="all-bids">
+          <h3>All bids on this product</h3>
+          <p id="no-bids">no bids</p>
+          <div class="bid">
+            <p>Bid value: 1293</p>
+            <p>Bid from: testusername</p>
+            <p>Date: 09.11.2019 14:52</p>
+          </div>
+          <div class="bid">
+            <p>Bid value: 1293</p>
+            <p>Bid from: testusername</p>
+            <p>Date: 09.11.2019 14:52</p>
+          </div>
         </div>
-        <div class="bid">
-          <p>Bid value: 1293</p>
-          <p>Bid from: testusername</p>
-          <p>Date: 09.11.2019 14:52</p>
-        </div>
-      </div>
+      </ng-container>
     </ng-container>
   </div>
   <br>
