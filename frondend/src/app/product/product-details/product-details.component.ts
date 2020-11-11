@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ProductService} from '../product.service';
 import {Product} from '../product';
@@ -11,6 +11,8 @@ import {UserService} from '../../user/user.service';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
+  @Output('delete') deleteEvent = new EventEmitter();
+
   productId: number;
   product: Product;
 
@@ -31,5 +33,9 @@ export class ProductDetailsComponent implements OnInit {
         this.product = product;
       });
     });
+  }
+
+  deleteHandler(product: Product) {
+    this.deleteEvent.emit(product);
   }
 }
