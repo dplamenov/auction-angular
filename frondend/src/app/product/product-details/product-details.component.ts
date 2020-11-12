@@ -36,7 +36,7 @@ export class ProductDetailsComponent implements OnInit {
   deleteHandler(product: Product) {
     this.productService.delete(product._id)
       .subscribe(product => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/'], {queryParams: {notification: 'deleted'}});
       });
   }
 }

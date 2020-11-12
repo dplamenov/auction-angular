@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.notification = params.notificaton;
+      this.notification = params.notification;
 
       setTimeout(() => {
         this.notification = null;
