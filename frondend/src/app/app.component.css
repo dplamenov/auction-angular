@@ -14,6 +14,22 @@
   font-weight: 700;
 }
 
+.notification {
+  display: inline-block;
+  position: fixed;
+  z-index: 1000;
+  right: 10px;
+  top: 100px;
+  border: 1px solid white;
+  padding: 20px 100px;
+  border-radius: 20px;
+  background-color: white;
+  color: #77bbd4;
+}
+
+.notification p {
+  margin: 0;
+}
 
 @media only screen and (max-width: 600px) {
   #header h1 {
@@ -23,6 +39,10 @@
   span {
     display: block;
     left: 30% !important;
+  }
+
+  .notification{
+    padding: 20px 50px;
   }
 }
 

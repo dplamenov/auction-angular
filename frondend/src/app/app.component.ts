@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from './user/user.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +8,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
-  constructor(private userService: UserService, private router: Router) {
+  notification: string
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) {
   }
 
   get isLoggedIn() {
@@ -27,5 +27,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.notification = params.notificaton;
+
+      setTimeout(() => {
+        this.notification = null;
+        this.router.navigate(['']).then();
+      }, 3000);
+    });
   }
 }
