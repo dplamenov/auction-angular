@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Product} from '../product';
+import {ProductService} from '../product.service';
 
 @Component({
   selector: 'app-all',
@@ -7,9 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllComponent implements OnInit {
 
-  constructor() { }
+  skip = 0;
+  take = 10;
+  products: Product[];
 
-  ngOnInit(): void {
+  constructor(private route: ActivatedRoute, private productService: ProductService) {
   }
 
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      const {skip, take} = params;
+
+      if (skip) {
+        this.skip = skip;
+      }
+
+      if (take) {
+        this.take = take;
+      }
+
+      this.getProducts();
+    });
+  }
+
+  getProducts() {
+    this.productService.getAll(this.skip, this.take).subscribe(products => {
+      console.log(products);
+      this.products = products;
+    });
+  }
 }

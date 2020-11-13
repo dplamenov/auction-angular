@@ -22,4 +22,8 @@ export class ProductService {
   delete(productId) {
     return this.httpClient.delete<Product>(`product/${productId}`);
   }
+
+  getAll(skip = 0, take = 0) {
+    return this.httpClient.get<Product[]>(`product?skip=${skip}&take=${take}`);
+  }
 }
