@@ -17,9 +17,10 @@ import {MatNativeDateModule} from '@angular/material/core'; // 3
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {ProductRoutingModule} from './product-routing.module';
+import { AllComponent } from './all/all.component';
 
 @NgModule({
-  declarations: [LatestComponent, CreateComponent, ProductCardComponent, ProductDetailsComponent],
+  declarations: [LatestComponent, CreateComponent, ProductCardComponent, ProductDetailsComponent, AllComponent],
   imports: [
     CommonModule,
     HttpClientModule,
