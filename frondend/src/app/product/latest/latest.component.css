@@ -2,7 +2,7 @@
   max-height: 400px;
 }
 
-:host{
+:host {
   position: relative;
   text-align: center;
   margin: 0 auto 100px;
