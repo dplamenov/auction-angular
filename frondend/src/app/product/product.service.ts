@@ -38,4 +38,8 @@ export class ProductService {
       return products.map(ProductService.addImagePath);
     }));
   }
+
+  getProductCount(){
+    return this.httpClient.get<{count: number}>(`product/count`);
+  }
 }
