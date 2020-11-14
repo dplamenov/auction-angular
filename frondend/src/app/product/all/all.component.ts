@@ -39,4 +39,8 @@ export class AllComponent implements OnInit {
       this.products = products;
     });
   }
+
+  pageEvent(event){
+    console.log(event);
+  }
 }

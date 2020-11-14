@@ -3,7 +3,6 @@
 }
 
 :host{
-  position: relative;
   text-align: center;
   margin: 0 auto 100px;
 }
@@ -17,4 +16,8 @@
   text-transform: uppercase;
   margin-top: 10px;
   margin-bottom: 40px;
+}
+
+mat-paginator {
+  padding-bottom: 50px;
 }
