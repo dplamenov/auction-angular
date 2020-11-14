@@ -1,4 +1,6 @@
 <div>
   <h2>All products</h2>
   <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
+  <mat-paginator [length]="120" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" (page)="pageEvent($event)">
+  </mat-paginator>
 </div>
