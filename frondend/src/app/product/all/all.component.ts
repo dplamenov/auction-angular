@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../product';
 import {ProductService} from '../product.service';
 
@@ -14,7 +14,9 @@ export class AllComponent implements OnInit {
   take = 10;
   products: Product[];
 
-  constructor(private route: ActivatedRoute, private productService: ProductService) {
+  paginatorLength: number;
+
+  constructor(private route: ActivatedRoute, private productService: ProductService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -41,6 +43,9 @@ export class AllComponent implements OnInit {
   }
 
   pageEvent(event){
-    console.log(event);
+    // const page = {skip: event.pageIndex * event.pageSize, take: event.pageSize};
+    this.skip = event.pageIndex * event.pageSize;
+    this.take = event.pageSize;
+    this.router.navigate(['/product/all'], {queryParams: {skip: this.skip, take: this.take}});
   }
 }

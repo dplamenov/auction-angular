@@ -120,6 +120,12 @@ function addBid(req, res, next) {
   });
 }
 
+function getProductsCount(req, res, next){
+  Product.count({}).then(count => {
+      res.json({count});
+  });
+}
+
 module.exports = {
   createProduct,
   deleteProduct,
@@ -127,5 +133,6 @@ module.exports = {
   latest,
   allProducts,
   details,
-  addBid
+  addBid,
+  getProductsCount
 };
