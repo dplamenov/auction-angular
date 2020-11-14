@@ -12,12 +12,13 @@ export class ProductService {
   static addImagePath(product) {
     const {imagePath} = environment;
     product.image = `${imagePath}${product._id}.png`;
-
     return product;
   }
 
   getLatestProducts() {
-    return this.httpClient.get<Product[]>(`product/latest`).pipe(map(ProductService.addImagePath));
+    return this.httpClient.get<Product[]>(`product/latest`).pipe(map((products) => {
+      return products.map(ProductService.addImagePath);
+    }));
   }
 
   create(product) {
@@ -33,6 +34,8 @@ export class ProductService {
   }
 
   getAll(skip = 0, take = 0) {
-    return this.httpClient.get<Product[]>(`product?skip=${skip}&take=${take}`);
+    return this.httpClient.get<Product[]>(`product?skip=${skip}&take=${take}`).pipe(map((products) => {
+      return products.map(ProductService.addImagePath);
+    }));
   }
 }

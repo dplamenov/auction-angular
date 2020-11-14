@@ -21,10 +21,7 @@ export class LatestComponent implements OnInit {
     this.imagePath = environment.imagePath;
 
     this.productService.getLatestProducts().subscribe(products => {
-      this.products = products.map(product => {
-        product.image = `${this.imagePath}${product._id}.png`;
-        return product;
-      });
+      this.products = products;
     });
   }
 
