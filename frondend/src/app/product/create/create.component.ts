@@ -3,6 +3,16 @@ import {ProductService} from '../product.service';
 import {FormControl, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 
+function dataURItoBlob(dataURI) {
+  const byteString = atob(dataURI);
+  const arrayBuffer = new ArrayBuffer(byteString.length);
+  const int8Array = new Uint8Array(arrayBuffer);
+  for (let i = 0; i < byteString.length; i++) {
+    int8Array[i] = byteString.charCodeAt(i);
+  }
+  return new Blob([int8Array], { type: 'image/png' });
+}
+
 @Component({
   selector: 'app-create-product',
   templateUrl: './create.component.html',
@@ -31,7 +41,11 @@ export class CreateComponent implements OnInit {
   }
 
   create() {
-    this.selectedFile = (this.fileUpload.nativeElement.files[0] as File);
+    // this.selectedFile = (this.fileUpload.nativeElement.files[0] as File);
+    //
+    // const imageDataUrl = this.croppedImage.replace(/^data:image\/(png|jpg);base64,/, "");
+    // const imageBlob = dataURItoBlob(imageDataUrl);
+    // this.selectedFile  = new File([imageBlob], 'image.png', { type: 'image/png' })
 
     if (!this.selectedFile) {
       this.file.errors.myError = 'test';
@@ -48,13 +62,14 @@ export class CreateComponent implements OnInit {
     this.productService.create(this.fd).subscribe(data => {
       this.router.navigate(['']).then();
     }, (err) => {
-      this.errorMessage = Object.values(err.error)[0][0];
+      this.errorMessage = (Object.values(err.error)[0][0] as string);
       this.showServerErrorMessage = true;
 
       setTimeout(() => {
         this.showServerErrorMessage = false;
       }, 3000);
     });
-
   }
+
+
 }
