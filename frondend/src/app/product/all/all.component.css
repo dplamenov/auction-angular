@@ -1,8 +1,8 @@
-:host img{
+:host img {
   max-height: 400px;
 }
 
-:host{
+:host {
   text-align: center;
   margin: 0 auto 100px;
 }
@@ -11,7 +11,7 @@
   text-align: left;
 }
 
-:host h2{
+:host h2 {
   text-align: center;
   text-transform: uppercase;
   margin-top: 10px;
@@ -20,4 +20,8 @@
 
 mat-paginator {
   padding-bottom: 50px;
+}
+
+mat-spinner {
+  margin: 0 auto;
 }

@@ -11,6 +11,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import {LatestComponent} from './latest/latest.component';
 import {CreateComponent} from './create/create.component';
@@ -30,7 +31,8 @@ import {ProductRoutingModule} from './product-routing.module';
     RouterModule,
     MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatInputModule, MatButtonModule,
     ProductRoutingModule,
-    MatPaginatorModule],
+    MatPaginatorModule,
+    MatProgressSpinnerModule],
   exports: [LatestComponent, CreateComponent],
   providers: [
     {
