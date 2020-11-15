@@ -22,6 +22,9 @@ import {ProductDetailsComponent} from './product-details/product-details.compone
 import {DefaultInterceptor} from '../default.interceptor';
 import {ProductRoutingModule} from './product-routing.module';
 
+import { ImageCropperModule } from 'ngx-image-cropper';
+
+
 @NgModule({
   declarations: [LatestComponent, CreateComponent, ProductCardComponent, ProductDetailsComponent, AllComponent],
   imports: [
@@ -32,7 +35,8 @@ import {ProductRoutingModule} from './product-routing.module';
     MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatInputModule, MatButtonModule,
     ProductRoutingModule,
     MatPaginatorModule,
-    MatProgressSpinnerModule],
+    MatProgressSpinnerModule,
+    ImageCropperModule],
   exports: [LatestComponent, CreateComponent],
   providers: [
     {
