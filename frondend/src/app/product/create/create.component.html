@@ -21,10 +21,24 @@
 
   <div style="margin: 20px;"></div>
   <div class="custom-file my-form">
-    <input type="file" class="custom-file-input" id="customFile" [formControl]="file" #fileUpload>
+    <input type="file" class="custom-file-input" id="customFile" [formControl]="file" #fileUpload
+           (change)="fileChangeEvent($event)">
     <label class="custom-file-label" for="customFile" style="text-align: left;color: gray">Upload
       image</label>
   </div>
+
+  <!--  <input type="file" (change)="fileChangeEvent($event)" />-->
+
+  <image-cropper
+    [imageChangedEvent]="imageChangedEvent"
+    format="png"
+    (imageCropped)="imageCropped($event)"
+    (imageLoaded)="imageLoaded()"
+    (cropperReady)="cropperReady()"
+    (loadImageFailed)="loadImageFailed()"
+    cropperStaticHeight="100"
+  ></image-cropper>
+
   <button type="button" class="btn btn-primary" id="create-button" (click)="create()"
           [disabled]="title.invalid || description.invalid || startPrice?.errors?.number || file.invalid">Add product
   </button>

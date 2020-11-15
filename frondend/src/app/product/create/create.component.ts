@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ProductService} from '../product.service';
 import {FormControl, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {ImageCroppedEvent} from 'ngx-image-cropper';
 
 function dataURItoBlob(dataURI) {
   const byteString = atob(dataURI);
@@ -10,7 +11,7 @@ function dataURItoBlob(dataURI) {
   for (let i = 0; i < byteString.length; i++) {
     int8Array[i] = byteString.charCodeAt(i);
   }
-  return new Blob([int8Array], { type: 'image/png' });
+  return new Blob([int8Array], {type: 'image/png'});
 }
 
 @Component({
@@ -33,6 +34,9 @@ export class CreateComponent implements OnInit {
 
   errorMessage = '';
   showServerErrorMessage = false;
+
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
 
   constructor(private productService: ProductService, private router: Router) {
   }
@@ -71,5 +75,23 @@ export class CreateComponent implements OnInit {
     });
   }
 
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+  }
 
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;
+  }
+
+  imageLoaded() {
+    // show cropper
+  }
+
+  cropperReady() {
+    // cropper ready
+  }
+
+  loadImageFailed() {
+    // show message
+  }
 }
