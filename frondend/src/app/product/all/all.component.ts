@@ -27,7 +27,7 @@ export class AllComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      const {skip, take} = params;
+      const {skip, take, pageSize} = params;
 
       if (skip) {
         this.skip = skip;
@@ -37,11 +37,14 @@ export class AllComponent implements OnInit {
         this.take = take;
       }
 
+      if (pageSize) {
+        this.pageSize = this.pageSizeOptions.includes(Number(pageSize)) ? pageSize : this.pageSize;
+      }
+
       this.getProducts();
       this.getCountOfAllProducts();
 
-      this.pageIndex =  this.skip / this.pageSize + 1;
-      console.log(this.pageIndex);
+      this.pageIndex = this.skip / this.pageSize + 1;
     });
   }
 
@@ -70,7 +73,8 @@ export class AllComponent implements OnInit {
     console.log(event, this.skip, this.take);
     this.pageIndex = event.pageIndex;
     this.router.navigate(['/product/all'], {
-      queryParams: {skip: this.skip, take: this.take}
+      queryParams: {skip: this.skip, take: this.take, pageSize: event.pageSize},
+      preserveFragment: true
     });
   }
 }
