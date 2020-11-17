@@ -7,7 +7,7 @@ import {RouterModule} from '@angular/router';
 
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatNativeDateModule} from '@angular/material/core';
+import {DateAdapter, MatNativeDateModule} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -22,8 +22,8 @@ import {ProductDetailsComponent} from './product-details/product-details.compone
 import {DefaultInterceptor} from '../default.interceptor';
 import {ProductRoutingModule} from './product-routing.module';
 
-import { ImageCropperModule } from 'ngx-image-cropper';
-
+import {ImageCropperModule} from 'ngx-image-cropper';
+import {DateAdapter as CustomDateAdapter} from '../core/date-adapter';
 
 @NgModule({
   declarations: [LatestComponent, CreateComponent, ProductCardComponent, ProductDetailsComponent, AllComponent],
@@ -44,7 +44,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
       useClass: DefaultInterceptor,
       multi: true
     },
-    ProductService
+    ProductService,
+    {provide: DateAdapter, useClass: CustomDateAdapter}
   ]
 })
 export class ProductModule {
