@@ -30,14 +30,14 @@ export class CreateComponent implements OnInit {
   file = new FormControl('', Validators.required);
   selectedFile: File;
 
-  fd = new FormData();
+  formData = new FormData();
 
   errorMessage = '';
   showServerErrorMessage = false;
 
   imageChangedEvent: any = '';
   croppedImage: any = '';
-
+  
   constructor(private productService: ProductService, private router: Router) {
   }
 
@@ -56,14 +56,14 @@ export class CreateComponent implements OnInit {
       return;
     }
 
-    this.fd.append('image', this.selectedFile);
+    this.formData.append('image', this.selectedFile);
 
-    this.fd.append('title', this.title.value);
-    this.fd.append('description', this.description.value);
-    this.fd.append('startPrice', this.startPrice.value);
-    this.fd.append('endTime', this.endDate.value);
+    this.formData.append('title', this.title.value);
+    this.formData.append('description', this.description.value);
+    this.formData.append('startPrice', this.startPrice.value);
+    this.formData.append('endTime', this.endDate.value);
 
-    this.productService.create(this.fd).subscribe(data => {
+    this.productService.create(this.formData).subscribe(data => {
       this.router.navigate(['']).then();
     }, (err) => {
       this.errorMessage = (Object.values(err.error)[0][0] as string);
@@ -74,6 +74,7 @@ export class CreateComponent implements OnInit {
       }, 3000);
     });
   }
+
 
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;

@@ -7,7 +7,7 @@ import {RouterModule} from '@angular/router';
 
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {DateAdapter, MatNativeDateModule} from '@angular/material/core';
+import {DateAdapter, MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -45,7 +45,8 @@ import {DateAdapter as CustomDateAdapter} from '../core/date-adapter';
       multi: true
     },
     ProductService,
-    {provide: DateAdapter, useClass: CustomDateAdapter}
+    {provide: DateAdapter, useClass: CustomDateAdapter},
+    {provide: MAT_DATE_LOCALE, useValue: 'bg-BG'}
   ]
 })
 export class ProductModule {
