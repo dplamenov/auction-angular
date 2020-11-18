@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {ImageCroppedEvent} from 'ngx-image-cropper';
 
 function dataURItoBlob(dataURI) {
+  dataURI = dataURI.replace(/^data:image\/(png|jpg);base64,/, "");
   const byteString = atob(dataURI);
   const arrayBuffer = new ArrayBuffer(byteString.length);
   const int8Array = new Uint8Array(arrayBuffer);
@@ -20,22 +21,18 @@ function dataURItoBlob(dataURI) {
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-
-  @ViewChild('fileUpload', {static: false}) fileUpload: ElementRef;
-
   title = new FormControl('', [Validators.minLength(3)]);
   description = new FormControl('', [Validators.minLength(10)]);
   startPrice = new FormControl('', [Validators.pattern('^[0-9]*$'), Validators.required]);
   endDate = new FormControl('', [Validators.required]);
   file = new FormControl('', Validators.required);
-  selectedFile: File;
 
   formData = new FormData();
 
   errorMessage = '';
   showServerErrorMessage = false;
 
-  imageChangedEvent: any = '';
+  imageChangedEvent = '';
   croppedImage: any = '';
 
   constructor(private productService: ProductService, private router: Router) {
@@ -45,20 +42,10 @@ export class CreateComponent implements OnInit {
   }
 
   create() {
-    // this.selectedFile = (this.fileUpload.nativeElement.files[0] as File);
+    const imageBlob = dataURItoBlob(this.croppedImage);
+    const image  = new File([imageBlob], 'image.png', { type: 'image/png' })
 
-    const imageDataUrl = this.croppedImage.replace(/^data:image\/(png|jpg);base64,/, "");
-    const imageBlob = dataURItoBlob(imageDataUrl);
-    this.selectedFile  = new File([imageBlob], 'image.png', { type: 'image/png' })
-
-    // console.log(this.selectedFile);
-
-    if (!this.selectedFile) {
-      this.file.errors.myError = 'test';
-      return;
-    }
-
-    this.formData.append('image', this.selectedFile);
+    this.formData.append('image', image);
 
     this.formData.append('title', this.title.value);
     this.formData.append('description', this.description.value);

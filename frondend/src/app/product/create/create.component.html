@@ -21,13 +21,11 @@
 
   <div style="margin: 20px;"></div>
   <div class="custom-file my-form">
-    <input type="file" class="custom-file-input" id="customFile" [formControl]="file" #fileUpload
+    <input type="file" class="custom-file-input" id="customFile" [formControl]="file"
            (change)="fileChangeEvent($event)">
     <label class="custom-file-label" for="customFile" style="text-align: left;color: gray">Upload
       image</label>
   </div>
-
-  <!--  <input type="file" (change)="fileChangeEvent($event)" />-->
 
   <image-cropper
     [imageChangedEvent]="imageChangedEvent"
