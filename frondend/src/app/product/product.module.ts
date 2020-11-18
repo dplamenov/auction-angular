@@ -39,12 +39,12 @@ import {DateAdapter as CustomDateAdapter} from '../core/date-adapter';
     ImageCropperModule],
   exports: [LatestComponent, CreateComponent],
   providers: [
+    ProductService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: DefaultInterceptor,
       multi: true
     },
-    ProductService,
     {provide: DateAdapter, useClass: CustomDateAdapter},
     {provide: MAT_DATE_LOCALE, useValue: 'bg-BG'}
   ]

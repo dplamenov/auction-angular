@@ -37,7 +37,7 @@ export class CreateComponent implements OnInit {
 
   imageChangedEvent: any = '';
   croppedImage: any = '';
-  
+
   constructor(private productService: ProductService, private router: Router) {
   }
 
@@ -46,10 +46,12 @@ export class CreateComponent implements OnInit {
 
   create() {
     // this.selectedFile = (this.fileUpload.nativeElement.files[0] as File);
-    //
-    // const imageDataUrl = this.croppedImage.replace(/^data:image\/(png|jpg);base64,/, "");
-    // const imageBlob = dataURItoBlob(imageDataUrl);
-    // this.selectedFile  = new File([imageBlob], 'image.png', { type: 'image/png' })
+
+    const imageDataUrl = this.croppedImage.replace(/^data:image\/(png|jpg);base64,/, "");
+    const imageBlob = dataURItoBlob(imageDataUrl);
+    this.selectedFile  = new File([imageBlob], 'image.png', { type: 'image/png' })
+
+    // console.log(this.selectedFile);
 
     if (!this.selectedFile) {
       this.file.errors.myError = 'test';
@@ -82,17 +84,5 @@ export class CreateComponent implements OnInit {
 
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
-  }
-
-  imageLoaded() {
-    // show cropper
-  }
-
-  cropperReady() {
-    // cropper ready
-  }
-
-  loadImageFailed() {
-    // show message
   }
 }
