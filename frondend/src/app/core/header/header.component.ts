@@ -1,4 +1,5 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import {UserService} from '../../user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +7,24 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+  @Input('notification') notification;
+  @Output('logout') logoutEvent = new EventEmitter();
 
-  constructor() { }
+
+  get isLoggedIn() {
+    return this.userService.isLogged;
+  }
+
+  get email(){
+    return this.userService.user.email;
+  }
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
   }
 
+  logoutHandler(){
+    this.logoutEvent.emit({logout: true});
+  }
 }

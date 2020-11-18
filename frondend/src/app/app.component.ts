@@ -13,14 +13,6 @@ export class AppComponent implements OnInit {
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) {
   }
 
-  get isLoggedIn() {
-    return this.userService.isLogged;
-  }
-
-  get email(){
-    return this.userService.user.email;
-  }
-
   logout() {
     this.userService.logout().subscribe(() => {
       this.router.navigate(['']).then();
