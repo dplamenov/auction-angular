@@ -8,8 +8,9 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  notification: string
-  setTimeoutId;
+  notification: string;
+  setTimeoutId: number;
+
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) {
   }
 
@@ -22,14 +23,10 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.notification = params.notification;
-
       this.setTimeoutId = setTimeout(() => {
         this.notification = null;
+        this.router.navigateByUrl(this.router.url.split('?')[0], {queryParams: []}).then();
       }, 3000);
     });
-  }
-
-  ngOnDestroy(){
-    clearTimeout(this.setTimeoutId);
   }
 }
