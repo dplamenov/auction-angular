@@ -6,7 +6,10 @@ export interface Product {
   description: string;
   endTime: string;
   startPrice: string;
-  creator: string;
+  creator: {
+    _id: string,
+    email: string
+  };
   createTime: string;
   isOwner: boolean;
 }
