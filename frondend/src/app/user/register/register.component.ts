@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
     }
 
     this.userService.register(email, password).subscribe(user => {
-      this.router.navigate(['/login']).then();
+      this.router.navigate(['/user/login']).then();
     }, (err) => {
       this.showServerErrorMessage = true;
       this.errorMessage = Object.values(err.error)[0][0];
