@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {ProductService} from '../product.service';
 import {FormControl, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
@@ -20,7 +20,7 @@ function dataURItoBlob(dataURI) {
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent {
   title = new FormControl('', [Validators.minLength(3)]);
   description = new FormControl('', [Validators.minLength(10)]);
   startPrice = new FormControl('', [Validators.pattern('^[0-9]*$'), Validators.required]);
@@ -36,9 +36,6 @@ export class CreateComponent implements OnInit {
   croppedImage: any = '';
 
   constructor(private productService: ProductService, private router: Router) {
-  }
-
-  ngOnInit(): void {
   }
 
   create() {
