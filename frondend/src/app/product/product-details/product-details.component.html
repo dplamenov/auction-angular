@@ -1,6 +1,5 @@
-<ng-container *ngIf="product">
-  <div id="product-details">
-
+<div id="product-details">
+  <ng-container *ngIf="product">
     <h2>Product: {{product.title}}</h2>
     <img src="{{product.image}}" alt="{{product.title}}" class="details-image"/>
     <p class="justify"><span class="bold">Title</span>: {{product.title}}</p>
@@ -44,6 +43,8 @@
         </div>
       </ng-container>
     </ng-container>
-  </div>
-  <br>
-</ng-container>
+    <br>
+  </ng-container>
+  <app-loader [isActive]="!product"></app-loader>
+</div>
+
