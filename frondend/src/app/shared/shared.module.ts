@@ -1,12 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {LoaderComponent} from './loader/loader.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [LoaderComponent],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    MatProgressSpinnerModule
+  ],
+  exports: [LoaderComponent]
 })
-export class SharedModule { }
+// @ts-ignore
+export class SharedModule {
+}

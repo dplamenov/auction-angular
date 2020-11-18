@@ -24,6 +24,7 @@ import {ProductRoutingModule} from './product-routing.module';
 
 import {ImageCropperModule} from 'ngx-image-cropper';
 import {DateAdapter as CustomDateAdapter} from '../core/date-adapter';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   declarations: [LatestComponent, CreateComponent, ProductCardComponent, ProductDetailsComponent, AllComponent],
@@ -35,7 +36,7 @@ import {DateAdapter as CustomDateAdapter} from '../core/date-adapter';
     MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatInputModule, MatButtonModule,
     ProductRoutingModule,
     MatPaginatorModule,
-    MatProgressSpinnerModule,
+    SharedModule,
     ImageCropperModule],
   exports: [LatestComponent, CreateComponent],
   providers: [

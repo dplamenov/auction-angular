@@ -1,6 +1,6 @@
 <div>
   <h2>All products</h2>
-  <mat-spinner color="primary" *ngIf="isLoading"></mat-spinner>
+  <app-loader [isActive]="isLoading"></app-loader>
   <ng-container *ngIf="!isLoading">
     <mat-paginator [length]="paginatorLength" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" [pageIndex]="pageIndex - 1" (page)="pageEvent($event)" id="paginator">
     </mat-paginator>
