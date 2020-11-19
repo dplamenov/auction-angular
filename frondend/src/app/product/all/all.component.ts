@@ -41,6 +41,10 @@ export class AllComponent implements OnInit {
         this.pageSize = this.pageSizeOptions.includes(Number(pageSize)) ? pageSize : this.pageSize;
       }
 
+      console.log(this.skip);
+      console.log(this.take);
+      console.log(this.pageSize);
+
       this.getProducts();
       this.getCountOfAllProducts();
 
@@ -66,15 +70,12 @@ export class AllComponent implements OnInit {
   }
 
   pageEvent(event) {
-    // const page = {skip: event.pageIndex * event.pageSize, take: event.pageSize};
     this.skip = (event.pageIndex) * event.pageSize;
     this.take = event.pageSize;
-
-    console.log(event, this.skip, this.take);
     this.pageIndex = event.pageIndex;
+
     this.router.navigate(['/product/all'], {
-      queryParams: {skip: this.skip, take: this.take, pageSize: event.pageSize},
-      preserveFragment: true
+      queryParams: {skip: this.skip, take: this.take, pageSize: event.pageSize}
     });
   }
 }

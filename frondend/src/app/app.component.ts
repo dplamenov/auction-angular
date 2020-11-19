@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
       this.notification = params.notification;
       this.setTimeoutId = setTimeout(() => {
         this.notification = null;
-        this.router.navigateByUrl(this.router.url.split('?')[0], {queryParams: []}).then();
+        this.router.navigate([], {relativeTo: this.route, queryParams: {notification: null}, queryParamsHandling: 'merge'})
       }, 3000);
     });
   }
