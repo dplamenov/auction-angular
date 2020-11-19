@@ -84,7 +84,7 @@ function allProducts(req, res, next) {
 function details(req, res, next) {
   const product = req.product.toObject();
 
-  const isOwner = product.creator.toString() === getUserId(req);
+  const isOwner = product.creator._id.toString() === getUserId(req);
   product.isOwner = isOwner;
   if (isOwner) {
     Bid.find({product: product._id.toString()}).populate('creator', ['-password', '-__v'])

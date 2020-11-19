@@ -17,6 +17,10 @@
   font-weight: bold;
 }
 
+.data{
+  margin-left: 10px;
+}
+
 .justify {
   text-align: justify;
   margin: 0 auto 20px;
