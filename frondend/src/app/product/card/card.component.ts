@@ -3,10 +3,10 @@ import {Product} from '../product';
 
 @Component({
   selector: 'app-product-card',
-  templateUrl: './product-card.component.html',
-  styleUrls: ['./product-card.component.css']
+  templateUrl: './card.component.html',
+  styleUrls: ['./card.component.css']
 })
-export class ProductCardComponent implements OnInit {
+export class CardComponent implements OnInit {
   @Input() product: Product;
   constructor() { }
 

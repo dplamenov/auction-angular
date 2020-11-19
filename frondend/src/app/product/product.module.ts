@@ -17,8 +17,8 @@ import {LatestComponent} from './latest/latest.component';
 import {CreateComponent} from './create/create.component';
 import {AllComponent} from './all/all.component';
 import {ProductService} from './product.service';
-import {ProductCardComponent} from './product-card/product-card.component';
-import {ProductDetailsComponent} from './product-details/product-details.component';
+import {CardComponent} from './card/card.component';
+import {DetailsComponent} from './details/details.component';
 import {DefaultInterceptor} from '../default.interceptor';
 import {ProductRoutingModule} from './product-routing.module';
 
@@ -27,7 +27,7 @@ import {DateAdapter as CustomDateAdapter} from '../core/date-adapter';
 import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
-  declarations: [LatestComponent, CreateComponent, ProductCardComponent, ProductDetailsComponent, AllComponent],
+  declarations: [LatestComponent, CreateComponent, CardComponent, DetailsComponent, AllComponent],
   imports: [
     CommonModule,
     HttpClientModule,

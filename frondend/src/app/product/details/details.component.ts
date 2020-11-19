@@ -7,10 +7,10 @@ import {UserService} from '../../user/user.service';
 
 @Component({
   selector: 'app-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css']
+  templateUrl: './details.component.html',
+  styleUrls: ['./details.component.css']
 })
-export class ProductDetailsComponent implements OnInit {
+export class DetailsComponent implements OnInit {
   productId: number;
   product: Product;
 
