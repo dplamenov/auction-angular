@@ -3,7 +3,7 @@ const router = express.Router();
 const controllers = require('./controllers');
 const auth = require('./middleware/auth');
 const isOwner = require('./middleware/product-is-owner');
-const isNotOwner = require('./middleware/product-is-owner');
+const isNotOwner = require('./middleware/product-is-not-owner');
 const getProductFromRequest = require('./middleware/get-product-from-request');
 const addUserToRequest = require('./middleware/add-user-to-request');
 

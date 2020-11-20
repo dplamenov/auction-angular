@@ -29,9 +29,15 @@
           <button class="btn btn-warning" id="edit-btn">Edit</button>
         </div>
         <hr>
+        {{product | json}}
         <div id="all-bids">
           <h3>All bids on this product</h3>
-          <p id="no-bids">no bids</p>
+          <p id="no-bids" *ngIf="product.bids.length === 0">no bids</p>
+          <div class="bid">
+            <p>Bid value: 1293</p>
+            <p>Bid from: testusername</p>
+            <p>Date: 09.11.2019 14:52</p>
+          </div>
           <div class="bid">
             <p>Bid value: 1293</p>
             <p>Bid from: testusername</p>

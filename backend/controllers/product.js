@@ -101,7 +101,7 @@ function details(req, res, next) {
 function addBid(req, res, next) {
   const productId = req.productId;
 
-  const form = formidable({multiples: true});
+  const form = formidable({f: true});
 
   form.parse(req, (err, fields, files) => {
     if (err) {

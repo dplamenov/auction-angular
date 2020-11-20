@@ -12,4 +12,5 @@ export interface Product {
   };
   createTime: string;
   isOwner: boolean;
+  bids: [];
 }
