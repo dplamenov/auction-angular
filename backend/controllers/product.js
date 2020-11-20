@@ -109,7 +109,7 @@ function addBid(req, res, next) {
     }
 
     Bid.create({
-      priceValue: fields.priceValue,
+      priceValue: Number(fields.priceValue),
       creator: getUserId(req),
       product: productId
     })
