@@ -85,17 +85,21 @@ function details(req, res, next) {
   const product = req.product.toObject();
 
   const isOwner = product.creator._id.toString() === getUserId(req);
+
   product.isOwner = isOwner;
-  if (isOwner) {
-    Bid.find({product: product._id.toString()}).populate('creator', ['-password', '-__v'])
-      .then(bids => {
+  product.bids = [];
+
+  Bid.find({product: product._id.toString()})
+    .sort({priceValue: -1})
+    .populate('creator', ['-password', '-__v'])
+    .then(bids => {
+      product.priceValue = bids[0].priceValue;
+      if (isOwner) {
         product.bids = bids;
-        res.json(product);
-      })
-      .catch(next);
-    return;
-  }
-  res.json(product);
+      }
+      res.json(product);
+    })
+    .catch(next);
 }
 
 function addBid(req, res, next) {
@@ -120,9 +124,9 @@ function addBid(req, res, next) {
   });
 }
 
-function getProductsCount(req, res, next){
+function getProductsCount(req, res, next) {
   Product.count({}).then(count => {
-      res.json({count});
+    res.json({count});
   });
 }
 

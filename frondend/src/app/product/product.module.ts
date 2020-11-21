@@ -11,12 +11,10 @@ import {DateAdapter, MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/materi
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import {LatestComponent} from './latest/latest.component';
 import {CreateComponent} from './create/create.component';
 import {AllComponent} from './all/all.component';
-import {ProductService} from './product.service';
 import {CardComponent} from './card/card.component';
 import {DetailsComponent} from './details/details.component';
 import {DefaultInterceptor} from '../default.interceptor';
@@ -25,22 +23,26 @@ import {ProductRoutingModule} from './product-routing.module';
 import {ImageCropperModule} from 'ngx-image-cropper';
 import {DateAdapter as CustomDateAdapter} from '../core/date-adapter';
 import {SharedModule} from '../shared/shared.module';
+import {EditComponent} from './edit/edit.component';
 
 @NgModule({
-  declarations: [LatestComponent, CreateComponent, CardComponent, DetailsComponent, AllComponent],
+  declarations: [LatestComponent, CreateComponent, CardComponent, DetailsComponent, AllComponent, EditComponent],
   imports: [
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule,
-    MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatInputModule, MatButtonModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatButtonModule,
     ProductRoutingModule,
     MatPaginatorModule,
     SharedModule,
     ImageCropperModule],
-  exports: [LatestComponent, CreateComponent],
+  exports: [],
   providers: [
-    ProductService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: DefaultInterceptor,
