@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'create', component: CreateComponent, canActivate: [AuthGuard]},
   {path: 'all', component: AllComponent},
   {path: ':productId', component: DetailsComponent},
-  {path: 'edit/:productId', component: EditComponent, canActivate: [AuthGuard]}
+  {path: ':productId/edit', component: EditComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

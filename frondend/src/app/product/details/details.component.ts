@@ -1,10 +1,9 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductService} from '../product.service';
 import {Product} from '../../core/interfaces/product';
-import {environment} from '../../../environments/environment';
 import {UserService} from '../../user/user.service';
-import {switchMap, tap} from 'rxjs/operators';
+import {switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-details',

@@ -27,7 +27,7 @@
         <div id="bid-admin">
           <h3>Administration product</h3>
           <button class="btn btn-danger" id="delete-btn" (click)="deleteHandler(product)">Delete</button>
-          <button class="btn btn-warning" id="edit-btn">Edit</button>
+          <button class="btn btn-warning" id="edit-btn" [routerLink]="['/product', product._id, 'edit']">Edit</button>
         </div>
         <hr>
         <div id="all-bids">

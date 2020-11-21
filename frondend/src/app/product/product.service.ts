@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {Product} from '../core/interfaces/product';
 import {environment} from '../../environments/environment';
 import {map} from 'rxjs/operators';
-import {forkJoin} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class ProductService {
@@ -27,8 +26,6 @@ export class ProductService {
   }
 
   getById(productId) {
-
-
     return this.httpClient.get<Product>(`product/${productId}`)
       .pipe(map((product) => {
         const endDate = new Date(product.endTime);
