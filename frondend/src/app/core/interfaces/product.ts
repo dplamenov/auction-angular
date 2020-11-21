@@ -1,3 +1,5 @@
+import {Creator} from './creator';
+
 export interface Product {
   endString: string;
   image: string | null;
@@ -6,10 +8,7 @@ export interface Product {
   description: string;
   endTime: string;
   startPrice: string;
-  creator: {
-    _id: string,
-    email: string
-  };
+  creator: Creator;
   createTime: string;
   isOwner: boolean;
   bids: [];
