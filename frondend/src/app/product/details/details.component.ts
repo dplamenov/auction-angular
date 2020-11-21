@@ -1,7 +1,7 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductService} from '../product.service';
-import {Product} from '../product';
+import {Product} from '../../core/interfaces/product';
 import {environment} from '../../../environments/environment';
 import {UserService} from '../../user/user.service';
 

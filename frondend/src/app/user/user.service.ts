@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {User} from './user';
+import {User} from '../core/interfaces/user';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {tap, shareReplay} from 'rxjs/operators';
 

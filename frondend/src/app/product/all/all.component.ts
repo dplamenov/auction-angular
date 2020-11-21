@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Product} from '../product';
+import {Product} from '../../core/interfaces/product';
 import {ProductService} from '../product.service';
 import {takeLast} from 'rxjs/operators';
 
@@ -70,7 +70,7 @@ export class AllComponent implements OnInit {
   }
 
   pageEvent(event) {
-    this.skip = (event.pageIndex) * event.pageSize;
+    this.skip = event.pageIndex * event.pageSize;
     this.take = event.pageSize;
     this.pageIndex = event.pageIndex;
 
