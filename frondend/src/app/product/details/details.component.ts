@@ -4,6 +4,7 @@ import {ProductService} from '../product.service';
 import {Product} from '../../core/interfaces/product';
 import {environment} from '../../../environments/environment';
 import {UserService} from '../../user/user.service';
+import {switchMap, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-details',
@@ -22,15 +23,13 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.productId = params.productId;
-      this.productService.getById(this.productId).subscribe(product => {
-        const endDate = new Date(product.endTime);
-        product.image = `${environment.imagePath}${product._id}.png`;
-        product.endString = `${endDate.getDate().toString().padStart(2, '0')}.${endDate.getMonth().toString().padStart(2, '0')}.${endDate.getFullYear()}`;
+    this.route.params
+      .pipe(switchMap(({productId: id}) => this.productService.getById(id)))
+      .subscribe(product => {
         this.product = product;
+      }, _ => {
+        this.router.navigate(['/']);
       });
-    });
   }
 
   deleteHandler(product: Product) {

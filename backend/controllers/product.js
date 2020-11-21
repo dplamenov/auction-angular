@@ -93,7 +93,7 @@ function details(req, res, next) {
     .sort({priceValue: -1})
     .populate('creator', ['-password', '-__v'])
     .then(bids => {
-      product.priceValue = bids[0].priceValue;
+      product.priceValue = (bids[0] || {}).priceValue;
       if (isOwner) {
         product.bids = bids;
       }

@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Product} from '../core/interfaces/product';
 import {environment} from '../../environments/environment';
 import {map} from 'rxjs/operators';
+import {forkJoin} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class ProductService {
@@ -26,7 +27,15 @@ export class ProductService {
   }
 
   getById(productId) {
-    return this.httpClient.get<Product>(`product/${productId}`);
+
+
+    return this.httpClient.get<Product>(`product/${productId}`)
+      .pipe(map((product) => {
+        const endDate = new Date(product.endTime);
+        product.image = `${environment.imagePath}${product._id}.png`;
+        product.endString = `${endDate.getDate().toString().padStart(2, '0')}.${endDate.getMonth().toString().padStart(2, '0')}.${endDate.getFullYear()}`;
+        return product;
+      }));
   }
 
   delete(productId) {
@@ -39,7 +48,7 @@ export class ProductService {
     }));
   }
 
-  getProductCount(){
-    return this.httpClient.get<{count: number}>(`product/count`);
+  getProductCount() {
+    return this.httpClient.get<{ count: number }>(`product/count`);
   }
 }
