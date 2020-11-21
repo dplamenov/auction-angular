@@ -1,4 +1,5 @@
 import {Creator} from './creator';
+import {Bid} from './bid';
 
 export interface Product {
   endString: string;
@@ -11,5 +12,6 @@ export interface Product {
   creator: Creator;
   createTime: string;
   isOwner: boolean;
-  bids: [];
+  bids: Bid[];
+  priceValue: number;
 }
