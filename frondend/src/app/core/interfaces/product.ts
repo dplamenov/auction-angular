@@ -2,9 +2,9 @@ import {Creator} from './creator';
 import {Bid} from './bid';
 
 export interface Product {
+  _id: string;
   endString: string;
   image: string | null;
-  _id: string;
   title: string;
   description: string;
   endTime: string;
