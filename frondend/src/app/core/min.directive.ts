@@ -1,0 +1,22 @@
+import {Directive, Input} from '@angular/core';
+import {AbstractControl, NG_VALIDATORS, Validator} from '@angular/forms';
+
+@Directive({
+  selector: '[appMin]',
+  providers: [{provide: NG_VALIDATORS, useExisting: MinDirective, multi: true}]
+})
+export class MinDirective implements Validator {
+  @Input('appMin') min: number;
+
+  constructor() {
+    console.log('min validate ');
+  }
+
+  validate(control: AbstractControl): { [key: string]: any } | null {
+    const value = Number(control.value);
+    if (value <= this.min) {
+      return {bid: {value}};
+    }
+    return null;
+  }
+}

@@ -18,10 +18,11 @@
           <div id="place-bid" class="clearfix">
             <label for="bid" id="bid-label">Place your bid</label>
             <div id="place-bid-input-container">
-              <input type="number" class="form-control" id="bid" placeholder="Your bid" name="bid" ngModel #bidInput="ngModel"
+              <input class="form-control" id="bid" placeholder="Your bid" name="bid" ngModel
+                     #bidInput="ngModel"
+                     [appMin]="product.priceValue"
                      required/>
-<!--              {{bidInput | json}}-->
-              <span *ngIf="bidInput.invalid && bidInput.touched">Bid value must be number</span>
+              <span *ngIf="bidInput.invalid && bidInput.touched">Bid value must be number greater than {{product.priceValue | currency}}</span>
             </div>
             <div id="place-bid-btn-container">
               <button class="btn btn-primary pull-right" [disabled]="bidForm.invalid">Bid</button>
@@ -50,7 +51,7 @@
     </ng-container>
     <br>
   </ng-container>
-<!--  <p>{{product}}</p>-->
+  <!--  <p>{{product}}</p>-->
   <app-loader [isActive]="!product"></app-loader>
 </div>
 

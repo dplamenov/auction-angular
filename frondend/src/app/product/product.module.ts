@@ -24,6 +24,7 @@ import {ImageCropperModule} from 'ngx-image-cropper';
 import {DateAdapter as CustomDateAdapter} from '../core/date-adapter';
 import {SharedModule} from '../shared/shared.module';
 import {EditComponent} from './edit/edit.component';
+import {CoreModule} from '../core/core.module';
 
 @NgModule({
   declarations: [LatestComponent, CreateComponent, CardComponent, DetailsComponent, AllComponent, EditComponent],
@@ -41,7 +42,9 @@ import {EditComponent} from './edit/edit.component';
     ProductRoutingModule,
     MatPaginatorModule,
     SharedModule,
-    ImageCropperModule],
+    ImageCropperModule,
+    CoreModule
+  ],
   exports: [],
   providers: [
     {

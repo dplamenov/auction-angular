@@ -4,6 +4,7 @@ import {ProductService} from '../product.service';
 import {Product} from '../../core/interfaces/product';
 import {UserService} from '../../user/user.service';
 import {switchMap} from 'rxjs/operators';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-product-details',
