@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ProductService} from '../product.service';
 import {Product} from '../../core/interfaces/product';
 import {UserService} from '../../user/user.service';
-import {switchMap} from 'rxjs/operators';
+import {switchMap, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-details',
@@ -38,10 +38,16 @@ export class DetailsComponent implements OnInit {
       });
   }
 
-  bidHandler({value: {bid}}) {
+  bidHandler(form) {
+    const {value: {bid}} = form;
     this.productService.addBid(this.product._id, Number(bid))
-      .subscribe(bid => {
-        this.router.navigate([]);
+      .pipe(switchMap(() => {
+        return this.productService.getById(this.product._id);
+      }), tap(() => {
+        form.reset();
+      }))
+      .subscribe(product => {
+        this.product = product;
       });
   }
 }

@@ -105,8 +105,6 @@ function details(req, res, next) {
 function addBid(req, res, next) {
   const productId = req.productId;
 
-  console.log(req.body);
-
   Bid.create({
     priceValue: Number(req.body.priceValue),
     creator: getUserId(req),
