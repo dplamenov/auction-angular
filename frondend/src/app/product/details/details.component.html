@@ -20,9 +20,11 @@
             <div id="place-bid-input-container">
               <input class="form-control" id="bid" placeholder="Your bid" name="bid" ngModel
                      #bidInput="ngModel"
-                     [appMin]="product.priceValue"
+                     [appMin]="(product.priceValue ? product.priceValue : product.startPrice)"
                      required/>
-              <span *ngIf="bidInput.invalid">Bid value must be number greater than {{product.priceValue | currency}}</span>
+              <span *ngIf="bidInput.invalid">
+                Bid value must be number greater than {{(product.priceValue ? product.priceValue : product.startPrice) | currency}}
+              </span>
             </div>
             <div id="place-bid-btn-container">
               <button class="btn btn-primary pull-right" [disabled]="bidForm.invalid">Bid</button>
