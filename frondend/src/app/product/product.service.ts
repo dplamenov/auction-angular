@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Product} from '../core/interfaces/product';
 import {environment} from '../../environments/environment';
 import {map} from 'rxjs/operators';
+import {Bid} from '../core/interfaces/bid';
 
 @Injectable({providedIn: 'root'})
 export class ProductService {
@@ -48,4 +49,9 @@ export class ProductService {
   getProductCount() {
     return this.httpClient.get<{ count: number }>(`product/count`);
   }
+
+  addBid(productId, priceValue) {
+    return this.httpClient.post<Bid>(`product/${productId}/bid`, {priceValue});
+  }
+
 }

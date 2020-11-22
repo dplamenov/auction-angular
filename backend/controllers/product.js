@@ -94,7 +94,6 @@ function details(req, res, next) {
     .populate('creator', ['-password', '-__v'])
     .then(bids => {
       product.priceValue = (bids[0] || {}).priceValue;
-      console.log(bids);
       if (isOwner) {
         product.bids = bids;
       }
