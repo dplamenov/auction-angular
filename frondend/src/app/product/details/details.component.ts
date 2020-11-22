@@ -37,4 +37,8 @@ export class DetailsComponent implements OnInit {
         this.router.navigate(['/'], {queryParams: {notification: 'deleted'}});
       });
   }
+
+  bid(formData) {
+    console.log(formData.value);
+  }
 }

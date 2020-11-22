@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -30,6 +30,7 @@ import {EditComponent} from './edit/edit.component';
   imports: [
     CommonModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
     RouterModule,
     MatFormFieldModule,

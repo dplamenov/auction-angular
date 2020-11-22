@@ -5,22 +5,29 @@
     <p class="justify"><span class="bold">Title</span>:<span class="data">{{product.title}}</span></p>
     <p class="justify"><span class="bold">Description</span>:<span class="data">{{product.description}}</span></p>
     <p class="justify"><span class="bold">End date</span>:<span class="data">{{product.endString}}</span></p>
-    <p class="justify"><span class="bold">Start price</span>: <span class="data">{{product.startPrice | currency}}</span></p>
-    <p class="justify"><span class="bold">Current price</span>: <span class="data">{{product.priceValue | currency}}</span></p>
+    <p class="justify"><span class="bold">Start price</span>: <span
+      class="data">{{product.startPrice | currency}}</span></p>
+    <p class="justify"><span class="bold">Current price</span>: <span
+      class="data">{{product.priceValue | currency}}</span></p>
     <p class="justify"><span class="bold">Creator</span>:<span class="data"><a
       href="">{{product.creator.email}}</a>{{product.isOwner ? ' (You) ' : ''}}</span></p>
     <ng-container *ngIf="isLoggedIn">
       <ng-container *ngIf="!product.isOwner">
         <hr>
-        <div id="place-bid" class="clearfix">
-          <label for="bid" id="bid-label">Place your bid</label>
-          <div id="place-bid-input-container">
-            <input type="text" class="form-control" id="bid" placeholder="your bid"/>
+        <form #bidForm="ngForm" (ngSubmit)="bid(bidForm)">
+          <div id="place-bid" class="clearfix">
+            <label for="bid" id="bid-label">Place your bid</label>
+            <div id="place-bid-input-container">
+              <input type="number" class="form-control" id="bid" placeholder="Your bid" name="bid" ngModel #bidInput="ngModel"
+                     required/>
+<!--              {{bidInput | json}}-->
+              <span *ngIf="bidInput.invalid && bidInput.touched">Bid value must be number</span>
+            </div>
+            <div id="place-bid-btn-container">
+              <button class="btn btn-primary pull-right" [disabled]="bidForm.invalid">Bid</button>
+            </div>
           </div>
-          <div id="place-bid-btn-container">
-            <button class="btn btn-primary pull-right">Bid</button>
-          </div>
-        </div>
+        </form>
       </ng-container>
       <ng-container *ngIf="product.isOwner">
         <hr>
@@ -36,13 +43,14 @@
           <div class="bid" *ngFor="let bid of product.bids">
             <p>Bid value: {{bid.priceValue}}</p>
             <p>Bid from: {{bid.creator.email}}</p>
-<!--            <p>Date: {{bid.}}</p>-->
+            <!--            <p>Date: {{bid.}}</p>-->
           </div>
         </div>
       </ng-container>
     </ng-container>
     <br>
   </ng-container>
+<!--  <p>{{product}}</p>-->
   <app-loader [isActive]="!product"></app-loader>
 </div>
 

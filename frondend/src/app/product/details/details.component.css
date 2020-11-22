@@ -1,7 +1,7 @@
 #product-details {
-  /*position: absolute;*/
   text-align: center;
-  margin: 0 auto 100px;
+  margin: 0 auto 300px;
+  padding-bottom: 100px;
   width: 50%;
 }
 
