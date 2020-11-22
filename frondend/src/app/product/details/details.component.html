@@ -8,7 +8,7 @@
     <p class="justify"><span class="bold">Start price:</span><span
       class="data">{{product.startPrice | currency}}</span></p>
     <p class="justify"><span class="bold">Current price:</span><span
-      class="data">{{product.priceValue | currency}}</span></p>
+      class="data">{{(product.priceValue ? product.priceValue : product.startPrice) | currency}}</span></p>
     <p class="justify"><span class="bold">Creator:</span><span class="data"><a
       href="">{{product.creator.email}}</a>{{product.isOwner ? ' (You) ' : ''}}</span></p>
     <ng-container *ngIf="isLoggedIn">
