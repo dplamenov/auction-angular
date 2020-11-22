@@ -41,10 +41,6 @@ export class AllComponent implements OnInit {
         this.pageSize = this.pageSizeOptions.includes(Number(pageSize)) ? pageSize : this.pageSize;
       }
 
-      console.log(this.skip);
-      console.log(this.take);
-      console.log(this.pageSize);
-
       this.getProducts();
       this.getCountOfAllProducts();
 

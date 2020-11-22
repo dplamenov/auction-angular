@@ -24,7 +24,6 @@ export class DefaultInterceptor implements HttpInterceptor {
       headers: this.formDataEndpoints.includes(request.url) ? formDataHeader : jsonHeader,
       url: `${environment.apiServer}${request.url}`
     });
-    console.log(request);
     return next.handle(request);
   }
 }

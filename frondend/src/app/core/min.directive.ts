@@ -8,10 +8,6 @@ import {AbstractControl, NG_VALIDATORS, Validator} from '@angular/forms';
 export class MinDirective implements Validator {
   @Input('appMin') min: number;
 
-  constructor() {
-    console.log('min validate ');
-  }
-
   validate(control: AbstractControl): { [key: string]: any } | null {
     const value = Number(control.value);
     if (value <= this.min) {
