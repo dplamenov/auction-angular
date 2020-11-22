@@ -103,6 +103,10 @@ h2 {
     display: block;
     left: 30% !important;
   }
+
+  span.data {
+    margin-left: 0;
+  }
 }
 
 
