@@ -14,7 +14,7 @@
     <ng-container *ngIf="isLoggedIn">
       <ng-container *ngIf="!product.isOwner">
         <hr>
-        <form #bidForm="ngForm" (ngSubmit)="bid(bidForm)">
+        <form #bidForm="ngForm" (ngSubmit)="bidHandler(bidForm)">
           <div id="place-bid" class="clearfix">
             <label for="bid" id="bid-label">Place your bid</label>
             <div id="place-bid-input-container">
@@ -22,7 +22,7 @@
                      #bidInput="ngModel"
                      [appMin]="product.priceValue"
                      required/>
-              <span *ngIf="bidInput.invalid && bidInput.touched">Bid value must be number greater than {{product.priceValue | currency}}</span>
+              <span *ngIf="bidInput.invalid">Bid value must be number greater than {{product.priceValue | currency}}</span>
             </div>
             <div id="place-bid-btn-container">
               <button class="btn btn-primary pull-right" [disabled]="bidForm.invalid">Bid</button>
