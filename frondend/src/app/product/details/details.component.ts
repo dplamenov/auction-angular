@@ -39,6 +39,9 @@ export class DetailsComponent implements OnInit {
   }
 
   bidHandler({value: {bid}}) {
-    console.log(bid);
+    this.productService.addBid(this.product._id, Number(bid))
+      .subscribe(bid => {
+        this.router.navigate([]);
+      });
   }
 }

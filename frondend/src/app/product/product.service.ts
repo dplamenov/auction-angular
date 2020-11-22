@@ -4,6 +4,7 @@ import {Product} from '../core/interfaces/product';
 import {environment} from '../../environments/environment';
 import {map} from 'rxjs/operators';
 import {Bid} from '../core/interfaces/bid';
+import {Observable} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class ProductService {
@@ -50,7 +51,7 @@ export class ProductService {
     return this.httpClient.get<{ count: number }>(`product/count`);
   }
 
-  addBid(productId, priceValue) {
+  addBid(productId, priceValue): Observable<Bid> {
     return this.httpClient.post<Bid>(`product/${productId}/bid`, {priceValue});
   }
 

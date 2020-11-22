@@ -105,23 +105,17 @@ function details(req, res, next) {
 function addBid(req, res, next) {
   const productId = req.productId;
 
-  const form = formidable({f: true});
+  console.log(req.body);
 
-  form.parse(req, (err, fields, files) => {
-    if (err) {
-      next(err.message);
-    }
-
-    Bid.create({
-      priceValue: Number(fields.priceValue),
-      creator: getUserId(req),
-      product: productId
+  Bid.create({
+    priceValue: Number(req.body.priceValue),
+    creator: getUserId(req),
+    product: productId
+  })
+    .then(bid => {
+      res.json(bid);
     })
-      .then(bid => {
-        res.json(bid);
-      })
-      .catch(next);
-  });
+    .catch(next);
 }
 
 function getProductsCount(req, res, next) {
