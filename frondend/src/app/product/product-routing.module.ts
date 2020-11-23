@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {CreateComponent} from './create/create.component';
-import {AuthGuard} from '../core/auth.guard';
+import {AuthGuard} from '../core/guards/auth.guard';
 import {DetailsComponent} from './details/details.component';
 import {AllComponent} from './all/all.component';
 import {LatestComponent} from './latest/latest.component';
 import {EditComponent} from './edit/edit.component';
-import {OwnerGuard} from '../core/owner.guard';
+import {OwnerGuard} from '../core/guards/owner.guard';
 
 const routes: Routes = [
   {path: 'latest', component: LatestComponent},

@@ -17,7 +17,7 @@ import {CreateComponent} from './create/create.component';
 import {AllComponent} from './all/all.component';
 import {CardComponent} from './card/card.component';
 import {DetailsComponent} from './details/details.component';
-import {DefaultInterceptor} from '../default.interceptor';
+import {DefaultInterceptor} from '../core/default.interceptor';
 import {ProductRoutingModule} from './product-routing.module';
 
 import {ImageCropperModule} from 'ngx-image-cropper';
