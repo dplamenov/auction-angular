@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {CreateComponent} from './create/create.component';
-import {AuthGuard} from '../auth.guard';
+import {AuthGuard} from '../core/auth.guard';
 import {DetailsComponent} from './details/details.component';
 import {AllComponent} from './all/all.component';
 import {LatestComponent} from './latest/latest.component';

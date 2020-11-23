@@ -4,7 +4,7 @@ import {Product} from '../core/interfaces/product';
 import {environment} from '../../environments/environment';
 import {map} from 'rxjs/operators';
 import {Bid} from '../core/interfaces/bid';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class ProductService {
@@ -18,8 +18,6 @@ export class ProductService {
   }
 
   getLatestProducts() {
-    // return of([]);
-
     return this.httpClient.get<Product[]>(`product/latest`).pipe(map((products) => {
       return products.map(ProductService.addImagePath);
     }));
