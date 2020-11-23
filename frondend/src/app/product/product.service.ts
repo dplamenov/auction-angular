@@ -55,4 +55,8 @@ export class ProductService {
     return this.httpClient.post<Bid>(`product/${productId}/bid`, {priceValue});
   }
 
+  edit(productId, data): Observable<Product> {
+    return this.httpClient.patch<Product>(`product/${productId}`, data);
+  }
+
 }

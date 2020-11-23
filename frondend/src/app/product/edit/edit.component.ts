@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ProductService} from '../product.service';
 
 @Component({
   selector: 'app-edit',
@@ -7,12 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditComponent implements OnInit {
 
-  constructor() { }
+  constructor(private productService: ProductService) {
+  }
 
   ngOnInit(): void {
   }
 
-  editHandler(){
+  editHandler(editForm) {
+    const {form: {value: {title, description}}} = editForm;
 
+    // this.productService.edit
   }
 }
