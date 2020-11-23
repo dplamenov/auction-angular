@@ -8,9 +8,9 @@
     <input type="text" class="form-control" id="title" name="title" [ngModel]="product.title" required minlength="5"
            #titleInput="ngModel"/>
     <label for="description">Description</label>
-    <input type="text" class="form-control" id="description" name="description" [value]="product.description"
+    <textarea type="text" class="form-control" id="description" name="description" [value]="product.description"
            [ngModel]="product.description" required minlength="50"
-           #descriptionInput="ngModel"/>
+              #descriptionInput="ngModel" style="height: 150px"></textarea>
     <button class="btn btn-primary" [disabled]="editForm.invalid">Edit</button>
   </form>
 </ng-container>
