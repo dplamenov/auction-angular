@@ -18,6 +18,8 @@ export class ProductService {
   }
 
   getLatestProducts() {
+    // return of([]);
+
     return this.httpClient.get<Product[]>(`product/latest`).pipe(map((products) => {
       return products.map(ProductService.addImagePath);
     }));
@@ -42,8 +44,6 @@ export class ProductService {
   }
 
   getAll(skip = 0, take = 0) {
-    return of([]);
-
     return this.httpClient.get<Product[]>(`product?skip=${skip}&take=${take}`).pipe(map((products) => {
       return products.map(ProductService.addImagePath);
     }));
