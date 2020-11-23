@@ -6,15 +6,12 @@ import {
   HttpInterceptor, HttpHeaders
 } from '@angular/common/http';
 import {Observable} from 'rxjs';
-import { environment } from '../../environments/environment';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
 
   formDataEndpoints = ['product'];
-
-  constructor() {
-  }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const formDataHeader = new HttpHeaders();

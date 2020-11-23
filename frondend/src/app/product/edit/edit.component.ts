@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../product.service';
-import {ActivatedRoute} from '@angular/router';
-import {switchMap, delay} from 'rxjs/operators';
+import {ActivatedRoute, Router} from '@angular/router';
+import {switchMap} from 'rxjs/operators';
 import {Product} from '../../core/interfaces/product';
 
 @Component({
@@ -13,7 +13,7 @@ export class EditComponent implements OnInit {
 
   product: Product
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) {
+  constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -27,6 +27,10 @@ export class EditComponent implements OnInit {
   editHandler(editForm) {
     const {form: {value: {title, description}}} = editForm;
 
-    // this.productService.edit
+    this.productService.edit(this.product._id, {title, description})
+      .subscribe(product => {
+        this.product = product;
+        this.router.navigate(['/'], {queryParams: {notification: 'edited'}})
+      });
   }
 }

@@ -50,21 +50,13 @@ function deleteProduct(req, res, next) {
 function editProduct(req, res, next) {
   const id = req.productId;
 
-  const form = formidable({multiples: true});
+  const {title = '', description = ''} = req.body;
 
-  form.parse(req, (err, fields, files) => {
-    if (err) {
-      return next(err.message);
-    }
-
-    const {title = '', description = ''} = fields;
-
-    Product.findByIdAndUpdate(id, {$set: {title, description}})
-      .then(product => {
-        res.json(Object.assign({}, product.toObject(), {title, description}));
-      })
-      .catch(next);
-  });
+  Product.findByIdAndUpdate(id, {$set: {title, description}})
+    .then(product => {
+      res.json(Object.assign({}, product.toObject(), {title, description}));
+    })
+    .catch(next);
 }
 
 function latest(req, res, next) {
