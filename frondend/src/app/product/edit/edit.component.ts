@@ -12,4 +12,7 @@ export class EditComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  editHandler(){
+
+  }
 }
