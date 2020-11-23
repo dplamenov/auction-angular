@@ -47,7 +47,7 @@ export class ProductService {
     }));
   }
 
-  getProductCount() {
+  getProductCount(): Observable<{count: number}> {
     return this.httpClient.get<{ count: number }>(`product/count`);
   }
 

@@ -8,7 +8,7 @@
     <p *ngIf="file.invalid">Product image is required</p>
   </div>
   <input type="text" name="title" class="form-control my-form" placeholder="Title" [formControl]="title"/>
-  <textarea name="description" class="form-control my-form" placeholder="Description (Users will see only first 25 symbols at home page)"
+  <textarea name="description" class="form-control my-form" placeholder="Description (Users will see only first 25 symbols at home page)" style="height: 150px"
             [formControl]="description"></textarea>
   <div style="margin: 20px;"></div>
   <input type="number" name="startPrice" class="form-control my-form" placeholder="Start price"
