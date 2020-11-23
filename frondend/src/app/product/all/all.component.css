@@ -2,9 +2,10 @@
   max-height: 400px;
 }
 
-:host {
+:host div{
   text-align: center;
   margin: 0 auto 100px;
+  padding-bottom: 100px;
 }
 
 :host .card-body {

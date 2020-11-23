@@ -4,7 +4,7 @@ import {Product} from '../core/interfaces/product';
 import {environment} from '../../environments/environment';
 import {map} from 'rxjs/operators';
 import {Bid} from '../core/interfaces/bid';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class ProductService {
@@ -42,6 +42,8 @@ export class ProductService {
   }
 
   getAll(skip = 0, take = 0) {
+    return of([]);
+
     return this.httpClient.get<Product[]>(`product?skip=${skip}&take=${take}`).pipe(map((products) => {
       return products.map(ProductService.addImagePath);
     }));

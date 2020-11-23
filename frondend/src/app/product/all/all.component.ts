@@ -14,6 +14,7 @@ export class AllComponent implements OnInit {
   skip = 0;
   take = 5;
   products: Product[];
+  isProductsEmpty = true;
 
   paginatorLength: number;
   pageSizeOptions = [5, 10, 25, 100];
@@ -52,6 +53,7 @@ export class AllComponent implements OnInit {
     this.isLoading = true;
     this.productService.getAll(this.skip, this.take).subscribe(products => {
       this.products = products;
+      this.isProductsEmpty = products.length === 0;
       this.isLoading = false;
     });
   }
