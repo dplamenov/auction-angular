@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../product.service';
+import {ActivatedRoute} from '@angular/router';
+import {switchMap, delay} from 'rxjs/operators';
+import {Product} from '../../core/interfaces/product';
 
 @Component({
   selector: 'app-edit',
@@ -8,10 +11,17 @@ import {ProductService} from '../product.service';
 })
 export class EditComponent implements OnInit {
 
-  constructor(private productService: ProductService) {
+  product: Product
+
+  constructor(private productService: ProductService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.route.params
+      .pipe(switchMap(({productId}) => this.productService.getById(productId)))
+      .subscribe(product => {
+        this.product = product;
+      });
   }
 
   editHandler(editForm) {

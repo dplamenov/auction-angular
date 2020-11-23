@@ -1,12 +1,17 @@
-<h2>Edit product: 123</h2>
+<ng-container *ngIf="product">
+  <h2>Edit product: 123</h2>
 
-<form #editForm="ngForm" (ngSubmit)="editHandler(editForm)">
-  <p *ngIf="titleInput.invalid && titleInput.touched">Title must be at least 5 chars</p>
-  <p *ngIf="descriptionInput.invalid && descriptionInput.touched">Description must be at least 50 chars</p>
-  <label for="title">Title</label>
-  <input type="text" class="form-control" id="title" name="title" ngModel required minlength="5" #titleInput="ngModel"/>
-  <label for="description">Description</label>
-  <input type="text" class="form-control" id="description" name="description" ngModel required minlength="50"
-         #descriptionInput="ngModel"/>
-  <button class="btn btn-primary" [disabled]="editForm.invalid">Edit</button>
-</form>
+  <form #editForm="ngForm" (ngSubmit)="editHandler(editForm)">
+    <p *ngIf="titleInput.invalid && titleInput.touched">Title must be at least 5 chars</p>
+    <p *ngIf="descriptionInput.invalid && descriptionInput.touched">Description must be at least 50 chars</p>
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="title" name="title" [ngModel]="product.title" required minlength="5"
+           #titleInput="ngModel"/>
+    <label for="description">Description</label>
+    <input type="text" class="form-control" id="description" name="description" [value]="product.description"
+           [ngModel]="product.description" required minlength="50"
+           #descriptionInput="ngModel"/>
+    <button class="btn btn-primary" [disabled]="editForm.invalid">Edit</button>
+  </form>
+</ng-container>
+<app-loader [isActive]="!product"></app-loader>
