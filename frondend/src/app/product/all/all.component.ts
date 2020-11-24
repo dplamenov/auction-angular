@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../../shared/interfaces/product';
 import {ProductService} from '../product.service';
-import {takeLast} from 'rxjs/operators';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-all',
@@ -23,7 +23,8 @@ export class AllComponent implements OnInit {
 
   isLoading: boolean;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService, private router: Router) {
+  constructor(private route: ActivatedRoute, private productService: ProductService, private router: Router, private title: Title) {
+    title.setTitle('All products');
   }
 
   ngOnInit(): void {

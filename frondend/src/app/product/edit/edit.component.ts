@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../product.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {switchMap} from 'rxjs/operators';
+import {switchMap, tap} from 'rxjs/operators';
 import {Product} from '../../shared/interfaces/product';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-edit',
@@ -11,14 +12,16 @@ import {Product} from '../../shared/interfaces/product';
 })
 export class EditComponent implements OnInit {
 
-  product: Product
+  product: Product;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router) {
+  constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router, private title: Title) {
   }
 
   ngOnInit(): void {
     this.route.params
-      .pipe(switchMap(({productId}) => this.productService.getById(productId)))
+      .pipe(switchMap(({productId}) => this.productService.getById(productId)), tap((product) => {
+        this.title.setTitle(`Edit product ${product.title}`);
+      }))
       .subscribe(product => {
         this.product = product;
       });
@@ -30,7 +33,7 @@ export class EditComponent implements OnInit {
     this.productService.edit(this.product._id, {title, description})
       .subscribe(product => {
         this.product = product;
-        this.router.navigate(['/'], {queryParams: {notification: 'edited'}})
+        this.router.navigate(['/'], {queryParams: {notification: 'edited'}});
       });
   }
 }

@@ -4,6 +4,7 @@ import {ProductService} from '../product.service';
 import {Product} from '../../shared/interfaces/product';
 import {UserService} from '../../user/user.service';
 import {switchMap, tap} from 'rxjs/operators';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product-details',
@@ -18,7 +19,7 @@ export class DetailsComponent implements OnInit {
     return this.userService.isLogged;
   }
 
-  constructor(private route: ActivatedRoute, private productService: ProductService, private userService: UserService, private router: Router) {
+  constructor(private route: ActivatedRoute, private productService: ProductService, private userService: UserService, private router: Router, private title: Title) {
   }
 
   ngOnInit(): void {
@@ -26,6 +27,7 @@ export class DetailsComponent implements OnInit {
       .pipe(switchMap(({productId: id}) => this.productService.getById(id)))
       .subscribe(product => {
         this.product = product;
+        this.title.setTitle(`Product ${this.product.title}`);
       }, _ => {
         this.router.navigate(['/']);
       });

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {UserService} from '../user.service';
 import {Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -13,10 +14,11 @@ export class LoginComponent implements OnInit {
   email = new FormControl('', [Validators.email]);
   password = new FormControl('', [Validators.minLength(8)]);
 
-  errorMessage = '';
+  errorMessage: unknown = '';
   showServerErrorMessage = false;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router, private title: Title) {
+    title.setTitle('Login');
   }
 
   ngOnInit(): void {

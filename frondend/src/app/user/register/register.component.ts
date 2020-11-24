@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {UserService} from '../user.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register',
@@ -15,12 +16,14 @@ export class RegisterComponent implements OnInit {
   repeatPassword = new FormControl('', []);
 
   showServerErrorMessage = false;
-  errorMessage = '';
+  errorMessage: unknown = '';
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router, private title: Title) {
+    title.setTitle('Register');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   register(): void {
     const email = this.email.value;

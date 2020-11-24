@@ -3,6 +3,7 @@ import {ProductService} from '../product.service';
 import {FormControl, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ImageCroppedEvent} from 'ngx-image-cropper';
+import {Title} from '@angular/platform-browser';
 
 function dataURItoBlob(dataURI) {
   dataURI = dataURI.replace(/^data:image\/(png|jpg);base64,/, "");
@@ -35,7 +36,8 @@ export class CreateComponent {
   imageChangedEvent = '';
   croppedImage: any = '';
 
-  constructor(private productService: ProductService, private router: Router) {
+  constructor(private productService: ProductService, private router: Router, private titleService: Title) {
+    titleService.setTitle('Create product');
   }
 
   create() {

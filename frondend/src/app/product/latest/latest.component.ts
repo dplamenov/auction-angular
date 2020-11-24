@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Product} from '../../shared/interfaces/product';
 import {ProductService} from '../product.service';
 import {environment} from '../../../environments/environment';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-latest',
@@ -14,8 +15,8 @@ export class LatestComponent implements OnInit {
   isProductsEmpty = true;
   private imagePath: string;
 
-  constructor(private productService: ProductService) {
-
+  constructor(private productService: ProductService, private title: Title) {
+    title.setTitle('Latest products');
   }
 
   ngOnInit(): void {
