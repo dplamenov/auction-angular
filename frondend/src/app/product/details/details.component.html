@@ -46,7 +46,7 @@
           <div class="bid" *ngFor="let bid of product.bids">
             <p>Bid value: {{bid.priceValue}}</p>
             <p>Bid from: {{bid.creator.email}}</p>
-            <!--            <p>Date: {{bid.}}</p>-->
+            {{bid | json}}
           </div>
         </div>
       </ng-container>
