@@ -1,4 +1,4 @@
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, Title} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 
@@ -9,6 +9,7 @@ import {UserModule} from './user/user.module';
 import {ProductModule} from './product/product.module';
 import {CoreModule} from './core/core.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CustomTitleService} from './core/custom-title.service';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     CoreModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{provide: Title, useClass: CustomTitleService}],
   exports: [],
   bootstrap: [AppComponent]
 })
