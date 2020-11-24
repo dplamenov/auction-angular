@@ -11,23 +11,23 @@ export class ProductService {
   constructor(private httpClient: HttpClient) {
   }
 
-  static addImagePath(product) {
+  static addImagePath(product: Product): Product {
     const {imagePath} = environment;
     product.image = `${imagePath}${product._id}.png`;
     return product;
   }
 
-  getLatestProducts() {
+  getLatestProducts(): Observable<Product[]> {
     return this.httpClient.get<Product[]>(`product/latest`).pipe(map((products) => {
       return products.map(ProductService.addImagePath);
     }));
   }
 
-  create(product) {
+  create(product: FormData): Observable<Product> {
     return this.httpClient.post<Product>('product', product);
   }
 
-  getById(productId) {
+  getById(productId: string): Observable<Product> {
     return this.httpClient.get<Product>(`product/${productId}`)
       .pipe(map((product) => {
         const endDate = new Date(product.endTime);
@@ -37,11 +37,11 @@ export class ProductService {
       }));
   }
 
-  delete(productId) {
+  delete(productId: string): Observable<Product> {
     return this.httpClient.delete<Product>(`product/${productId}`);
   }
 
-  getAll(skip = 0, take = 0) {
+  getAll(skip = 0, take = 0): Observable<Product[]> {
     return this.httpClient.get<Product[]>(`product?skip=${skip}&take=${take}`).pipe(map((products) => {
       return products.map(ProductService.addImagePath);
     }));
@@ -51,11 +51,11 @@ export class ProductService {
     return this.httpClient.get<{ count: number }>(`product/count`);
   }
 
-  addBid(productId, priceValue): Observable<Bid> {
+  addBid(productId: string, priceValue): Observable<Bid> {
     return this.httpClient.post<Bid>(`product/${productId}/bid`, {priceValue});
   }
 
-  edit(productId, data): Observable<Product> {
+  edit(productId: string, data): Observable<Product> {
     return this.httpClient.patch<Product>(`product/${productId}`, data);
   }
 
