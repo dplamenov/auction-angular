@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductService} from '../product.service';
-import {Product} from '../../core/interfaces/product';
+import {Product} from '../../shared/interfaces/product';
 import {UserService} from '../../user/user.service';
 import {switchMap, tap} from 'rxjs/operators';
 

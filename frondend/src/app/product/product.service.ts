@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Product} from '../core/interfaces/product';
+import {Product} from '../shared/interfaces/product';
 import {environment} from '../../environments/environment';
 import {map} from 'rxjs/operators';
-import {Bid} from '../core/interfaces/bid';
+import {Bid} from '../shared/interfaces/bid';
 import {Observable} from 'rxjs';
 
 @Injectable({providedIn: 'root'})

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../product.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {switchMap} from 'rxjs/operators';
-import {Product} from '../../core/interfaces/product';
+import {Product} from '../../shared/interfaces/product';
 
 @Component({
   selector: 'app-edit',
