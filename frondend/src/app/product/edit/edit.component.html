@@ -1,6 +1,5 @@
 <ng-container *ngIf="product">
-  <h2>Edit product: 123</h2>
-
+  <h2>Edit product: {{product.title}}</h2>
   <form #editForm="ngForm" (ngSubmit)="editHandler(editForm)">
     <p *ngIf="titleInput.invalid && titleInput.touched">Title must be at least 5 chars</p>
     <p *ngIf="descriptionInput.invalid && descriptionInput.touched">Description must be at least 50 chars</p>
