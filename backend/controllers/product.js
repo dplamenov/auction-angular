@@ -97,15 +97,23 @@ function details(req, res, next) {
 function addBid(req, res, next) {
   const productId = req.productId;
 
-  Bid.create({
-    priceValue: Number(req.body.priceValue),
-    creator: getUserId(req),
-    product: productId
-  })
+  Bid.findOne({product: productId.toString()})
+    .sort({priceValue: -1})
     .then(bid => {
-      res.json(bid);
-    })
-    .catch(next);
+      if(req.body.priceValue <= bid.priceValue){
+        return next('bid priceValue must be larger than current product price');
+      }
+
+      Bid.create({
+        priceValue: Number(req.body.priceValue),
+        creator: getUserId(req),
+        product: productId
+      })
+        .then(bid => {
+          res.json(bid);
+        })
+        .catch(next);
+    });
 }
 
 function getProductsCount(req, res, next) {
