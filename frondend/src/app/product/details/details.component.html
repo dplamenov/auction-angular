@@ -43,11 +43,12 @@
         <div id="all-bids">
           <h3>All bids</h3>
           <p id="no-bids" *ngIf="product.bids.length === 0">no bids</p>
-          <div class="bid" *ngFor="let bid of product.bids">
+          <div class="bid" *ngFor="let bid of product.bids.slice(0, bidsDisplayCount)">
             <p>Bid value: {{bid.priceValue}}</p>
             <p>Bid from: {{bid.creator.email}}</p>
             {{bid | json}}
           </div>
+          <button class="btn btn-primary" id="bid-show-more" (click)="showMoreBids()" *ngIf="isShowMoreBtnActive">Show more</button>
         </div>
       </ng-container>
     </ng-container>
