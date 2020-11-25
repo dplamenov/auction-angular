@@ -100,7 +100,8 @@ function addBid(req, res, next) {
   Bid.findOne({product: productId.toString()})
     .sort({priceValue: -1})
     .then(bid => {
-      if(req.body.priceValue <= bid.priceValue){
+      const latestPriceValue = bid ? bid.priceValue : req.product.startPrice;
+      if (req.body.priceValue <= latestPriceValue) {
         return next('bid priceValue must be larger than current product price');
       }
 
