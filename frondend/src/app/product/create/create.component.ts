@@ -22,8 +22,8 @@ function dataURItoBlob(dataURI) {
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent {
-  title = new FormControl('', [Validators.minLength(3)]);
-  description = new FormControl('', [Validators.minLength(10)]);
+  title = new FormControl('', [Validators.minLength(5)]);
+  description = new FormControl('', [Validators.minLength(50)]);
   startPrice = new FormControl('', [Validators.pattern('^[0-9]*$'), Validators.required]);
   endDate = new FormControl('', [Validators.required]);
   file = new FormControl('', Validators.required);
