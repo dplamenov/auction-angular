@@ -21,7 +21,7 @@ app.use(function (err, req, res, next) {
     } else if (Array.isArray(err)) {
       return err;
     }
-    console.log(err);
+
     return Object.values(err.errors).map(e => e.message); //mongoose error
   }
 

@@ -25,7 +25,12 @@ function register(req, res, next) {
     .then(user => {
       res.json({_id: user._id, email: user.email});
     })
-    .catch(next);
+    .catch((err) => {
+      if (err.name === 'MongoError' && err.code === 11000) {
+        return res.status(422).send({ errors: ['User already exist'] });
+      }
+      next();
+    });
 }
 
 function logout(req, res, next) {

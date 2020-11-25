@@ -8,6 +8,7 @@ const {pattern: emailPattern} = require('./validate/userEmail');
 const UserSchema = mongoose.Schema({
     email: {
         type: String,
+        unique: true,
         validate: {
             validator: (v) => {
                 return emailPattern.test(v);
