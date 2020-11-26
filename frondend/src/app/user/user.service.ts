@@ -37,4 +37,8 @@ export class UserService {
       this.user = null;
     }));
   }
+
+  profile(){
+    return this.http.get('user/profile');
+  }
 }
