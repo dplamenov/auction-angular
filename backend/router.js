@@ -26,7 +26,7 @@ router.get('/user/auth', (req, res) => {
 router.post('/user/login', controllers.user.login);
 router.post('/user/register', controllers.user.register);
 router.get('/user/logout', auth, controllers.user.logout);
-
+router.get('/user/profile', auth, controllers.user.profile);
 router.get('/product', controllers.product.allProducts);
 router.get('/product/count', controllers.product.getProductsCount);
 router.get('/product/latest', controllers.product.latest);

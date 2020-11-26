@@ -2,6 +2,8 @@ const User = require('../models/user');
 const TokenBlacklist = require('../models/tokenBlacklist');
 const auth = require('../auth');
 const {authCookie} = require('../config');
+const Product = require('../models/product');
+const Bid = require('../models/bid');
 
 function login(req, res, next) {
   const {email, password} = req.body;
@@ -27,7 +29,7 @@ function register(req, res, next) {
     })
     .catch((err) => {
       if (err.name === 'MongoError' && err.code === 11000) {
-        return res.status(422).send({ errors: ['User already exist'] });
+        return res.status(422).send({errors: ['User already exist']});
       }
       next();
     });
@@ -41,8 +43,38 @@ function logout(req, res, next) {
   }).catch(next);
 }
 
+function profile(req, res, next) {
+  const result = {
+    user: {email: req.user.email, _id: req.user._id},
+  }
+
+  const creator = {creator: req.user._id};
+
+  // Bid.find()
+  //   .populate({path: 'product', match: { creator: {$eq: req.user._id} }})
+  //   .then(bids => bids.filter(bid => bid.product !== null))
+  //   .then(bids => {
+  //     return
+  //   })
+  //   .then(bids => {
+  //     console.log(bids);
+  //   });
+
+  Promise.all([Bid.find(creator), Product.find(creator)])
+    .then(async ([bids, products]) => {
+      result.products = await Promise.all(products.map(async (product) => {
+        const priceValue = (await Bid.findOne({product: product.id}).sort({priceValue: -1})).priceValue;
+        return {...product._doc, priceValue};
+      }));
+      result.bids = bids;
+      res.json(result);
+    });
+
+}
+
 module.exports = {
   login,
   register,
-  logout
+  logout,
+  profile
 };
