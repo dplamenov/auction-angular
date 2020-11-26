@@ -1,7 +1,10 @@
 <h2>Profile page</h2>
-<div class="row">
+<app-loader [isActive]="!profileData"></app-loader>
+<pre>{{profileData | json}}</pre>
+<div class="row" *ngIf="profileData">
   <div class="col">
     <h3>Profile data</h3>
+    <p>Email: {{profileData.user.email}}</p>
   </div>
   <div class="col">
     <h3>Your bids</h3>
@@ -12,3 +15,4 @@
     <h3>Your products</h3>
   </div>
 </div>
+
