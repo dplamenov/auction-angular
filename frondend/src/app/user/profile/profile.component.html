@@ -1,22 +1,27 @@
 <h2>Profile page</h2>
 <app-loader [isActive]="!profileData"></app-loader>
-<pre>{{profileData | json}}</pre>
+<!--<pre>{{profileData | json}}</pre>-->
 <div class="row" *ngIf="profileData">
   <div class="col">
     <h3>Profile data</h3>
     <p>Email: {{profileData.user.email}}</p>
+    <!--    <button class="btn-danger btn">Delete account</button>-->
   </div>
   <div class="col">
     <h3>Your bids</h3>
     <div class="bid" *ngFor="let bid of profileData.bids">
-      <p><a [routerLink]="['/product', bid.product._id]">Product: {{bid.product.title}}</a></p>
+      <h4><a [routerLink]="['/product', bid.product._id]">Product: {{bid.product.title}}</a></h4>
       <p>Bid value: {{bid.priceValue | currency}}</p>
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row second-row">
   <div class="col">
     <h3>Your products</h3>
+    <div class="product" *ngFor="let product of profileData.products">
+      <h4 style="display: inline"><a [routerLink]="['/product', product._id]">{{product.title}}</a></h4>
+      <p style="display:inline;margin-left: 10px">End date: {{product.endTime | date}}</p>
+      <p>{{product.description | shorten:100}}</p>
+    </div>
   </div>
 </div>
-
