@@ -6,6 +6,11 @@
   padding-bottom: 100px;
 }
 
+h2{
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
 #create-button {
   top: 330px;
 }

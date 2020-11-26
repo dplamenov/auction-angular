@@ -13,6 +13,11 @@
   transition: transform .3s;
 }
 
+h2 {
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
 .bold {
   font-weight: bold;
 }
