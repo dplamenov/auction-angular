@@ -2,8 +2,8 @@
   <h2>Add product for sell</h2>
   <p *ngIf="showServerErrorMessage">{{errorMessage}}</p>
   <div *ngIf="!showServerErrorMessage">
-    <p *ngIf="title.invalid">Title must be at least 3 chars</p>
-    <p *ngIf="description.invalid">Description must be at least 10 chars</p>
+    <p *ngIf="title.invalid">Title must be at least 5 chars</p>
+    <p *ngIf="description.invalid">Description must be at least 50 chars</p>
     <p *ngIf="startPrice.invalid && startPrice.touched">Start price must be a number</p>
     <p *ngIf="file.invalid">Product image is required</p>
   </div>
