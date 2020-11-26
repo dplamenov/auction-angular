@@ -50,20 +50,11 @@ function profile(req, res, next) {
 
   const creator = {creator: req.user._id};
 
-  // Bid.find()
-  //   .populate({path: 'product', match: { creator: {$eq: req.user._id} }})
-  //   .then(bids => bids.filter(bid => bid.product !== null))
-  //   .then(bids => {
-  //     return
-  //   })
-  //   .then(bids => {
-  //     console.log(bids);
-  //   });
-
   Promise.all([Bid.find(creator), Product.find(creator)])
     .then(async ([bids, products]) => {
       result.products = await Promise.all(products.map(async (product) => {
-        const priceValue = (await Bid.findOne({product: product.id}).sort({priceValue: -1})).priceValue;
+        const latestBid = await Bid.findOne({product: product.id}).sort({priceValue: -1});
+        const priceValue = latestBid ? latestBid.priceValue : product.startPrice;
         return {...product._doc, priceValue};
       }));
       result.bids = bids;
