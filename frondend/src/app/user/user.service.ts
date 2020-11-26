@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {User} from '../shared/interfaces/user';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {tap, shareReplay} from 'rxjs/operators';
+import {ProfileData} from '../shared/interfaces/profile-data';
+import {Observable} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class UserService {
@@ -38,7 +40,7 @@ export class UserService {
     }));
   }
 
-  profile(){
-    return this.http.get('user/profile');
+  profile(): Observable<ProfileData>{
+    return this.http.get<ProfileData>('user/profile');
   }
 }

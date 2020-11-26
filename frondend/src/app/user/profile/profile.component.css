@@ -7,3 +7,11 @@ h2 {
   margin: 0 auto 100px;
   width: 50%;
 }
+
+.bid {
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.bid:last-child {
+  border: 0;
+}

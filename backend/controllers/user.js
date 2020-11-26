@@ -50,7 +50,7 @@ function profile(req, res, next) {
 
   const creator = {creator: req.user._id};
 
-  Promise.all([Bid.find(creator), Product.find(creator)])
+  Promise.all([Bid.find(creator).populate('product'), Product.find(creator)])
     .then(async ([bids, products]) => {
       result.products = await Promise.all(products.map(async (product) => {
         const latestBid = await Bid.findOne({product: product.id}).sort({priceValue: -1});

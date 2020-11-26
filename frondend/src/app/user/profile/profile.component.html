@@ -8,6 +8,10 @@
   </div>
   <div class="col">
     <h3>Your bids</h3>
+    <div class="bid" *ngFor="let bid of profileData.bids">
+      <p><a [routerLink]="['/product', bid.product._id]">Product: {{bid.product.title}}</a></p>
+      <p>Bid value: {{bid.priceValue | currency}}</p>
+    </div>
   </div>
 </div>
 <div class="row">
