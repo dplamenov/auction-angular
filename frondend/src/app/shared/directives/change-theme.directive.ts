@@ -1,4 +1,4 @@
-import {Directive, HostBinding, HostListener, Inject, Input} from '@angular/core';
+import {Directive, HostListener, Inject} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 
 @Directive({
@@ -7,7 +7,7 @@ import {DOCUMENT} from '@angular/common';
 })
 export class ChangeThemeDirective {
 
-  isToggleChecked: boolean = true;
+  isToggleChecked: boolean = false;
 
   constructor(@Inject(DOCUMENT) private document) {
     const currentTheme = localStorage.getItem('theme') || 'light-mode';
