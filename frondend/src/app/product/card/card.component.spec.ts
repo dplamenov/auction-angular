@@ -18,7 +18,7 @@ describe('ProductCardComponent', () => {
     component = fixture.componentInstance;
 
     component.product = {
-      _id: '5fa92651df489d0ddf552342',
+      _id: '5fa92651df489d0ddf552342', bids: [], priceValue: 0,
       title: 'product title1 4 1525 15 152',
       description: 'test',
       endTime: '1603014589212',

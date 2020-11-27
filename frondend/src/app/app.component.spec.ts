@@ -23,13 +23,13 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`isLoggedIn should be false when app starting`, () => {
+  it(`notification should be empty`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    // expect(app.).toEqual(false);
+    expect(app.notification).toEqual(undefined);
   });
 
-  it('should have router-outlet', () => {
+    it('should have router-outlet', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;

@@ -9,7 +9,7 @@ export interface Product {
   description: string;
   endTime: string;
   startPrice: string;
-  creator: Creator;
+  creator: Creator | string;
   createTime: string;
   isOwner: boolean;
   bids: Bid[];
