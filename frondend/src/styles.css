@@ -10,10 +10,13 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.dark-mode {
-  --header-bg-color: #72939f
-}
 
 .light-mode {
-  --header-bg-color: #77bbd4
+  --header-bg-color: #77bbd4;
+  --footer-bg-color: #77bbd4;
+}
+
+.dark-mode {
+  --header-bg-color: #72939f;
+  --footer-bg-color: #72939f;
 }
