@@ -2,7 +2,7 @@ footer {
   position: fixed;
   width: 100%;
   background-color: var(--footer-bg-color);
-  color: white;
+  color: var(--footer-text-color);
   bottom: 0;
   margin-top: 30px;
   text-align: center;

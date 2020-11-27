@@ -13,9 +13,13 @@ body {
 .light-mode {
   --header-bg-color: #77bbd4;
   --footer-bg-color: #77bbd4;
+  --header-text-color: black;
+  --footer-text-color: black;
 }
 
 .dark-mode {
   --header-bg-color: #72939f;
   --footer-bg-color: #72939f;
+  --header-text-color: white;
+  --footer-text-color: white;
 }
