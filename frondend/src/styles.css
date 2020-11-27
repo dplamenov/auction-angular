@@ -10,8 +10,10 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-:root {
-  /*--header-bg-color: #77bbd4*/
+.dark-mode {
   --header-bg-color: #72939f
 }
 
+.light-mode {
+  --header-bg-color: #77bbd4
+}

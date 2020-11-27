@@ -25,8 +25,12 @@ export class AppComponent implements OnInit {
       this.notification = params.notification;
       this.setTimeoutId = setTimeout(() => {
         this.notification = null;
-        this.router.navigate([], {relativeTo: this.route, queryParams: {notification: null}, queryParamsHandling: 'merge'})
+        this.router.navigate([], {relativeTo: this.route, queryParams: {notification: null}, queryParamsHandling: 'merge'});
       }, 3000);
     });
+  }
+
+  themeChangeHandler(data) {
+    console.log(data);
   }
 }
