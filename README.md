@@ -17,7 +17,7 @@ Create new product
 Edit and delete the products created by him See profile page Set bid
 
 # Frond-end
-Angular
+Angular 10.0.14
 
 # Back-end
-Express.js rest api
+Express REST API
