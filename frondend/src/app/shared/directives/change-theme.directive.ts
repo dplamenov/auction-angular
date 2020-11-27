@@ -1,17 +1,27 @@
-import {Directive, HostListener, Inject} from '@angular/core';
+import {Directive, HostBinding, HostListener, Inject, Input} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 
 @Directive({
-  selector: '[appChangeTheme]'
+  selector: '[appChangeTheme]',
+  exportAs: 'appChangeTheme'
 })
 export class ChangeThemeDirective {
 
+  isToggleChecked: boolean = true;
+
   constructor(@Inject(DOCUMENT) private document) {
-    this.document.documentElement.classList.toggle('light-mode');
+    const currentTheme = localStorage.getItem('theme') || 'light-mode';
+    this.isToggleChecked = currentTheme === 'dark-mode';
+    this.document.documentElement.classList.toggle(currentTheme);
   }
 
   @HostListener('change', ['$event'])
-  change(data){
+  change({checked}) {
+    if (checked) {
+      localStorage.setItem('theme', 'dark-mode');
+    } else {
+      localStorage.setItem('theme', 'light-mode');
+    }
     this.document.documentElement.classList.toggle('dark-mode');
     this.document.documentElement.classList.toggle('light-mode');
   }
