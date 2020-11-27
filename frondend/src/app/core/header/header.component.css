@@ -1,7 +1,7 @@
 header {
   position: relative;
   height: 300px;
-  background-color: #77bbd4;
+  background-color: var(--header-bg-color);
 }
 
 header h1 {
@@ -27,10 +27,21 @@ header h1 {
   color: #77bbd4;
 }
 
+.change-theme {
+  position: absolute;
+  bottom: 1%;
+  right: 1%;
+  color: white;
+}
+
+.mat-slide-toggle-bar {
+  background-color: #3f51b5;
+}
+
 .notification p {
   margin: 0;
 }
 
 nav > a {
-  text-transform: uppercase ;
+  text-transform: uppercase;
 }

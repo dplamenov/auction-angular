@@ -3,7 +3,7 @@
     <p>{{notification}}</p>
   </div>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-<!--    <img src="assets/favicon.ico" style="width: 50px">-->
+    <!--    <img src="assets/favicon.ico" style="width: 50px">-->
     <a class="navbar-brand" routerLink="/">Online auction system</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -41,4 +41,8 @@
     </div>
   </nav>
   <h1>Welcome to auction system</h1>
+  <div class="change-theme">
+   Dark mode
+  <mat-slide-toggle color="primary" (change)="changeThemeHandler($event)"></mat-slide-toggle>
+  </div>
 </header>

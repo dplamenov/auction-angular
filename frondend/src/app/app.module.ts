@@ -11,7 +11,6 @@ import {CoreModule} from './core/core.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CustomTitleService} from './core/custom-title.service';
 
-
 @NgModule({
   declarations: [
     AppComponent

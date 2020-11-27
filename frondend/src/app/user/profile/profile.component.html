@@ -15,7 +15,7 @@
     </div>
   </div>
 </div>
-<div class="row second-row">
+<div class="row second-row" *ngIf="profileData">
   <div class="col">
     <h3>Your products</h3>
     <div class="product" *ngFor="let product of profileData.products">

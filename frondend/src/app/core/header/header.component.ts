@@ -27,4 +27,8 @@ export class HeaderComponent implements OnInit {
   logoutHandler(){
     this.logoutEvent.emit({logout: true});
   }
+
+  changeThemeHandler(data){
+    console.log(data);
+  }
 }
