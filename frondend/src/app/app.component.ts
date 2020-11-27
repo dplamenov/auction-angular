@@ -30,7 +30,4 @@ export class AppComponent implements OnInit {
     });
   }
 
-  themeChangeHandler(data) {
-    console.log(data);
-  }
 }
