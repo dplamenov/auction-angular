@@ -1,13 +1,13 @@
 # Online Auction System
 Angular project Online Auction(Bid) System
 
-Modules:
+<h2>Modules</h2>
 
 - Core module - contains 'not found' component 
 - Product module - contains components that are similar to product 
 - User module - contains 'login', 'register' and 'profile' component 
 
-Visitors:
+ Visitors:
 
 Can see the latest products that are added. Can view details page of each product.
 
