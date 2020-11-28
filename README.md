@@ -7,14 +7,17 @@ Angular project Online Auction System
 - Product module - contains components that are similar to product
 - User module - contains 'login', 'register' and 'profile' component 
 
-<h3>Visitors</h3>
+<h2>Functionality</h2>
 
+<h3>Visitors</h3>
 Can see the latest products that are added. Can view details page of each product.
 
 <h3>Logged-in users</h3>
-
 Create new a product.
 Edit and delete the products created by him. See profile page. Set bid.
+
+<h2>Features</h2>
+1. Dark and light mode. Store current theme at localStorage.
 
 # Frond-end
 Angular 10.0.14
