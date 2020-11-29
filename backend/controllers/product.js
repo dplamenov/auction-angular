@@ -132,9 +132,8 @@ function createComment(req, res, next) {
     .then(comment => {
       product.comments.push(comment._id);
       product.save();
-      res.json({comment});
+      res.json(comment);
     })
-
 }
 
 module.exports = {

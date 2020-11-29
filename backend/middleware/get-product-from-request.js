@@ -11,6 +11,7 @@ function getProductFromRequest(req, res, next) {
 
   Product.findById(id)
     .populate('creator', ['-password', '-__v'],)
+    .populate('comments')
     .then(product => {
       if (!product) {
         return next('no that product');

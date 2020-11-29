@@ -70,6 +70,10 @@ h2 {
   color: gray;
 }
 
+.comments {
+  text-align: left;
+}
+
 .bid {
   width: 100%;
   text-align: left;
