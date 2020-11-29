@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {User} from '../shared/interfaces/user';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {tap, shareReplay} from 'rxjs/operators';
 import {ProfileData} from '../shared/interfaces/profile-data';
 import {Observable} from 'rxjs';

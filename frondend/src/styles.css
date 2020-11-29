@@ -8,7 +8,9 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  transition: background .3s ease;
 }
+
 
 .light-mode {
   --header-bg-color: #77bbd4;
