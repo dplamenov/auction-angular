@@ -13,6 +13,14 @@
       href="">{{product.creator.email}}</a>{{product.isOwner ? ' (You) ' : ''}}</span></p>
     <hr>
     <h3>Comments</h3>
+    <div class="post-comment" *ngIf="!product.isOwner">
+      <form #commentForm="ngForm" (ngSubmit)="commentHandler(commentForm)">
+        <label for="post-comment-area">Write your comment:</label>
+        <p style="margin: 0" *ngIf="commentInput.touched && commentInput.invalid">Comment must be at least 20 chars.</p>
+        <textarea class="form-control" id="post-comment-area" name="comment" #commentInput="ngModel" ngModel minlength="20"></textarea>
+        <button class="btn btn-primary">Post</button>
+      </form>
+    </div>
     <div class="comments">
       <div class="comment" *ngFor="let comment of product.comments">
         <p>Created at: {{comment.createTime | date}}</p>

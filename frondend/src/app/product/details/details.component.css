@@ -70,8 +70,14 @@ h2 {
   color: gray;
 }
 
-.comments {
+.comments, .post-comment {
   text-align: left;
+  margin-bottom: 20px;
+}
+
+#post-comment-area {
+  height: 100px;
+  margin-bottom: 10px;
 }
 
 .bid {

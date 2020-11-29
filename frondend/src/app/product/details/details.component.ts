@@ -61,4 +61,9 @@ export class DetailsComponent implements OnInit {
     this.bidsDisplayCount += 5;
     this.isShowMoreBtnActive = this.product.bids.length > this.bidsDisplayCount;
   }
+
+  commentHandler(form) {
+    const {value: {comment}} = form;
+    console.log(comment);
+  }
 }
