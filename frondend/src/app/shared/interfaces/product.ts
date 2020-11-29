@@ -14,4 +14,5 @@ export interface Product {
   isOwner: boolean;
   bids: Bid[];
   priceValue: number;
+  comments: any[]
 }

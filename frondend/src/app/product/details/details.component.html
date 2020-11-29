@@ -11,6 +11,11 @@
       class="data">{{(product.priceValue ? product.priceValue : product.startPrice) | currency}}</span></p>
     <p class="justify"><span class="bold">Creator:</span><span class="data"><a
       href="">{{product.creator.email}}</a>{{product.isOwner ? ' (You) ' : ''}}</span></p>
+    <div class="comments">
+      <div class="comment" *ngFor="let comment of product.comments">
+        {{comment.body}}
+      </div>
+    </div>
     <ng-container *ngIf="isLoggedIn">
       <ng-container *ngIf="!product.isOwner">
         <hr>

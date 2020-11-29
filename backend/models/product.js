@@ -26,7 +26,7 @@ const ProductSchema = mongoose.Schema({
     type: Number,
     required: true
   },
-  // comments: [{}]
+  comments: [{type: mongoose.Types.ObjectId, ref: 'Comment'}]
 });
 
 module.exports = mongoose.model('Product', ProductSchema);

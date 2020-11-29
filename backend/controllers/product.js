@@ -3,6 +3,7 @@ const path = require('path');
 const formidable = require('formidable');
 const Product = require('../models/product');
 const Bid = require('../models/bid');
+const Comment = require('../models/comment');
 const {getUserId} = require('../auth');
 const {latestProductCount} = require('../config');
 
@@ -124,6 +125,15 @@ function getProductsCount(req, res, next) {
 }
 
 function createComment(req, res, next) {
+  const {product} = req;
+  const {comment} = req.body;
+
+  Comment.create({body: comment})
+    .then(comment => {
+      product.comments.push(comment._id);
+      product.save();
+      res.json({comment});
+    })
 
 }
 
@@ -135,5 +145,6 @@ module.exports = {
   allProducts,
   details,
   addBid,
-  getProductsCount
+  getProductsCount,
+  createComment
 };
