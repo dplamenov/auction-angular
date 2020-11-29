@@ -123,6 +123,10 @@ function getProductsCount(req, res, next) {
   });
 }
 
+function createComment(req, res, next) {
+
+}
+
 module.exports = {
   createProduct,
   deleteProduct,

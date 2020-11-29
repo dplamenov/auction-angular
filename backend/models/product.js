@@ -25,7 +25,8 @@ const ProductSchema = mongoose.Schema({
   startPrice: {
     type: Number,
     required: true
-  }
+  },
+  // comments: [{}]
 });
 
 module.exports = mongoose.model('Product', ProductSchema);

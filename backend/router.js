@@ -27,6 +27,7 @@ router.post('/user/login', controllers.user.login);
 router.post('/user/register', controllers.user.register);
 router.get('/user/logout', auth, controllers.user.logout);
 router.get('/user/profile', auth, controllers.user.profile);
+
 router.get('/product', controllers.product.allProducts);
 router.get('/product/count', controllers.product.getProductsCount);
 router.get('/product/latest', controllers.product.latest);
@@ -34,6 +35,7 @@ router.get('/product/:id', getProductFromRequest, controllers.product.details)
 router.post('/product', auth, controllers.product.createProduct);
 router.delete('/product/:id', auth, getProductFromRequest, isOwner, controllers.product.deleteProduct);
 router.patch('/product/:id', auth, getProductFromRequest, isOwner, controllers.product.editProduct);
+router.post('/product/:id/comment', auth, isNotOwner, controllers.product.createComment);
 
 router.post('/product/:id/bid',
   auth,
