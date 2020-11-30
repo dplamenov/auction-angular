@@ -59,4 +59,8 @@ export class ProductService {
     return this.httpClient.patch<Product>(`product/${productId}`, data);
   }
 
+  comment(productId: string, comment: string): Observable<any> {
+    return this.httpClient.post<any>(`product/${productId}/comment`, {comment});
+  }
+
 }
