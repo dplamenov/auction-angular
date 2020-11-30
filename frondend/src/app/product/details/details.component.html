@@ -12,21 +12,26 @@
     <p class="justify"><span class="bold">Creator:</span><span class="data"><a
       href="">{{product.creator.email}}</a>{{product.isOwner ? ' (You) ' : ''}}</span></p>
     <hr>
-    <h3>Comments</h3>
-    <div class="post-comment" *ngIf="!product.isOwner">
+    <div class="post-comment" *ngIf="!product.isOwner && isLoggedIn">
       <form #commentForm="ngForm" (ngSubmit)="commentHandler(commentForm)">
         <label for="post-comment-area">Write your comment:</label>
         <p style="margin: 0" *ngIf="commentInput.touched && commentInput.invalid">Comment must be at least 20 chars.</p>
-        <textarea class="form-control" id="post-comment-area" name="comment" #commentInput="ngModel" ngModel minlength="20"></textarea>
+        <textarea class="form-control" id="post-comment-area" name="comment" #commentInput="ngModel" ngModel
+                  minlength="20"></textarea>
         <button class="btn btn-primary">Post</button>
       </form>
     </div>
     <div class="comments">
-      <div class="comment" [ngClass]="{'bottom-border': (i + 1) !== commentsDisplayCount}" *ngFor="let comment of product.comments.slice(0, commentsDisplayCount); let i = index" >
+      <h3>Comments</h3>
+      <div class="comment" [ngClass]="{'bottom-border': (i + 1) !== commentsDisplayCount}"
+           *ngFor="let comment of product.comments.slice(0, commentsDisplayCount); let i = index">
         <p>Created at: {{comment.createTime | date}} from {{comment.creator.email || email}}</p>
         <p>{{comment.body}}</p>
       </div>
-      <button class="btn btn-primary" id="comment-show-more" (click)="showMoreComments()" *ngIf="isShowMoreCommentsBtnActive">Show more</button>
+      <button class="btn btn-primary" id="comment-show-more" (click)="showMoreComments()"
+              *ngIf="isShowMoreCommentsBtnActive">Show more
+      </button>
+      <p *ngIf="product.comments.length === 0">no comments</p>
     </div>
     <ng-container *ngIf="isLoggedIn">
       <ng-container *ngIf="!product.isOwner">
@@ -65,7 +70,9 @@
             <p>Bid from: {{bid.creator.email}}</p>
             {{bid | json}}
           </div>
-          <button class="btn btn-primary" id="bid-show-more" (click)="showMoreBids()" *ngIf="isShowMoreBtnActive">Show more</button>
+          <button class="btn btn-primary" id="bid-show-more" (click)="showMoreBids()" *ngIf="isShowMoreBtnActive">Show
+            more
+          </button>
         </div>
       </ng-container>
     </ng-container>
