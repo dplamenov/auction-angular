@@ -9,7 +9,10 @@ const CommentSchema = mongoose.Schema({
     type: String,
     default: Date.now
   },
-  creator: {type: mongoose.Types.ObjectId, ref: 'user'}
+  creator: {
+    type: mongoose.Types.ObjectId,
+    ref: 'User'
+  }
 });
 
 module.exports = mongoose.model('Comment', CommentSchema);

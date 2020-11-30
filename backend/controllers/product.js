@@ -128,7 +128,7 @@ function createComment(req, res, next) {
   const {product} = req;
   const {comment} = req.body;
 
-  Comment.create({body: comment})
+  Comment.create({body: comment, creator: getUserId(req)})
     .then(comment => {
       product.comments.push(comment._id);
       product.save();
