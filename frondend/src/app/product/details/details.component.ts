@@ -22,6 +22,10 @@ export class DetailsComponent implements OnInit {
     return this.userService.isLogged;
   }
 
+  get email() {
+    return this.userService.user.email;
+  }
+
   constructor(private route: ActivatedRoute, private productService: ProductService, private userService: UserService, private router: Router, private title: Title) {
   }
 
@@ -65,8 +69,8 @@ export class DetailsComponent implements OnInit {
   commentHandler(form) {
     const {value: {comment}} = form;
     this.productService.comment(this.product._id, comment)
-      .subscribe(data => {
-        console.log(data);
+      .subscribe(comment => {
+        this.product.comments.push(comment);
       });
   }
 }

@@ -23,7 +23,7 @@
     </div>
     <div class="comments">
       <div class="comment" *ngFor="let comment of product.comments">
-        <p>Created at: {{comment.createTime | date}} from {{comment.creator.email}}</p>
+        <p>Created at: {{comment.createTime | date}} from {{comment.creator.email || email}}</p>
         <p>{{comment.body}}</p>
       </div>
     </div>
