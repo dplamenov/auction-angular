@@ -100,6 +100,15 @@ h2 {
   float: right;
 }
 
+.comment {
+  margin-top: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.comment:last-child {
+  border: 0;
+}
+
 @media only screen and (max-width: 768px) {
   .justify {
     width: 90% !important;
