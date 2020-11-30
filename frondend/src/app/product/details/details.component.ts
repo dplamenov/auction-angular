@@ -64,6 +64,9 @@ export class DetailsComponent implements OnInit {
 
   commentHandler(form) {
     const {value: {comment}} = form;
-    console.log(comment);
+    this.productService.comment(this.product._id, comment)
+      .subscribe(data => {
+        console.log(data);
+      });
   }
 }
