@@ -17,6 +17,10 @@ function getProductFromRequest(req, res, next) {
         return next('no that product');
       }
       req.product = product;
+      req.product.comments = product.comments.sort((a, b) => {
+        return b.createTime - a.createTime;
+      });
+
       req.productId = id;
       return next();
     })
