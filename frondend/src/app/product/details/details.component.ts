@@ -70,7 +70,7 @@ export class DetailsComponent implements OnInit {
     const {value: {comment}} = form;
     this.productService.comment(this.product._id, comment)
       .subscribe(comment => {
-        this.product.comments.push(comment);
+        this.product.comments.unshift(comment);
       });
   }
 }
