@@ -1,8 +1,8 @@
 <div class="card" style="width: 400px">
-  <img class="card-img-top" src="{{product.image}}" alt="Card image">
+  <img class="card-img-top" src="{{product.image}}" alt="Card image" [routerLink]="['/product', product._id]" >
   <div class="card-body">
-    <h4 class="card-title">{{product.title}}</h4>
-    <p class="card-text">{{product.description | shorten:25}}</p>
-    <a routerLink="/product/{{product._id}}" class="btn btn-primary">Details</a>
+    <h4 class="card-title" [title]="product.title">{{product.title | shorten:20}}</h4>
+    <p class="card-text" [title]="product.description">{{product.description | shorten:25}}</p>
+    <a [routerLink]="['/product', product._id]" class="btn btn-primary">Details</a>
   </div>
 </div>
