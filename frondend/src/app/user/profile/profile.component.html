@@ -13,6 +13,7 @@
       <h4><a [routerLink]="['/product', bid.product._id]">Product: {{bid.product.title}}</a></h4>
       <p>Bid value: {{bid.priceValue | currency}}</p>
     </div>
+    <p *ngIf="profileData.bids.length === 0">no bids</p>
   </div>
 </div>
 <div class="row second-row" *ngIf="profileData">
@@ -23,5 +24,6 @@
       <p style="display:inline;margin-left: 10px">End date: {{product.endTime | date}}</p>
       <p>{{product.description | shorten:100}}</p>
     </div>
+    <p *ngIf="profileData.products.length === 0">no products</p>
   </div>
 </div>
