@@ -22,10 +22,11 @@
       </form>
     </div>
     <div class="comments">
-      <div class="comment" *ngFor="let comment of product.comments">
+      <div class="comment" [ngClass]="{'bottom-border': (i + 1) !== commentsDisplayCount}" *ngFor="let comment of product.comments.slice(0, commentsDisplayCount); let i = index" >
         <p>Created at: {{comment.createTime | date}} from {{comment.creator.email || email}}</p>
         <p>{{comment.body}}</p>
       </div>
+      <button class="btn btn-primary" id="comment-show-more" (click)="showMoreComments()" *ngIf="isShowMoreCommentsBtnActive">Show more</button>
     </div>
     <ng-container *ngIf="isLoggedIn">
       <ng-container *ngIf="!product.isOwner">

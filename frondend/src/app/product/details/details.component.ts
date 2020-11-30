@@ -16,7 +16,9 @@ export class DetailsComponent implements OnInit {
   product: Product;
 
   bidsDisplayCount = 5;
+  commentsDisplayCount = 5;
   isShowMoreBtnActive: boolean;
+  isShowMoreCommentsBtnActive: boolean;
 
   get isLoggedIn() {
     return this.userService.isLogged;
@@ -35,6 +37,7 @@ export class DetailsComponent implements OnInit {
       .subscribe(product => {
         this.product = product;
         this.isShowMoreBtnActive = product.bids.length > 5;
+        this.isShowMoreCommentsBtnActive = product.comments.length > 5;
         this.title.setTitle(`Product ${this.product.title}`);
       }, _ => {
         this.router.navigate(['/']);
@@ -72,5 +75,10 @@ export class DetailsComponent implements OnInit {
       .subscribe(comment => {
         this.product.comments.unshift(comment);
       });
+  }
+
+  showMoreComments() {
+    this.commentsDisplayCount += 5;
+    this.isShowMoreCommentsBtnActive = this.product.comments.length > this.commentsDisplayCount;
   }
 }

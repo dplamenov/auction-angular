@@ -102,10 +102,13 @@ h2 {
 
 .comment {
   margin-top: 20px;
+}
+
+.comment.bottom-border {
   border-bottom: 1px solid rgba(0, 0, 0, .1);
 }
 
-.comment:last-child {
+.comment.bottom-border:last-child {
   border: 0;
 }
 
