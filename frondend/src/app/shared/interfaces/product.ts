@@ -1,5 +1,6 @@
 import {Creator} from './creator';
 import {Bid} from './bid';
+import {Comment} from './comment';
 
 export interface Product {
   _id: string;
@@ -14,5 +15,5 @@ export interface Product {
   isOwner: boolean;
   bids: Bid[];
   priceValue: number;
-  comments: any[]
+  comments: Comment[]
 }

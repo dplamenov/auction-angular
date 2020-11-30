@@ -5,6 +5,7 @@ import {environment} from '../../environments/environment';
 import {map} from 'rxjs/operators';
 import {Bid} from '../shared/interfaces/bid';
 import {Observable} from 'rxjs';
+import {Comment} from '../shared/interfaces/comment';
 
 @Injectable({providedIn: 'root'})
 export class ProductService {
@@ -59,8 +60,8 @@ export class ProductService {
     return this.httpClient.patch<Product>(`product/${productId}`, data);
   }
 
-  comment(productId: string, comment: string): Observable<any> {
-    return this.httpClient.post<any>(`product/${productId}/comment`, {comment});
+  comment(productId: string, comment: string): Observable<Comment> {
+    return this.httpClient.post<Comment>(`product/${productId}/comment`, {comment});
   }
 
 }
