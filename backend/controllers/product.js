@@ -136,6 +136,20 @@ function createComment(req, res, next) {
     })
 }
 
+function like(req, res, next) {
+  const {product} = req;
+
+  console.log(product.likes);
+  if (product.likes.includes(getUserId(req))) {
+    return next('user already liked');
+  }
+
+  product.likes.push(getUserId(req));
+  product.save();
+
+  res.json(product);
+}
+
 module.exports = {
   createProduct,
   deleteProduct,
@@ -145,5 +159,6 @@ module.exports = {
   details,
   addBid,
   getProductsCount,
-  createComment
+  createComment,
+  like
 };

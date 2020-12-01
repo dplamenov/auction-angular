@@ -28,7 +28,7 @@ export class DetailsComponent implements OnInit {
     return this.userService.user.email;
   }
 
-  get userId(){
+  get userId() {
     return this.userService.user._id;
   }
 
@@ -84,5 +84,11 @@ export class DetailsComponent implements OnInit {
   showMoreComments() {
     this.commentsDisplayCount += 5;
     this.isShowMoreCommentsBtnActive = this.product.comments.length > this.commentsDisplayCount;
+  }
+
+  likeHandler() {
+    this.productService.like(this.product._id).subscribe(data => {
+      this.product.likes.push(this.userId);
+    });
   }
 }

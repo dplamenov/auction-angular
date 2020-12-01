@@ -36,6 +36,7 @@ router.post('/product', auth, controllers.product.createProduct);
 router.delete('/product/:id', auth, getProductFromRequest, isOwner, controllers.product.deleteProduct);
 router.patch('/product/:id', auth, getProductFromRequest, isOwner, controllers.product.editProduct);
 router.post('/product/:id/comment', auth, getProductFromRequest, isNotOwner, controllers.product.createComment);
+router.post('/product/:id/like', auth, getProductFromRequest, isNotOwner, controllers.product.like);
 
 router.post('/product/:id/bid',
   auth,

@@ -26,7 +26,8 @@ const ProductSchema = mongoose.Schema({
     type: Number,
     required: true
   },
-  comments: [{type: mongoose.Types.ObjectId, ref: 'Comment'}]
+  comments: [{type: mongoose.Types.ObjectId, ref: 'Comment'}],
+  likes: [{type: mongoose.Types.ObjectId, ref: 'User'}]
 });
 
 module.exports = mongoose.model('Product', ProductSchema);

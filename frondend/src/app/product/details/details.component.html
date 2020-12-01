@@ -14,8 +14,10 @@
     <div id="like-counter">
       <p>{{product.likes.length}}</p>
       <app-like-icon></app-like-icon>
-      <button class="btn btn-primary" *ngIf="!product.likes.includes(userId)">Like</button>
-      <p class="like-already-liked" *ngIf="product.likes.includes(userId)">Already liked</p>
+      <ng-container *ngIf="!product.isOwner">
+        <button class="btn btn-primary" *ngIf="!product.likes.includes(userId)" (click)="likeHandler()">Like</button>
+        <p class="like-already-liked" *ngIf="product.likes.includes(userId)">Already liked</p>
+      </ng-container>
     </div>
     <hr>
     <div class="post-comment" *ngIf="!product.isOwner && isLoggedIn">

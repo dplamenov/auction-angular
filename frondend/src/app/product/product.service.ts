@@ -48,7 +48,7 @@ export class ProductService {
     }));
   }
 
-  getProductCount(): Observable<{count: number}> {
+  getProductCount(): Observable<{ count: number }> {
     return this.httpClient.get<{ count: number }>(`product/count`);
   }
 
@@ -64,4 +64,7 @@ export class ProductService {
     return this.httpClient.post<Comment>(`product/${productId}/comment`, {comment});
   }
 
+  like(productId: string) {
+    return this.httpClient.post<any>(`product/${productId}/like`, {a: 1});
+  }
 }
