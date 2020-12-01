@@ -15,5 +15,6 @@ export interface Product {
   isOwner: boolean;
   bids: Bid[];
   priceValue: number;
-  comments: Comment[]
+  comments: Comment[];
+  likes: string[];
 }
