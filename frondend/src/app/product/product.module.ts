@@ -43,7 +43,7 @@ import {CoreModule} from '../core/core.module';
     MatPaginatorModule,
     SharedModule,
     ImageCropperModule,
-    CoreModule
+    CoreModule,
   ],
   exports: [],
   providers: [

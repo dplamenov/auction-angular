@@ -4,15 +4,18 @@ import {LoaderComponent} from './loader/loader.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MinDirective} from './directives/min.directive';
 import {ShortenPipe} from './pipes/shorten.pipe';
-import { ChangeThemeDirective } from './directives/change-theme.directive';
+import {ChangeThemeDirective} from './directives/change-theme.directive';
+import {LikeIconComponent} from './like-icon/like-icon.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 @NgModule({
-  declarations: [LoaderComponent, MinDirective, ShortenPipe, ChangeThemeDirective],
+  declarations: [LoaderComponent, MinDirective, ShortenPipe, ChangeThemeDirective, LikeIconComponent],
   imports: [
     CommonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    FontAwesomeModule
   ],
-  exports: [LoaderComponent, MinDirective, ShortenPipe, ChangeThemeDirective]
+  exports: [LoaderComponent, MinDirective, ShortenPipe, ChangeThemeDirective, LikeIconComponent]
 })
 // @ts-ignore
 export class SharedModule {

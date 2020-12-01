@@ -23,7 +23,8 @@ import {CustomTitleService} from './core/custom-title.service';
     ProductModule,
     UserModule,
     CoreModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+
   ],
   providers: [{provide: Title, useClass: CustomTitleService}],
   exports: [],

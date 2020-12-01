@@ -4,5 +4,9 @@
     <h4 class="card-title" [title]="product.title">{{product.title | shorten:20}}</h4>
     <p class="card-text" [title]="product.description">{{product.description | shorten:25}}</p>
     <a [routerLink]="['/product', product._id]" class="btn btn-primary">Details</a>
+    <div id="like-counter">
+      <p>10</p>
+      <app-like-icon></app-like-icon>
+    </div>
   </div>
 </div>
