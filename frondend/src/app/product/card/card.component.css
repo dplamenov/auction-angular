@@ -3,12 +3,18 @@
   margin-bottom: 70px;
 }
 
+.card-body {
+  padding-bottom: 0;
+}
+
 img {
   /*height: 250px;*/
 }
 
 #like-counter {
-  float: right;
+  position: relative;
+  top: -30px;
+  right: -40%;
 }
 
 #like-counter p{
