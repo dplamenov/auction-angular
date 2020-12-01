@@ -11,6 +11,10 @@
       class="data">{{(product.priceValue ? product.priceValue : product.startPrice) | currency}}</span></p>
     <p class="justify"><span class="bold">Creator:</span><span class="data"><a
       href="">{{product.creator.email}}</a>{{product.isOwner ? ' (You) ' : ''}}</span></p>
+    <div id="like-counter">
+      <p>{{product.likes.length}}</p>
+      <app-like-icon></app-like-icon>
+    </div>
     <hr>
     <div class="post-comment" *ngIf="!product.isOwner && isLoggedIn">
       <form #commentForm="ngForm" (ngSubmit)="commentHandler(commentForm)">
