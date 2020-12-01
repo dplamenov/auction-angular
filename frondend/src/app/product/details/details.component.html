@@ -21,12 +21,12 @@
     </div>
     <hr>
     <div class="post-comment" *ngIf="!product.isOwner && isLoggedIn">
-      <form #commentForm="ngForm" (ngSubmit)="commentHandler(commentForm)">
+      <form #commentForm="ngForm" (ngSubmit)="commentHandler(commentForm); commentForm.reset()">
         <label for="post-comment-area">Write your comment:</label>
         <p style="margin: 0" *ngIf="commentInput.touched && commentInput.invalid">Comment must be at least 20 chars.</p>
         <textarea class="form-control" id="post-comment-area" name="comment" #commentInput="ngModel" ngModel
-                  minlength="20"></textarea>
-        <button class="btn btn-primary">Post</button>
+                  minlength="20" required></textarea>
+        <button class="btn btn-primary" [disabled]="commentForm.invalid">Post</button>
       </form>
     </div>
     <div class="comments">
