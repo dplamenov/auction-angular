@@ -114,11 +114,20 @@ h2 {
 
 #like-counter {
   display: flex;
+  align-items: baseline;
 }
 
 #like-counter p{
   display: inline-block;
   margin-right: 5px;
+}
+
+#like-counter button {
+  margin-left: 30px;
+}
+
+.like-already-liked {
+  margin-left: 30px;
 }
 
 @media only screen and (max-width: 768px) {

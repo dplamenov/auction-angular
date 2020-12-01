@@ -28,6 +28,10 @@ export class DetailsComponent implements OnInit {
     return this.userService.user.email;
   }
 
+  get userId(){
+    return this.userService.user._id;
+  }
+
   constructor(private route: ActivatedRoute, private productService: ProductService, private userService: UserService, private router: Router, private title: Title) {
   }
 
