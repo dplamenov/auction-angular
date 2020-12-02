@@ -40,7 +40,7 @@ export class UserService {
     }));
   }
 
-  profile(): Observable<ProfileData>{
-    return this.http.get<ProfileData>('user/profile');
+  profile(userId: string | null): Observable<ProfileData>{
+    return this.http.get<ProfileData>(`user/profile/${userId ? userId : ''}`);
   }
 }
