@@ -35,6 +35,11 @@ mat-paginator {
   color: #007bff;
 }
 
+.flex a.active-sort {
+  color: #cccccc;
+}
+
+
 .flex a:hover {
   text-decoration: underline;
   cursor: pointer;

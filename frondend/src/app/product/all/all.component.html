@@ -4,8 +4,8 @@
   <ng-container *ngIf="!isLoading">
     <div class="flex">
       <p>Sort by: </p>
-      <a (click)="sortHandler(0)">Likes</a>
-      <a (click)="sortHandler(1)">Create time</a>
+      <a (click)="sortHandler(0)" [ngClass]="{'active-sort': sort === 0}">Likes</a>
+      <a (click)="sortHandler(1)" [ngClass]="{'active-sort': sort === 1}">Create time</a>
       <mat-paginator *ngIf="!isProductsEmpty" [length]="paginatorLength" [pageSize]="pageSize"
                      [pageSizeOptions]="pageSizeOptions" [pageIndex]="pageIndex - 1" (page)="pageEvent($event)"
                      id="paginator">

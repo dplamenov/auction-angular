@@ -47,7 +47,7 @@ export class AllComponent implements OnInit {
       }
 
       if (sort) {
-        this.sort = sort;
+        this.sort = Number(sort);
       }
 
       this.getProducts();
