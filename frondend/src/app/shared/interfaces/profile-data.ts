@@ -6,4 +6,5 @@ export interface ProfileData {
   user: User
   products: Product[];
   bids: Bid[];
+  isUserProfile: boolean;
 }
