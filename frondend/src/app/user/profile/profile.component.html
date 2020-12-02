@@ -1,13 +1,14 @@
 <h2>Profile page</h2>
 <app-loader [isActive]="!profileData"></app-loader>
-<!--<pre>{{profileData | json}}</pre>-->
 <div class="row" *ngIf="profileData">
   <div class="col">
     <h3>Profile data</h3>
     <p>Email: {{profileData.user.email}}</p>
-    <!--    <button class="btn-danger btn">Delete account</button>-->
+    <div id="settings" *ngIf="profileData.isUserProfile">
+      <!--    <button class="btn-danger btn">Delete account</button>-->
+    </div>
   </div>
-  <div class="col">
+  <div class="col" *ngIf="profileData.isUserProfile">
     <h3>Your bids</h3>
     <div class="bid" *ngFor="let bid of profileData.bids">
       <h4><a [routerLink]="['/product', bid.product._id]">Product: {{bid.product.title}}</a></h4>
@@ -18,7 +19,7 @@
 </div>
 <div class="row second-row" *ngIf="profileData">
   <div class="col">
-    <h3>Your products</h3>
+    <h3>{{profileData.isUserProfile ? 'your': 'user'}} products</h3>
     <div class="product" *ngFor="let product of profileData.products">
       <h4 style="display: inline"><a [routerLink]="['/product', product._id]">{{product.title}}</a></h4>
       <p style="display:inline;margin-left: 10px">End date: {{product.endTime | date}}</p>
