@@ -7,8 +7,10 @@
 }
 
 h2 {
-  margin: 20px 0 30px 10px;
+  text-align: center;
   text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 label{

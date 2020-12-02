@@ -7,8 +7,10 @@
 }
 
 h2{
-  margin-top: 10px;
+  text-align: center;
   text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 #create-button {

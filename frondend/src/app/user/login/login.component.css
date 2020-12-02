@@ -5,6 +5,13 @@
   width: 50%;
 }
 
+h2 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
 #login-button {
   top: 140px;
 }

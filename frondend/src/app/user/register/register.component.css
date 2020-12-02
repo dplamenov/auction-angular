@@ -5,6 +5,13 @@
   width: 50%;
 }
 
+h2 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
 .my-form {
   width: 100%;
   margin: 5px auto;
