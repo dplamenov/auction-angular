@@ -12,7 +12,7 @@
     <p class="justify">
       <span class="bold">Creator:</span>
       <span class="data">
-        <a [routerLink]="[product.isOwner ? '/user/profile': '/']">{{product.creator.email}}</a>
+        <a [routerLink]="['/user/profile', product.isOwner ? '': product.creator._id]">{{product.creator.email}}</a>
         {{product.isOwner ? ' (You) ' : ''}}
       </span>
     </p>
