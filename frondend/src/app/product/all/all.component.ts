@@ -4,6 +4,7 @@ import {Product} from '../../shared/interfaces/product';
 import {ProductService} from '../product.service';
 import {Title} from '@angular/platform-browser';
 
+
 @Component({
   selector: 'app-all',
   templateUrl: './all.component.html',
@@ -13,12 +14,14 @@ export class AllComponent implements OnInit {
 
   skip = 0;
   take = 5;
+  pageSize = 5;
+  sort = 0;
+
   products: Product[];
   isProductsEmpty = true;
 
   paginatorLength: number;
   pageSizeOptions = [5, 10, 25, 100];
-  pageSize = 5;
   pageIndex: number;
 
   isLoading: boolean;
@@ -29,7 +32,7 @@ export class AllComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      const {skip, take, pageSize} = params;
+      const {skip, take, pageSize, sort} = params;
 
       if (skip) {
         this.skip = skip;
@@ -43,6 +46,10 @@ export class AllComponent implements OnInit {
         this.pageSize = this.pageSizeOptions.includes(Number(pageSize)) ? pageSize : this.pageSize;
       }
 
+      if (sort) {
+        this.sort = sort;
+      }
+
       this.getProducts();
       this.getCountOfAllProducts();
 
@@ -52,7 +59,7 @@ export class AllComponent implements OnInit {
 
   getProducts() {
     this.isLoading = true;
-    this.productService.getAll(this.skip, this.take).subscribe(products => {
+    this.productService.getAll(this.skip, this.take, this.sort).subscribe(products => {
       this.products = products;
       this.isProductsEmpty = products.length === 0;
       this.isLoading = false;
@@ -74,7 +81,30 @@ export class AllComponent implements OnInit {
     this.pageIndex = event.pageIndex;
 
     this.router.navigate(['/product/all'], {
-      queryParams: {skip: this.skip, take: this.take, pageSize: event.pageSize}
+      queryParams: {skip: this.skip, take: this.take, pageSize: event.pageSize},
+      queryParamsHandling: 'merge'
     });
   }
+
+  sortHandler(sort) {
+    this.sort = sort;
+
+    this.router.navigate(['/product/all'], {
+      queryParams: {sort},
+      queryParamsHandling: 'merge'
+    });
+  }
+
+  // private sortFn(array, prop, castToNumber = false, type: 'asc' | 'desc' = 'asc') {
+  //   return array.slice().sort((a, b) => {
+  //     let propA = a[prop];
+  //     let propB = b[prop];
+  //
+  //     if(castToNumber){
+  //       propA = Number(propA);
+  //       propB = Number(propB);
+  //     }
+  //
+  //   });
+  //}
 }

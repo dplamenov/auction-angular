@@ -67,9 +67,11 @@ function latest(req, res, next) {
 }
 
 function allProducts(req, res, next) {
-  const {skip, take} = req.query;
+  const {skip, take, sort = 0} = req.query;
 
-  Product.find({}).sort({createTime: -1}).skip(Number(skip)).limit(Number(take))
+  const sortMapping = [{likes: -1}, {createTime: -1}];
+
+  Product.find({}).sort(sortMapping[sort]).skip(Number(skip)).limit(Number(take))
     .then(res.json.bind(res))
     .catch(next);
 }

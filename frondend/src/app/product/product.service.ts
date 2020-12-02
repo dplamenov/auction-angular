@@ -42,8 +42,8 @@ export class ProductService {
     return this.httpClient.delete<Product>(`product/${productId}`);
   }
 
-  getAll(skip = 0, take = 0): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(`product?skip=${skip}&take=${take}`).pipe(map((products) => {
+  getAll(skip = 0, take = 0, sort = 0): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(`product?skip=${skip}&take=${take}&sort=${sort}`).pipe(map((products) => {
       return products.map(ProductService.addImagePath);
     }));
   }
