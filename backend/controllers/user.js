@@ -44,22 +44,30 @@ function logout(req, res, next) {
 }
 
 function profile(req, res, next) {
-  const result = {
-    user: {email: req.user.email, _id: req.user._id},
-  }
+  const {userId = null} = req.params;
+  const result = {user: {}};
 
-  const creator = {creator: req.user._id};
+  const creator = {creator: userId || req.user._id};
+  const userPromise = userId ? User.findById(userId) : Promise.resolve(req.user);
 
-  Promise.all([Bid.find(creator).populate('product').sort({priceValue: -1}), Product.find(creator)])
-    .then(async ([bids, products]) => {
-      result.products = await Promise.all(products.map(async (product) => {
-        const latestBid = await Bid.findOne({product: product.id}).sort({priceValue: -1});
-        const priceValue = latestBid ? latestBid.priceValue : product.startPrice;
-        return {...product._doc, priceValue};
-      }));
-      result.bids = bids;
-      res.json(result);
-    });
+  Promise.all([
+    Bid.find(creator).populate('product').sort({priceValue: -1}),
+    Product.find(creator),
+    userPromise
+  ]).then(async ([bids, products, user]) => {
+    result.products = await Promise.all(products.map(async (product) => {
+      const latestBid = await Bid.findOne({product: product.id}).sort({priceValue: -1});
+      const priceValue = latestBid ? latestBid.priceValue : product.startPrice;
+      return {...product._doc, priceValue};
+    }));
+
+    result.bids = bids;
+    result.user.email = user.email
+    result.user._id = user._id;
+    result.isUserProfile = userId === null;
+
+    res.json(result);
+  });
 
 }
 
