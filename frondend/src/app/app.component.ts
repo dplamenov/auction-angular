@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {UserService} from './user/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
@@ -10,8 +10,13 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class AppComponent implements OnInit {
   notification: string;
   setTimeoutId: number;
+  isBackToTopActive: boolean;
 
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) {
+  }
+
+  @HostListener('window:scroll') onScroll(): void {
+    this.isBackToTopActive = window.pageYOffset > 20;
   }
 
   logout() {
@@ -28,6 +33,10 @@ export class AppComponent implements OnInit {
         this.router.navigate([], {relativeTo: this.route, queryParams: {notification: null}, queryParamsHandling: 'merge'});
       }, 3000);
     });
+  }
+
+  scrollToTop() {
+    window.scroll(0,0);
   }
 
 }

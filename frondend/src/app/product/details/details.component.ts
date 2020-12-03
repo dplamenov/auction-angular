@@ -91,4 +91,6 @@ export class DetailsComponent implements OnInit {
       this.product.likes.push(this.userId);
     });
   }
+
+
 }

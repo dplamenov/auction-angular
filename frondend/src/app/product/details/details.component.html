@@ -1,6 +1,7 @@
 <div id="product-details">
   <ng-container *ngIf="product">
-    <h2>Product: {{product.title}}</h2>
+    <h2 id="page-heading">Product: {{product.title}}</h2>
+    <a routerLink="/" class="back"><- Back</a>
     <img src="{{product.image}}" alt="{{product.title}}" class="details-image"/>
     <p class="justify"><span class="bold">Title:</span><span class="data">{{product.title}}</span></p>
     <p class="justify"><span class="bold">Description:</span><span class="data">{{product.description}}</span></p>
@@ -88,6 +89,7 @@
         </div>
       </ng-container>
     </ng-container>
+    <a routerLink="/" class="back"><- Back</a>
     <br>
   </ng-container>
   <!--  <p>{{product}}</p>-->

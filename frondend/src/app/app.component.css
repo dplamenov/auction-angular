@@ -12,3 +12,13 @@
     padding: 20px 50px;
   }
 }
+
+.scroll-to-top {
+  position: fixed;
+  right: 100px;
+  bottom: 100px;
+  background-color: #0C6980;
+  padding: 15px 30px;
+  border-radius: 8px;
+  color: white;
+}
