@@ -16,7 +16,6 @@ Can see the latest products that are added. Can view details page of each produc
 Create new a product.
 Edit and delete the products created by him. See profile page. Set bid. Write comments.
 
-
 <h2>Features</h2>
 1. Dark and light mode. Store current theme at localStorage.
 
