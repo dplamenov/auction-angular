@@ -1,4 +1,4 @@
-<div class="card" style="width: 400px">
+<div class="card" style="width: 400px;">
   <img class="card-img-top" src="{{product.image}}" alt="Card image" [routerLink]="['/product', product._id]" >
   <div class="card-body">
     <h4 class="card-title" [title]="product.title">{{product.title | shorten:20}}</h4>

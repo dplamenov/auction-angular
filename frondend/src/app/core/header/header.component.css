@@ -6,7 +6,7 @@ header {
 
 header h1 {
   position: absolute;
-  bottom: 1%;
+  bottom: 10%;
   left: 1%;
   font-size: 44px;
   text-transform: uppercase;

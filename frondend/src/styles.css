@@ -9,19 +9,24 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   transition: background .3s ease;
+  background-color: var(--body-bg-color);
 }
 
 
 .light-mode {
-  --header-bg-color: #77bbd4;
-  --footer-bg-color: #77bbd4;
-  --header-text-color: black;
-  --footer-text-color: black;
+  --header-bg-color: #0C6980;
+  --footer-bg-color: #0C6980;
+  --header-text-color: white;
+  --footer-text-color: white;
+  --card-btn-bg-color: #2EB5E0;
+  --body-bg-color: white;
 }
 
 .dark-mode {
-  --header-bg-color: #72939f;
-  --footer-bg-color: #72939f;
+  --header-bg-color: #073d4a;
+  --footer-bg-color: #073d4a;
   --header-text-color: white;
   --footer-text-color: white;
+  --card-btn-bg-color: #2EB5E0;
+  --body-bg-color: white;
 }

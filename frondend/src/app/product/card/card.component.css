@@ -1,6 +1,8 @@
 .card {
   display: inline-block;
   margin-bottom: 70px;
+  box-shadow: 3px 3px 5px 6px #ccc;
+  margin-left: 30px;
 }
 
 .card-body {
@@ -19,6 +21,11 @@ img {
 #like-counter p{
   display: inline-block;
   margin-right: 5px;
+}
+
+.btn-primary {
+  background-color: var(--card-btn-bg-color);
+  border-color: var(--card-btn-bg-color);
 }
 
 /*#like-counter app-like-icon {}*/
