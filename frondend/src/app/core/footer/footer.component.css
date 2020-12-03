@@ -17,3 +17,22 @@ footer p {
 footer {
   z-index: 999;
 }
+
+#terms-and-conditions{
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+#terms-and-conditions span{
+  display: inline-block;
+  margin-right: 15px;
+  padding-right: 15px;
+  border-right: 2px solid white;
+}
+
+#terms-and-conditions span:last-child{
+  border: 0;
+}
