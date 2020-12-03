@@ -18,16 +18,23 @@ describe('ProductCardComponent', () => {
     component = fixture.componentInstance;
 
     component.product = {
-      _id: '5fa92651df489d0ddf552342', bids: [], priceValue: 0,
-      title: 'product title1 4 1525 15 152',
-      description: 'test',
-      endTime: '1603014589212',
-      startPrice: '4104.155',
-      creator: '5f8309254cd133105880f9a2',
-      createTime: '1604920913222',
+      comments: [],
+      likes: [],
+      _id: '5fc8d2289783d20ee063d791',
+      title: 'Apple AirPods',
+      description: 'Now with more talk time, voice-activated Siri access — and a wireless charging case — AirPods deliver an unparalleled wireless headphone experience. Simply take them out and they’re ready to use with all your devices. Put them in your ears and they connect immediately, immersing you in rich, high-quality sound. Just like magic!',
+      endTime: 'Thu Dec 24 2020 00:00:00 GMT+0200 (EET)',
+      startPrice: '399',
+      creator: {
+        _id: '5fc8d1ab9783d20ee063d790',
+        email: 'dimitar.plamenov@gmail.com'
+      },
+      createTime: '1606996520766',
       isOwner: false,
-      endString: '21.12.2020',
-      image: 'kw.jpg'
+      bids: [],
+      endString: '12',
+      image: '1',
+      priceValue: 1
     };
 
     fixture.detectChanges();
