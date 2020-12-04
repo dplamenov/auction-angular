@@ -47,11 +47,6 @@ import {CoreModule} from '../core/core.module';
   ],
   exports: [],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: DefaultInterceptor,
-      multi: true
-    },
     {provide: DateAdapter, useClass: CustomDateAdapter},
     {provide: MAT_DATE_LOCALE, useValue: 'bg-BG'}
   ]
