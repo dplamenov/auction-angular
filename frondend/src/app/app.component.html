@@ -1,5 +1,7 @@
-<app-header [notification]="notification" (logout)="logout()" ></app-header>
-<router-outlet></router-outlet>
+<app-header [notification]="notification" (logout)="logout()"></app-header>
+<div [@routeAnimations]="prepareRoute(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>
 <div class="scroll-to-top" (click)="scrollToTop()" *ngIf="isBackToTopActive">TOP</div>
 <app-footer></app-footer>
 

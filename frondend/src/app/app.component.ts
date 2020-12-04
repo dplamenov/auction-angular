@@ -1,11 +1,13 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {UserService} from './user/user.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
+import {slideInAnimation} from './animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations: [slideInAnimation]
 })
 export class AppComponent implements OnInit {
   notification: string;
@@ -36,7 +38,11 @@ export class AppComponent implements OnInit {
   }
 
   scrollToTop() {
-    window.scroll(0,0);
+    window.scroll(0, 0);
+  }
+
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData;
   }
 
 }
