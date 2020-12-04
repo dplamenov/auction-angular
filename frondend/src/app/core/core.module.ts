@@ -17,7 +17,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     MatSlideToggleModule,
     SharedModule
   ],
-  exports: [NotFoundComponent, FooterComponent, HeaderComponent]
+  exports: [NotFoundComponent, FooterComponent, HeaderComponent, ContactUsComponent]
 })
 export class CoreModule {
 }

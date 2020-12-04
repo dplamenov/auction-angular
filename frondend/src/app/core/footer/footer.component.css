@@ -33,6 +33,10 @@ footer {
   border-right: 2px solid white;
 }
 
+span:focus {
+  outline: unset;
+}
+
 #terms-and-conditions span:last-child{
   border: 0;
 }

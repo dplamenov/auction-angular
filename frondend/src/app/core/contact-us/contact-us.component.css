@@ -1,0 +1,39 @@
+#contact {
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 150px;
+}
+
+h2 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+#map, #contact-info {
+  display: inline-block;
+  margin-right: 10px
+}
+
+.col-sm {
+  border-right: 1px solid rgba(0, 0, 0, .1);
+}
+
+.col-sm:last-child {
+  border: 0;
+}
+
+img {
+  width: 100%;
+}
+
+input {
+  margin-bottom: 15px;
+}
+
+button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
