@@ -24,11 +24,17 @@ import {DefaultInterceptor} from './core/default.interceptor';
     CoreModule,
     BrowserAnimationsModule,
   ],
-  providers: [{provide: Title, useClass: CustomTitleService}, {
-    provide: HTTP_INTERCEPTORS,
-    useClass: DefaultInterceptor,
-    multi: true
-  }],
+  providers: [
+    {
+      provide: Title,
+      useClass: CustomTitleService
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: DefaultInterceptor,
+      multi: true
+    }
+  ],
   exports: [],
   bootstrap: [AppComponent]
 })
