@@ -20,9 +20,9 @@ export const slideInAnimation =
           width: '100%'
         })
       ], {optional: true}),
-      query(':enter',  [
+      query(':enter', [
         style({left: '-100%'})
-      ], {optional: true}, ),
+      ], {optional: true},),
       query(':leave', animateChild(), {optional: true}),
       group([
         query(':leave', [
