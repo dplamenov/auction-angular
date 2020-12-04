@@ -20,6 +20,7 @@ Edit and delete the products created by him. See profile page. Set bid. Write co
 
 <h2>Features</h2>
 1. Dark and light mode. Store current theme at localStorage.
+2. Route transition animations
 
 # Frond-end
 Angular 10.0.14
