@@ -26,6 +26,8 @@ h2 {
 
 img {
   width: 100%;
+
+
 }
 
 input {
@@ -34,6 +36,5 @@ input {
 
 button {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  right: 10px;
 }
