@@ -6,10 +6,11 @@ import {FooterComponent} from './footer/footer.component';
 import {HeaderComponent} from './header/header.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {SharedModule} from '../shared/shared.module';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 @NgModule({
-  declarations: [NotFoundComponent, FooterComponent, HeaderComponent],
+  declarations: [NotFoundComponent, FooterComponent, HeaderComponent, ContactUsComponent],
   imports: [
     CommonModule,
     RouterModule,
