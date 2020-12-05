@@ -11,11 +11,11 @@ Angular project Online Auction System
 
 <h2>Functionality</h2>
 
-<h3>Visitors</h3>
+###Visitors
 - Can see the latest products that are added. 
 - Can view details page of each product.
 
-<h3>Logged-in users</h3>
+###Logged-in users
 - Create new a product.
 - Edit and delete the products created by him.
 - See profile page. 
