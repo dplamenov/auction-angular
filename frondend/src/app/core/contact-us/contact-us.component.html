@@ -9,16 +9,24 @@
       <img src="assets/contact.png" alt="">
     </div>
     <div class="col-sm">
-      <form #contactForm>
+      <form #contactForm="ngForm">
         <h3>Contact Us</h3>
         <hr>
+        <p *ngIf="nameInput?.errors?.required && nameInput.touched">Name is required.</p>
+        <p *ngIf="nameInput?.errors?.minlength && nameInput.touched">Name should be at least 5chars.</p>
+        <p *ngIf="emailInput?.errors?.required && emailInput.touched">Email is required.</p>
+        <p *ngIf="emailInput?.errors?.email && emailInput.touched">Email is not valid.</p>
+        <p *ngIf="messageInput?.errors?.required && messageInput.touched">Message is required.</p>
+        <p *ngIf="messageInput?.errors?.minlength && messageInput.touched">Message should be at least 30chars.</p>
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name" ngModel>
+        <input type="text" class="form-control" id="name" name="name" ngModel #nameInput="ngModel" required minlength="5">
         <label for="phone">Phone</label>
         <input type="text" class="form-control" id="phone" name="phone" ngModel>
         <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="email" [ngModel]="email">
-        <button class="btn btn-primary">Submit</button>
+        <input type="email" class="form-control" id="email" name="email" [ngModel]="email" #emailInput="ngModel" required email>
+        <label for="message">Message</label>
+        <textarea class="form-control" id="message" name="message" ngModel #messageInput="ngModel" required minlength="30"></textarea>
+        <button class="btn btn-primary">Send</button>
       </form>
     </div>
   </div>
