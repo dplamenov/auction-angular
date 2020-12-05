@@ -9,10 +9,11 @@ import {SharedModule} from '../shared/shared.module';
 import {ContactUsComponent} from './contact-us/contact-us.component';
 import {FormsModule} from '@angular/forms';
 import {TermsOfServiceComponent} from './terms-of-service/terms-of-service.component';
+import { UserAgreementComponent } from './user-agreement/user-agreement.component';
 
 
 @NgModule({
-  declarations: [NotFoundComponent, FooterComponent, HeaderComponent, ContactUsComponent, TermsOfServiceComponent],
+  declarations: [NotFoundComponent, FooterComponent, HeaderComponent, ContactUsComponent, TermsOfServiceComponent, UserAgreementComponent],
   imports: [
     CommonModule,
     RouterModule,
