@@ -29,10 +29,8 @@ header h1 {
 }
 
 .change-theme {
-  position: absolute;
-  bottom: 1%;
-  right: 1%;
-  color: white;
+
+  color: rgba(0,0,0,.5);
 }
 
 .mat-slide-toggle-bar {
@@ -45,6 +43,10 @@ header h1 {
 
 nav > a {
   text-transform: uppercase;
+}
+
+nav {
+  padding-left: 1%;
 }
 
 @media only screen and (max-width: 678px) {

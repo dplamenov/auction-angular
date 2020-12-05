@@ -4,7 +4,7 @@
   </div>
   <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav">
     <!--    <img src="assets/favicon.ico" style="width: 50px">-->
-    <a class="navbar-brand" routerLink="/">Online auction system</a>
+    <a class="navbar-brand" routerLink="/">Online auction</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -38,12 +38,13 @@
       <span class="navbar-text" *ngIf="isLoggedIn">
         Welcome, {{email}}
       </span>
+      <div class="change-theme" style="margin-left: 20px">
+        Dark mode
+        <mat-slide-toggle color="primary" appChangeTheme #matSlideToggle='appChangeTheme'
+                          [checked]="matSlideToggle.isToggleChecked"></mat-slide-toggle>
+      </div>
     </div>
   </nav>
-    <h1>Welcome to auction system</h1>
-  <div class="change-theme">
-    Dark mode
-    <mat-slide-toggle color="primary" appChangeTheme #matSlideToggle='appChangeTheme'
-                      [checked]="matSlideToggle.isToggleChecked"></mat-slide-toggle>
-  </div>
+  <h1>online auction</h1>
+
 </header>

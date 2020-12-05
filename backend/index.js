@@ -8,7 +8,7 @@ const cookie = require('cookie-parser');
 const app = express();
 app.use(express.static('public'));
 app.use(cors({
-  origin: ['http://localhost:4200', 'http://127.0.0.1:4200'],
+  origin: ['http://localhost:4200', 'http://127.0.0.1:4200', 'http://192.168.1.141:4200'],
   credentials: true,
 }));
 app.use(express.json());
