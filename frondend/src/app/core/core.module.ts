@@ -6,12 +6,13 @@ import {FooterComponent} from './footer/footer.component';
 import {HeaderComponent} from './header/header.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {SharedModule} from '../shared/shared.module';
-import { ContactUsComponent } from './contact-us/contact-us.component';
+import {ContactUsComponent} from './contact-us/contact-us.component';
 import {FormsModule} from '@angular/forms';
+import {TermsOfServiceComponent} from './terms-of-service/terms-of-service.component';
 
 
 @NgModule({
-  declarations: [NotFoundComponent, FooterComponent, HeaderComponent, ContactUsComponent],
+  declarations: [NotFoundComponent, FooterComponent, HeaderComponent, ContactUsComponent, TermsOfServiceComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -19,7 +20,7 @@ import {FormsModule} from '@angular/forms';
     SharedModule,
     FormsModule
   ],
-  exports: [NotFoundComponent, FooterComponent, HeaderComponent, ContactUsComponent]
+  exports: [NotFoundComponent, FooterComponent, HeaderComponent, ContactUsComponent, TermsOfServiceComponent]
 })
 export class CoreModule {
 }

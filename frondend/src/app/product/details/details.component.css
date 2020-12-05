@@ -46,7 +46,8 @@ h2 {
 }
 
 .details-image:hover {
-  transform: scale(1.2);
+  border-radius: 8px;
+  transform: scale(1.5);
 }
 
 #bid-label {
