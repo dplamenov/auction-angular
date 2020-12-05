@@ -12,11 +12,15 @@ Angular project Online Auction System
 <h2>Functionality</h2>
 
 <h3>Visitors</h3>
-Can see the latest products that are added. Can view details page of each product.
+1. Can see the latest products that are added. 
+2. Can view details page of each product.
 
 <h3>Logged-in users</h3>
-Create new a product.
-Edit and delete the products created by him. See profile page. Set bid. Write comments.
+1. Create new a product.
+2. Edit and delete the products created by him.
+3. See profile page. 
+4. Set bid. 
+5. Write comments.
 
 <h2>Features</h2>
 1. Dark and light mode. Store current theme at localStorage.
