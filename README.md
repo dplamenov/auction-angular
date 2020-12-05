@@ -23,8 +23,8 @@ Angular project Online Auction System
 - Write comments.
 
 <h2>Features</h2>
-- Dark and light mode. Store current theme at localStorage.
-- Route transition animations
+1. Dark and light mode. Store current theme at localStorage.
+2. Route transition animations
 
 # Frond-end
 Angular 10.0.14
