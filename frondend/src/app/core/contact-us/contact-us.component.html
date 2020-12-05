@@ -9,16 +9,15 @@
       <img src="assets/contact.png" alt="">
     </div>
     <div class="col-sm">
-      <form>
+      <form #contactForm>
         <h3>Contact Us</h3>
         <hr>
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name">
+        <input type="text" class="form-control" id="name" name="name" ngModel>
         <label for="phone">Phone</label>
-        <input type="text" class="form-control" id="phone" name="name">
+        <input type="text" class="form-control" id="phone" name="phone" ngModel>
         <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="name">
-
+        <input type="email" class="form-control" id="email" name="email" [ngModel]="email">
         <button class="btn btn-primary">Submit</button>
       </form>
     </div>
