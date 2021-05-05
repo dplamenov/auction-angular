@@ -1,7 +1,6 @@
 # Online Auction System
 Angular project Online Auction System
 
-[DEMO](http://auction.sharkdev.eu)
 
 <h2>Modules</h2>
 
